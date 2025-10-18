@@ -20,6 +20,8 @@ dotnet run --project . -c Release
   177  dotnet build -c Release --no-restore
   178  dotnet run --project . -c Release
 
-  dotnet run --project . -c Release -- "1988-09-04T01:15" 52.52 13.405
+dotnet run --project . -c Release -- "1988-09-04T01:15" 52.52 13.405
 
-    dotnet run --project . -c Release -- "1988-09-04T01:15" 52.52 13.405
+dotnet run --project . -c Release -- "1989-06-04T14:10" 46.6581 16.1610
+
+dotnet run --project /home/buddha/Documents/HDKIT/HDKitSample/HDKitSample.csproj -c Release -- single "1989-06-04T14:10" 46.6581 16.1610

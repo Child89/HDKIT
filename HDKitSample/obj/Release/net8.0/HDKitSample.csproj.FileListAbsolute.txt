@@ -20,3 +20,4 @@
 /home/buddha/Documents/HDKIT/HDKitSample/obj/Release/net8.0/HDKitSample.pdb
 /home/buddha/Documents/HDKIT/HDKitSample/obj/Release/net8.0/HDKitSample.genruntimeconfig.cache
 /home/buddha/Documents/HDKIT/HDKitSample/obj/Release/net8.0/ref/HDKitSample.dll
+/home/buddha/Documents/HDKIT/HDKitSample/obj/Release/net8.0/HDKitSample.sourcelink.json
