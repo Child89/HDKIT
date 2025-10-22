@@ -32,11 +32,9 @@ async function runDotnet(projectPath, args) {
 
   // First try to build the project (explicit project path avoids MSBuild confusion with flags)
   try {
-    console.debug('runner: running dotnet build', projectPath);
     const buildRes = await runProcess('dotnet', ['build', projectPath, '-c', 'Release']);
-    console.debug('runner: build stdout length', buildRes.stdout ? buildRes.stdout.length : 0);
   } catch (buildErr) {
-    console.debug('runner: build failed, falling back to dotnet run', buildErr && buildErr.stderr ? buildErr.stderr : buildErr.message);
+    // If build fails, fall back to `dotnet run --project` which internally builds as needed.
     // If build fails, fall back to `dotnet run --project` which internally builds as needed.
     return runProcess('dotnet', ['run', '--project', projectPath, '-c', 'Release', '--', ...args]);
   }

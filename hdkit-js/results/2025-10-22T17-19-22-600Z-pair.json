@@ -1,0 +1,653 @@
+{
+  "person1": {
+    "type": "ManifestingGenerator",
+    "profile": "3 / 5",
+    "strategy": "Sacral",
+    "incarnationCross": "RightAngleCrossOfConsciousness2",
+    "personalityActivations": [
+      {
+        "planet": "Sun",
+        "gate": 35,
+        "line": 3,
+        "raw": "35.3.5.1.3 C7% T42% B8%",
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "planet": "Moon",
+        "gate": 12,
+        "line": 1,
+        "raw": "12.1.6.3.5 C47% T85% B24%",
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "planet": "Mercury",
+        "gate": 8,
+        "line": 4,
+        "raw": "8.4.6.4.2 C55% T27% B37%",
+        "description": "Contribution to the collective; style and articulation of unique contribution."
+      },
+      {
+        "planet": "Venus",
+        "gate": 15,
+        "line": 2,
+        "raw": "15.2.4.6.1 C85% T13% B64%",
+        "description": "Extremes and humanity; rhythm and acceptance of diversity."
+      },
+      {
+        "planet": "Mars",
+        "gate": 62,
+        "line": 2,
+        "raw": "62.2.6.2.5 C32% T93% B66%",
+        "description": "Detail and articulation; precise expression and organization."
+      },
+      {
+        "planet": "Jupiter",
+        "gate": 45,
+        "line": 1,
+        "raw": "45.1.3.4.1 C50% T1% B4%",
+        "description": "Gathering and rulership; distribution of resources and leadership."
+      },
+      {
+        "planet": "Saturn",
+        "gate": 38,
+        "line": 4,
+        "raw": "38.4.2.4.2 C55% T32% B58%",
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "planet": "Uranus",
+        "gate": 58,
+        "line": 1,
+        "raw": "58.1.2.5.3 C75% T49% B47%",
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "planet": "Neptune",
+        "gate": 38,
+        "line": 3,
+        "raw": "38.3.3.2.4 C28% T65% B27%",
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "planet": "Pluto",
+        "gate": 44,
+        "line": 6,
+        "raw": "44.6.5.2.2 C23% T39% B97%",
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "planet": "NorthNode",
+        "gate": 30,
+        "line": 5,
+        "raw": "30.5.4.2.5 C31% T84% B22%",
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "planet": "SouthNode",
+        "gate": 29,
+        "line": 5,
+        "raw": "29.5.4.2.5 C31% T84% B22%",
+        "description": "Commitment; perseverance through trial and repetition."
+      },
+      {
+        "planet": "Earth",
+        "gate": 5,
+        "line": 3,
+        "raw": "5.3.5.1.3 C7% T42% B8%",
+        "description": "Fixed patterns; rhythm and consistency in life."
+      }
+    ],
+    "designActivations": [
+      {
+        "planet": "Sun",
+        "gate": 63,
+        "line": 5,
+        "raw": "63.5.5.6.2 C87% T22% B8%",
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "planet": "Moon",
+        "gate": 30,
+        "line": 4,
+        "raw": "30.4.5.4.2 C54% T25% B26%",
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "planet": "Mercury",
+        "gate": 49,
+        "line": 6,
+        "raw": "49.6.1.1.3 C9% T53% B66%",
+        "description": "Principles and revolution; values leading to social change."
+      },
+      {
+        "planet": "Venus",
+        "gate": 37,
+        "line": 3,
+        "raw": "37.3.6.3.3 C41% T46% B28%",
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "planet": "Mars",
+        "gate": 8,
+        "line": 3,
+        "raw": "8.3.5.2.3 C25% T52% B58%",
+        "description": "Contribution to the collective; style and articulation of unique contribution."
+      },
+      {
+        "planet": "Jupiter",
+        "gate": 8,
+        "line": 6,
+        "raw": "8.6.2.1.1 C2% T11% B57%",
+        "description": "Contribution to the collective; style and articulation of unique contribution."
+      },
+      {
+        "planet": "Saturn",
+        "gate": 38,
+        "line": 3,
+        "raw": "38.3.5.6.2 C90% T37% B85%",
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "planet": "Uranus",
+        "gate": 58,
+        "line": 2,
+        "raw": "58.2.1.2.1 C19% T16% B78%",
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "planet": "Neptune",
+        "gate": 38,
+        "line": 3,
+        "raw": "38.3.4.6.1 C87% T19% B96%",
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "planet": "Pluto",
+        "gate": 1,
+        "line": 2,
+        "raw": "1.2.6.5.4 C80% T79% B95%",
+        "description": "Self-expression, creative self; the energy to initiate unique contribution."
+      },
+      {
+        "planet": "NorthNode",
+        "gate": 55,
+        "line": 6,
+        "raw": "55.6.1.4.3 C58% T48% B38%",
+        "description": "Spirit and abundance; emotional fullness and existential mood."
+      },
+      {
+        "planet": "SouthNode",
+        "gate": 59,
+        "line": 6,
+        "raw": "59.6.1.4.3 C58% T48% B38%",
+        "description": "Intimacy and bonding; sexual connection and breaking barriers."
+      },
+      {
+        "planet": "Earth",
+        "gate": 64,
+        "line": 5,
+        "raw": "64.5.5.6.2 C87% T22% B8%",
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ],
+    "allActiveGates": [
+      {
+        "gate": 1,
+        "description": "Self-expression, creative self; the energy to initiate unique contribution."
+      },
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 8,
+        "description": "Contribution to the collective; style and articulation of unique contribution."
+      },
+      {
+        "gate": 12,
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "gate": 15,
+        "description": "Extremes and humanity; rhythm and acceptance of diversity."
+      },
+      {
+        "gate": 29,
+        "description": "Commitment; perseverance through trial and repetition."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 37,
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 44,
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "gate": 45,
+        "description": "Gathering and rulership; distribution of resources and leadership."
+      },
+      {
+        "gate": 49,
+        "description": "Principles and revolution; values leading to social change."
+      },
+      {
+        "gate": 55,
+        "description": "Spirit and abundance; emotional fullness and existential mood."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 59,
+        "description": "Intimacy and bonding; sexual connection and breaking barriers."
+      },
+      {
+        "gate": 62,
+        "description": "Detail and articulation; precise expression and organization."
+      },
+      {
+        "gate": 63,
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "gate": 64,
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ]
+  },
+  "person2": {
+    "type": "Manifestor",
+    "profile": "3 / 6",
+    "strategy": "Emotional",
+    "incarnationCross": "RightAngleCrossOfConsciousness2",
+    "personalityActivations": [
+      {
+        "planet": "Sun",
+        "gate": 35,
+        "line": 3,
+        "raw": "35.3.6.4.2 C56% T39% B94%",
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "planet": "Moon",
+        "gate": 19,
+        "line": 1,
+        "raw": "19.1.4.1.3 C10% T57% B86%",
+        "description": "Sensitivity and needs; the voice of community need and close ties."
+      },
+      {
+        "planet": "Mercury",
+        "gate": 12,
+        "line": 4,
+        "raw": "12.4.6.4.3 C58% T48% B38%",
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "planet": "Venus",
+        "gate": 12,
+        "line": 5,
+        "raw": "12.5.5.5.2 C73% T39% B96%",
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "planet": "Mars",
+        "gate": 37,
+        "line": 3,
+        "raw": "37.3.5.3.2 C38% T29% B44%",
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "planet": "Jupiter",
+        "gate": 23,
+        "line": 2,
+        "raw": "23.2.4.2.5 C31% T89% B44%",
+        "description": "Assimilation of ideas; simplicity and transformation of complex thought."
+      },
+      {
+        "planet": "Saturn",
+        "gate": 10,
+        "line": 3,
+        "raw": "10.3.2.5.4 C77% T61% B3%",
+        "description": "Behavior of the self; natural self-love and authenticity."
+      },
+      {
+        "planet": "Uranus",
+        "gate": 10,
+        "line": 2,
+        "raw": "10.2.4.2.1 C17% T0% B1%",
+        "description": "Behavior of the self; natural self-love and authenticity."
+      },
+      {
+        "planet": "Neptune",
+        "gate": 58,
+        "line": 6,
+        "raw": "58.6.6.6.2 C89% T32% B60%",
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "planet": "Pluto",
+        "gate": 44,
+        "line": 3,
+        "raw": "44.3.6.1.4 C13% T77% B84%",
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "planet": "NorthNode",
+        "gate": 22,
+        "line": 3,
+        "raw": "22.3.1.1.3 C9% T55% B73%",
+        "description": "Openness and charm; mood and social grace."
+      },
+      {
+        "planet": "SouthNode",
+        "gate": 47,
+        "line": 3,
+        "raw": "47.3.1.1.3 C9% T55% B73%",
+        "description": "Realization and mental processing; resolving confusion into insight."
+      },
+      {
+        "planet": "Earth",
+        "gate": 5,
+        "line": 3,
+        "raw": "5.3.6.4.2 C56% T39% B94%",
+        "description": "Fixed patterns; rhythm and consistency in life."
+      }
+    ],
+    "designActivations": [
+      {
+        "planet": "Sun",
+        "gate": 63,
+        "line": 6,
+        "raw": "63.6.1.3.1 C36% T19% B94%",
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "planet": "Moon",
+        "gate": 57,
+        "line": 3,
+        "raw": "57.3.2.3.5 C49% T93% B64%",
+        "description": "Intuition and clarity; instinctive foresight and sensitivity."
+      },
+      {
+        "planet": "Mercury",
+        "gate": 13,
+        "line": 6,
+        "raw": "13.6.6.5.2 C70% T22% B12%",
+        "description": "The listener; storytelling and collective memory."
+      },
+      {
+        "planet": "Venus",
+        "gate": 3,
+        "line": 4,
+        "raw": "3.4.6.4.3 C58% T49% B44%",
+        "description": "Ordering and mutation; difficulty at the beginning leading to innovation."
+      },
+      {
+        "planet": "Mars",
+        "gate": 58,
+        "line": 6,
+        "raw": "58.6.2.4.2 C54% T26% B29%",
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "planet": "Jupiter",
+        "gate": 3,
+        "line": 4,
+        "raw": "3.4.3.2.5 C33% T95% B75%",
+        "description": "Ordering and mutation; difficulty at the beginning leading to innovation."
+      },
+      {
+        "planet": "Saturn",
+        "gate": 10,
+        "line": 4,
+        "raw": "10.4.3.6.4 C96% T74% B72%",
+        "description": "Behavior of the self; natural self-love and authenticity."
+      },
+      {
+        "planet": "Uranus",
+        "gate": 10,
+        "line": 3,
+        "raw": "10.3.4.4.1 C52% T14% B71%",
+        "description": "Behavior of the self; natural self-love and authenticity."
+      },
+      {
+        "planet": "Neptune",
+        "gate": 38,
+        "line": 1,
+        "raw": "38.1.3.1.5 C16% T96% B78%",
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "planet": "Pluto",
+        "gate": 44,
+        "line": 6,
+        "raw": "44.6.1.6.3 C92% T54% B69%",
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "planet": "NorthNode",
+        "gate": 36,
+        "line": 1,
+        "raw": "36.1.3.5.4 C77% T62% B10%",
+        "description": "Crisis and emotional depth; exploration of feeling experiences."
+      },
+      {
+        "planet": "SouthNode",
+        "gate": 6,
+        "line": 1,
+        "raw": "6.1.3.5.4 C77% T62% B10%",
+        "description": "Friction in relationships; emotional boundaries and intimacy."
+      },
+      {
+        "planet": "Earth",
+        "gate": 64,
+        "line": 6,
+        "raw": "64.6.1.3.1 C36% T19% B94%",
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ],
+    "allActiveGates": [
+      {
+        "gate": 3,
+        "description": "Ordering and mutation; difficulty at the beginning leading to innovation."
+      },
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 6,
+        "description": "Friction in relationships; emotional boundaries and intimacy."
+      },
+      {
+        "gate": 10,
+        "description": "Behavior of the self; natural self-love and authenticity."
+      },
+      {
+        "gate": 12,
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "gate": 13,
+        "description": "The listener; storytelling and collective memory."
+      },
+      {
+        "gate": 19,
+        "description": "Sensitivity and needs; the voice of community need and close ties."
+      },
+      {
+        "gate": 22,
+        "description": "Openness and charm; mood and social grace."
+      },
+      {
+        "gate": 23,
+        "description": "Assimilation of ideas; simplicity and transformation of complex thought."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 36,
+        "description": "Crisis and emotional depth; exploration of feeling experiences."
+      },
+      {
+        "gate": 37,
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 44,
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "gate": 47,
+        "description": "Realization and mental processing; resolving confusion into insight."
+      },
+      {
+        "gate": 57,
+        "description": "Intuition and clarity; instinctive foresight and sensitivity."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 63,
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "gate": 64,
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ]
+  },
+  "sharedGates": {
+    "all": [
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 12,
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 37,
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 44,
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 63,
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "gate": 64,
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ],
+    "personality": [
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 12,
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 44,
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      }
+    ],
+    "design": [
+      {
+        "gate": 63,
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 64,
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ],
+    "p1Personality_p2Design": [
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 44,
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      }
+    ],
+    "p2Personality_p1Design": [
+      {
+        "gate": 37,
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      }
+    ],
+    "counts": {
+      "all": 9,
+      "personality": 5,
+      "design": 4,
+      "p1Personality_p2Design": 3,
+      "p2Personality_p1Design": 2
+    }
+  }
+}

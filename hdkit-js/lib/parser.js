@@ -25,33 +25,7 @@ function parseHdOutput(text) {
     return lines.slice(start + 1, end);
   };
 
-  const parseActivations = (blockLines) => {
-    const acts = [];
-    for (let i = 0; i < blockLines.length; i++) {
-      const line = blockLines[i];
-      const m = line.match(/^\s*(\S+)\s*->\s*Gate\s+(\d+)\s+Line\s+(\d+)\s+\(([^)]+)\)/);
-      if (m) {
-        const planet = m[1].trim();
-        const gate = parseInt(m[2], 10);
-        const lineNo = parseInt(m[3], 10);
-        const raw = m[4].trim();
-        let desc = null;
-        if (i + 1 < blockLines.length) {
-          const next = blockLines[i + 1].trim();
-          const md = next.match(/^Description:\s*(.*)$/);
-          if (md) { desc = md[1].trim(); i += 1; }
-        }
-        acts.push({ planet, gate, line: lineNo, raw, description: desc });
-      }
-    }
-    return acts;
-  };
-
-  const personalityBlock = sectionText('Personality Activations', 'Design Activations');
-  out.personalityActivations = parseActivations(personalityBlock);
-
-  const designBlock = sectionText('Design Activations', 'All Active Gates');
-  out.designActivations = parseActivations(designBlock);
+  // Personality and Design activation blocks are no longer printed by the C# CLI.
 
   const allBlock = sectionText('All Active Gates', null);
   const gates = [];

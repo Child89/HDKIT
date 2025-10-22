@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { main } = require('../lib/cli');
+const { main } = require('../hdkit');
 main(process.argv).then(code => process.exit(code));
 
 function parseHdOutput(text) {
