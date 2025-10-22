@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 const { runSingle } = require('./lib/commands/single');
 const { runPair } = require('./lib/commands/pair');
+const { analyzePair, analyzeConnections } = require('./algorithm');
+
 
 async function main(argv) {
+  const start = process.hrtime.bigint(); // 🕒 start timing
+
   const args = argv.slice(2);
   if (args.length === 0) {
-    // return error as JSON
     console.log(JSON.stringify({ error: 'Usage: hdkit single <datetime> <lat> <lon>' }));
     return 1;
   }
+
   const cmd = args[0];
   // handle flags: --json (default), --save, --out <path>
   const jsonIdx = args.indexOf('--json');
@@ -21,7 +25,6 @@ async function main(argv) {
   let outPath = null;
   if (outIdx !== -1 && args.length > outIdx + 1) {
     outPath = args[outIdx + 1];
-    // remove --out and its value from args so downstream doesn't see them
     args.splice(outIdx, 2);
   }
   if (save) args.splice(saveIdx, 1);
@@ -33,19 +36,30 @@ async function main(argv) {
       parsed = await runSingle(args, { json: true });
     } else if (cmd === 'pair' || cmd === 'pair-time') {
       parsed = await runPair(args, { json: true });
+
+     //  const result = await analyzePair(parsed);
+      const result2 = await analyzeConnections(parsed);
+
+      // console.log(JSON.stringify(result, null, 2));
+        console.log(JSON.stringify(result2, null, 2));
+
     } else {
       console.log(JSON.stringify({ error: 'Only `single`, `pair`, and `pair-time` are supported' }));
       return 1;
     }
 
-  const json = pretty ? JSON.stringify(parsed, null, 2) : JSON.stringify(parsed);
-  console.log(json);
+    // 🕒 calculate elapsed time in seconds
+    const end = process.hrtime.bigint();
+    const elapsedSec = Number(end - start) / 1e9;
+    parsed._meta = { elapsed_seconds: +elapsedSec.toFixed(3) };
+
+    const json = pretty ? JSON.stringify(parsed, null, 2) : JSON.stringify(parsed);
+    console.log(json);
 
     if (save || outPath) {
       const fs = require('fs');
       const os = require('os');
       const p = require('path');
-      // ensure results folder exists next to this script
       const resultsDir = p.resolve(__dirname, 'results');
       if (!fs.existsSync(resultsDir)) fs.mkdirSync(resultsDir, { recursive: true });
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -55,11 +69,13 @@ async function main(argv) {
     }
 
     return 0;
-    console.log(JSON.stringify({ error: 'Only `single`, `pair`, and `pair-time` are supported' }));
-    return 1;
   } catch (ex) {
-    // Return error as JSON (include stderr if available for debugging)
-    const payload = { error: ex && ex.message ? ex.message : String(ex) };
+    const end = process.hrtime.bigint();
+    const elapsedSec = Number(end - start) / 1e9;
+    const payload = {
+      error: ex && ex.message ? ex.message : String(ex),
+      elapsed_seconds: +elapsedSec.toFixed(3),
+    };
     if (ex && ex.stderr) payload.stderr = ex.stderr;
     console.log(JSON.stringify(payload));
     return 1;

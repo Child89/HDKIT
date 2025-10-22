@@ -1,0 +1,87 @@
+{
+  "type": "ManifestingGenerator",
+  "profile": "3 / 5",
+  "strategy": "Sacral",
+  "incarnationCross": "RightAngleCrossOfConsciousness2",
+  "allActiveGates": [
+    {
+      "gate": 1,
+      "description": "Self-expression, creative self; the energy to initiate unique contribution."
+    },
+    {
+      "gate": 5,
+      "description": "Fixed patterns; rhythm and consistency in life."
+    },
+    {
+      "gate": 8,
+      "description": "Contribution to the collective; style and articulation of unique contribution."
+    },
+    {
+      "gate": 12,
+      "description": "Caution in expression; spoken expression that can attract or repel."
+    },
+    {
+      "gate": 15,
+      "description": "Extremes and humanity; rhythm and acceptance of diversity."
+    },
+    {
+      "gate": 29,
+      "description": "Commitment; perseverance through trial and repetition."
+    },
+    {
+      "gate": 30,
+      "description": "Intensity of feelings; desire and emotional experience."
+    },
+    {
+      "gate": 35,
+      "description": "Change and experience; cycles of progress and new experiences."
+    },
+    {
+      "gate": 37,
+      "description": "Community and friendship; family and group cooperation."
+    },
+    {
+      "gate": 38,
+      "description": "Opposition and struggle; finding meaning through challenge."
+    },
+    {
+      "gate": 44,
+      "description": "Alertness to patterns; historical instinct and team dynamics."
+    },
+    {
+      "gate": 45,
+      "description": "Gathering and rulership; distribution of resources and leadership."
+    },
+    {
+      "gate": 49,
+      "description": "Principles and revolution; values leading to social change."
+    },
+    {
+      "gate": 55,
+      "description": "Spirit and abundance; emotional fullness and existential mood."
+    },
+    {
+      "gate": 58,
+      "description": "Joy and vitality; corrective energy toward wellbeing."
+    },
+    {
+      "gate": 59,
+      "description": "Intimacy and bonding; sexual connection and breaking barriers."
+    },
+    {
+      "gate": 62,
+      "description": "Detail and articulation; precise expression and organization."
+    },
+    {
+      "gate": 63,
+      "description": "Doubt and questioning; critical inquiry and verification."
+    },
+    {
+      "gate": 64,
+      "description": "Confusion to abstraction; mental pressure to sense patterns."
+    }
+  ],
+  "_meta": {
+    "elapsed_seconds": 2.412
+  }
+}
