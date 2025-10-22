@@ -35,23 +35,8 @@ namespace HDKitSample
                 Console.WriteLine($"Strategy: {chart.Strategy}");
                 Console.WriteLine($"Incarnation Cross: {chart.IncarnationCross}");
 
-                Console.WriteLine("\nPersonality Activations (planet -> gate.line.color.tone.base):");
-                foreach (var kv in chart.PersonalityActivation.OrderBy(k => k.Key))
-                {
-                    var planet = kv.Key;
-                    var act = kv.Value;
-                    Console.WriteLine($"\t{planet,-10} -> Gate {act.Gate.ToNumber(),2} Line {act.Line.ToNumber()}  ({act})");
-                    Console.WriteLine($"\t\tDescription: {GateInfo.Descriptions.GetValueOrDefault(act.Gate, "No description available.")}");
-                }
-
-                Console.WriteLine("\nDesign Activations (planet -> gate.line.color.tone.base):");
-                foreach (var kv in chart.DesignActivation.OrderBy(k => k.Key))
-                {
-                    var planet = kv.Key;
-                    var act = kv.Value;
-                    Console.WriteLine($"\t{planet,-10} -> Gate {act.Gate.ToNumber(),2} Line {act.Line.ToNumber()}  ({act})");
-                    Console.WriteLine($"\t\tDescription: {GateInfo.Descriptions.GetValueOrDefault(act.Gate, "No description available.")}");
-                }
+                // Note: Personality and Design activations are intentionally not printed here.
+                // The output will include only header information and the combined list of active gates.
 
                 var activeGates = chart.PersonalityActivation.Values.Select(a => a.Gate).Union(chart.DesignActivation.Values.Select(a => a.Gate)).OrderBy(g => g.ToNumber());
                 Console.WriteLine("\nAll Active Gates:");
