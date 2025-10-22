@@ -53,3 +53,7 @@ dotnet run --project /home/buddha/Documents/HDKIT/HDKitSample/HDKitSample.csproj
 
  node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js single "1989-06-04T14:10" 46.6581 16.1610 --save --pretty
  node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js pair "1989-06-04T14:10" 46.6581 16.1610 "1988-06-04T14:10" 46.6581 16.1610 --save --pretty
+
+ node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js pair "1989-06-04T14:10" 46.6581 16.1610 "1993-04-25T13:10" 46.1400 14.2200 --save --pretty
+
+ node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js pair "1989-06-04T14:10" 46.6581 16.1610 "1993-04-25T13:10" 46.1400 14.2200
