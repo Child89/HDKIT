@@ -25,3 +25,6 @@ dotnet run --project . -c Release -- "1988-09-04T01:15" 52.52 13.405
 dotnet run --project . -c Release -- "1989-06-04T14:10" 46.6581 16.1610
 
 dotnet run --project /home/buddha/Documents/HDKIT/HDKitSample/HDKitSample.csproj -c Release -- single "1989-06-04T14:10" 46.6581 16.1610
+
+node /home/buddha/Documents/HDKIT/hdkit-js/lib/cli.js single "1989-06-04T14:10" 46.6581 16.1610
+otnet run --project /home/buddha/Documents/HDKIT/HDKitSample/HDKitSample.csproj -c Release -- single "1989-06-04T14:10" 46.6581 16.1610

@@ -1,0 +1,14 @@
+{
+  "name": "hdkit-js",
+  "version": "0.1.0",
+  "description": "Thin Node CLI wrapper for HDKitSample (.NET)",
+  "bin": {
+    "hdkit": "bin/hdkit.js"
+  },
+  "scripts": {
+    "single": "node ./bin/hdkit.js single"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}
