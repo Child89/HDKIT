@@ -1,4 +1,4 @@
-const { gateConnections, centerGates, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates } = require('./algo_functions');
+const { gateConnections, centerGates, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates } = require('./algo_functions');
 
 
 function getEqualGates(gatesA, gatesB) {
@@ -236,14 +236,19 @@ function countCrossGateConnectionsBFree(gatesA, gatesB) {
     const uniqueGates1p1 = getFullyIsolatedGates(gates1, gates2); //
     const uniqueGates1p2 = getFullyIsolatedGates(gates2, gates1); //
 
- 
+
+    const exclusiveGates1p1 = getFullyConnectedExclusiveGates(gates1, gates2); //
+     const exclusiveGates1p2 = getFullyConnectedExclusiveGates(gates2, gates1); //
+
   return {
     sharedGates:sharedGates,
     uniqueFireGates1p1:uniqueFireGates1p1,
     uniqueFireGates1p2:uniqueFireGates1p2,
     uniqueEqualGates:uniqueEqualGates,
     uniqueGates1p1:uniqueGates1p1,
-    uniqueGates1p2:uniqueGates1p2
+    uniqueGates1p2:uniqueGates1p2,
+    exclusiveGates1p1:exclusiveGates1p1,
+    exclusiveGates1p2:exclusiveGates1p2
 
    // mergedCenters:mergedCenters,
     /*person1Connections,

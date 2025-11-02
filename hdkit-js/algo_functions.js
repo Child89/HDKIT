@@ -213,6 +213,44 @@ for (const gate of gatesA) {
   };
 }
 
+function getFullyConnectedExclusiveGates(gatesA, gatesB) {
+  const exclusive = [];
+  const seen = new Set();
+
+  for (const gate of gatesA) {
+    // Skip if B already has this gate
+    if (gatesB.includes(gate)) continue;
+
+    const linkedGates = getLinkedGatesBothDirections(gate);
+
+    // Check if gate is part of an internal A connection
+    const hasInternalConnection = linkedGates.some(lg => gatesA.includes(lg));
+
+    // Skip if there is no full connection inside A
+    if (!hasInternalConnection) continue;
+
+    // Skip if any linked gate is present in B
+    const connectedToB = linkedGates.some(lg => gatesB.includes(lg));
+    if (connectedToB) continue;
+
+    // Add both sides of the connection once (avoid duplicates)
+    for (const lg of linkedGates) {
+      if (gatesA.includes(lg) && !gatesB.includes(lg)) {
+        const pair = [gate, lg].sort((a, b) => a - b).join("-");
+        if (!seen.has(pair)) {
+          seen.add(pair);
+          exclusive.push({ gateA: gate, linkedGate: lg, pair });
+        }
+      }
+    }
+  }
+
+  return {
+    count: exclusive.length,
+    pairs: exclusive
+  };
+}
 
 
-module.exports = { gateConnections, centerGates, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates};
+module.exports = { gateConnections, centerGates, getUniqFireGates1, 
+    getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates};
