@@ -39,6 +39,7 @@ async function main(argv) {
 
      //  const result = await analyzePair(parsed);
       const result2 = await analyzeConnections(parsed);
+       parsed._results = result2;
 
       // console.log(JSON.stringify(result, null, 2));
         console.log(JSON.stringify(result2, null, 2));

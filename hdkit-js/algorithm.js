@@ -72,7 +72,7 @@ async function analyzeConnections(pairData) {
   const gates1 = person1.allActiveGates.map(g => g.gate);
   const gates2 = person2.allActiveGates.map(g => g.gate);
 
-  function findInternalConnections(gates) {
+ /* function findInternalConnections(gates) {
     const connected = [];
     for (const g of gates) {
       const links = gateConnections[g] || [];
@@ -98,10 +98,10 @@ async function analyzeConnections(pairData) {
       }
     }
     return connections;
-  }
+  }*/
 
   // 🔹 Count how many gates of person1 connect to person2’s gates and vice versa
-function countCrossGateConnections(gatesA, gatesB) {
+/*function countCrossGateConnections(gatesA, gatesB) {
   const matchedPairs = [];
 
   // Compute internal connections for A and B
@@ -203,10 +203,10 @@ function countCrossGateConnectionsBFree(gatesA, gatesB) {
     count: matchedPairs.length,
     pairs: matchedPairs
   };
-}
+}*/
 
   // Individual and shared connections
-  const person1Connections = findInternalConnections(gates1);
+  /*const person1Connections = findInternalConnections(gates1);
   const person2Connections = findInternalConnections(gates2);
   const betweenConnections = findInterConnections(gates1, gates2);
   const equalConnections = person1Connections.filter(c => person2Connections.includes(c));
@@ -223,22 +223,26 @@ function countCrossGateConnectionsBFree(gatesA, gatesB) {
   const allGates = Array.from(new Set([...gates1, ...gates2]));
   const mergedCenters = analyzeCenters(allGates);
 
+*/
+  const allGates = Array.from(new Set([...gates1, ...gates2]));
+  const mergedCenters = analyzeCenters(allGates);
 
-
+  const person1Centers = analyzeCenters(gates1);
+  const person2Centers = analyzeCenters(gates2);
   //todo: from gates 1 seach if match has gates 2 so
   const sharedGates = getEqualGates(gates1, gates2); //
     const uniqueFireGates1p1= getUniqFireGates1(gates1, gates2); //
     const uniqueFireGates1p2= getUniqFireGates1( gates2,gates1); //
 
-    const uniqueFireGates2 = getUniqFireGates2(gates1, gates2); //
+    //const uniqueFireGates2 = getUniqFireGates2(gates1, gates2); //
     
     const uniqueEqualGates = getEqualIsolatedGates(gates1, gates2); //
     const uniqueGates1p1 = getFullyIsolatedGates(gates1, gates2); //
     const uniqueGates1p2 = getFullyIsolatedGates(gates2, gates1); //
 
 
-    const exclusiveGates1p1 = getFullyConnectedExclusiveGates(gates1, gates2); //
-     const exclusiveGates1p2 = getFullyConnectedExclusiveGates(gates2, gates1); //
+    const exclusiveGates1p1 = getFullyConnectedExclusiveGates(gates1, gates2); //works
+     const exclusiveGates1p2 = getFullyConnectedExclusiveGates(gates2, gates1); //works
 
   return {
     sharedGates:sharedGates,
@@ -248,32 +252,10 @@ function countCrossGateConnectionsBFree(gatesA, gatesB) {
     uniqueGates1p1:uniqueGates1p1,
     uniqueGates1p2:uniqueGates1p2,
     exclusiveGates1p1:exclusiveGates1p1,
-    exclusiveGates1p2:exclusiveGates1p2
-
-   // mergedCenters:mergedCenters,
-    /*person1Connections,
-    person2Connections,
-    betweenConnections,
-    equalConnections,
-    person1Centers,
-    person2Centers,
-    mergedCenters,
-    crossConnections: {
-      totalSharedGates:sharedGates.length,
-      person1ToPerson2: p1ToP2,
-      person2ToPerson1: p2ToP1,
-      person1ToPerson2_free: p1ToP2_free,
-      person2ToPerson1_free: p2ToP1_free,
-      totalCrossConnections: p1ToP2.count + p2ToP1.count,
-      uniqueCrossPairs: Array.from(new Set([...p1ToP2.pairs, ...p2ToP1.pairs]))
-    },
-    summary: {
-      person1ConnectedChannels: person1Connections.length,
-      person2ConnectedChannels: person2Connections.length,
-      betweenConnectedChannels: betweenConnections.length,
-      equalConnectedChannels: equalConnections.length,
-      crossConnections: p1ToP2.count + p2ToP1.count
-    }*/
+    exclusiveGates1p2:exclusiveGates1p2,
+    person1Centers:person1Centers,
+    person2Centers:person2Centers,
+    mergedCenters:mergedCenters
   };
 }
 
