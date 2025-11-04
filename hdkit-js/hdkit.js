@@ -41,23 +41,24 @@ async function main(argv) {
       const result2 = await analyzeConnections(parsed);
       parsed._results = result2;
 
-     const fireS = fireScore(result2);
-       const peaceScoreS = peaceScore(result2);
+      const fireS = fireScore(result2);
+      const peaceScoreS = peaceScore(result2);
       const growthScoreS= growthScore(result2);
       const stabilityS = stability(result2);
       const areMeditativeS = areMeditative(result2);
-            const diversityS = diversity(result2);
+      const diversityS = diversity(result2);
 
 
-      console.log({
+
+      parsed.score = {
         fireScore: fireS,
         peaceScore: peaceScoreS,
         growthScore: growthScoreS,
         diversityS:diversityS,
         stability: stabilityS,
         areMeditative: areMeditativeS
-      });
-      
+      }
+       console.log(parsed.score );
       //console.log(JSON.stringify(result2, null, 2));
 
     } else {
