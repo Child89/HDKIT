@@ -1,4 +1,4 @@
-const { gateConnections, centerGates, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates } = require('./algo_functions');
+const { gateConnections, centerGates, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates, getFullAWithHalfBConnections } = require('./algo_functions');
 
 
 function getEqualGates(gatesA, gatesB) {
@@ -6,8 +6,6 @@ function getEqualGates(gatesA, gatesB) {
   return gatesA.filter(g => setB.has(g));
 }
 
-
- 
 
 
 function getCenterForGate(gate) {
@@ -244,6 +242,9 @@ function countCrossGateConnectionsBFree(gatesA, gatesB) {
     const exclusiveGates1p1 = getFullyConnectedExclusiveGates(gates1, gates2); //works
      const exclusiveGates1p2 = getFullyConnectedExclusiveGates(gates2, gates1); //works
 
+     const person1_PeaceOn2 = getFullAWithHalfBConnections(gates2, gates1);
+     const person2_PeaceOn1 = getFullAWithHalfBConnections(gates1, gates2);
+
   return {
     sharedGates:sharedGates,
     uniqueFireGates1p1:uniqueFireGates1p1,
@@ -253,11 +254,57 @@ function countCrossGateConnectionsBFree(gatesA, gatesB) {
     uniqueGates1p2:uniqueGates1p2,
     exclusiveGates1p1:exclusiveGates1p1,
     exclusiveGates1p2:exclusiveGates1p2,
+    person1_PeaceOn2:person1_PeaceOn2,
+    person2_PeaceOn1:person2_PeaceOn1,
     person1Centers:person1Centers,
     person2Centers:person2Centers,
     mergedCenters:mergedCenters
   };
 }
+
+
+function fireScore(params) 
+{
+    let P_HE = params.uniqueFireGates1p1.length - params.exclusiveGates1p2.count;
+    let P_SHE = params.uniqueFireGates1p2.length - params.exclusiveGates1p1.count;
+    return (P_HE + P_SHE) * 0.5; //total avg number of fire gates
+}
+
+function peaceScore(params) 
+{
+  let P_HE = params.uniqueFireGates1p1.length + params.uniqueEqualGates.count 
+            + params.person2_PeaceOn1.count
+    - params.exclusiveGates1p2.count - params.uniqueGates1p2.count;
+  let P_SHE = params.uniqueFireGates1p2.length + params.uniqueEqualGates.count
+  + params.person1_PeaceOn2.count
+  - params.exclusiveGates1p1.count - params.uniqueGates1p1.count;
+  return (P_HE + P_SHE) * 0.5; //total avg number of fire gates
+}
+
+function growthScore(params) 
+{
+    let P_HE = params.uniqueFireGates1p1.length - params.exclusiveGates1p2.count;
+    let P_SHE = params.uniqueFireGates1p2.length - params.exclusiveGates1p1.count;
+    let fire_plus_equal = (P_HE + P_SHE) * 0.5 + params.exclusiveGates1p2.count + params.exclusiveGates1p1.count 
+    /*+params.uniqueEqualGates.count*/;
+    const fire_const = 10;
+    if(fire_plus_equal > fire_const )fire = fire_const;
+
+    return ((params.uniqueGates1p1.count +
+    params.uniqueGates1p2.count)) *
+    (fire_plus_equal / fire_const); //growth between 0 - fire_const
+}
+
+function stability(params) 
+{
+    return params.mergedCenters.centerLinksActiveCount; //between 6 -8 is a match/9 too much 5 too low
+}
+
+function areMeditative(params) 
+{
+    return params.mergedCenters.centerLinks.head.length == 0 ; //true false
+}
+
 
 async function analyzePair(pairData) 
 {
@@ -308,4 +355,6 @@ async function analyzePair(pairData)
     }
 }
 
-module.exports = { analyzePair, analyzeConnections };
+module.exports = { analyzePair, analyzeConnections, 
+    fireScore, peaceScore, growthScore, stability, areMeditative
+};

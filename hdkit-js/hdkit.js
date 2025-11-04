@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { runSingle } = require('./lib/commands/single');
 const { runPair } = require('./lib/commands/pair');
-const { analyzePair, analyzeConnections } = require('./algorithm');
+const { analyzeConnections, fireScore, peaceScore, growthScore, stability, areMeditative } = require('./algorithm');
 
 
 async function main(argv) {
@@ -39,10 +39,23 @@ async function main(argv) {
 
      //  const result = await analyzePair(parsed);
       const result2 = await analyzeConnections(parsed);
-       parsed._results = result2;
+      parsed._results = result2;
 
-      // console.log(JSON.stringify(result, null, 2));
-        console.log(JSON.stringify(result2, null, 2));
+     const fireS = fireScore(result2);
+       const peaceScoreS = peaceScore(result2);
+      const growthScoreS= growthScore(result2);
+      const stabilityS = stability(result2);
+      const areMeditativeS = areMeditative(result2);
+
+      console.log({
+        fireScore: fireS,
+        peaceScore: peaceScoreS,
+        growthScore: growthScoreS,
+        stability: stabilityS,
+        areMeditative: areMeditativeS
+      });
+      
+      //console.log(JSON.stringify(result2, null, 2));
 
     } else {
       console.log(JSON.stringify({ error: 'Only `single`, `pair`, and `pair-time` are supported' }));
@@ -55,7 +68,7 @@ async function main(argv) {
     parsed._meta = { elapsed_seconds: +elapsedSec.toFixed(3) };
 
     const json = pretty ? JSON.stringify(parsed, null, 2) : JSON.stringify(parsed);
-    console.log(json);
+    //console.log(json);
 
     if (save || outPath) {
       const fs = require('fs');

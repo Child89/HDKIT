@@ -251,6 +251,43 @@ function getFullyConnectedExclusiveGates(gatesA, gatesB) {
   };
 }
 
+function getFullAWithHalfBConnections(gatesA, gatesB) {
+  const result = [];
+  const seen = new Set();
+  //gates A are fully connected gatesB just half of gates A
+  for (const gateA of gatesA) {
+    const linkedGates = getLinkedGatesBothDirections(gateA);
+
+    for (const linkedGate of linkedGates) {
+      // must be a full channel in A
+      if (!gatesA.includes(linkedGate)) continue;
+
+      // must be only half present in B
+      const inB1 = gatesB.includes(gateA);
+      const inB2 = gatesB.includes(linkedGate);
+
+      if ((inB1 && !inB2) || (!inB1 && inB2)) {
+        const pair = [gateA, linkedGate].sort((a, b) => a - b).join("-");
+        if (!seen.has(pair)) {
+          seen.add(pair);
+          result.push({
+            gateA1: gateA,
+            gateA2: linkedGate,
+            pair,
+            hangingGateInB: inB1 ? gateA : linkedGate
+          });
+        }
+      }
+    }
+  }
+
+  return {
+    count: result.length,
+    pairs: result
+  };
+}
+
 
 module.exports = { gateConnections, centerGates, getUniqFireGates1, 
-    getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates};
+    getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates,
+     getFullyConnectedExclusiveGates, getFullAWithHalfBConnections};
