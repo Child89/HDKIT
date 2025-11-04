@@ -67,14 +67,14 @@ const gateConnections = {
 
 const centerGates = {
   head:        [61, 63, 64],
-  ajna:        [11, 17, 24, 43, 47],
-  throat:      [8, 12, 16, 20, 23, 31, 33, 35, 45, 56],
+  ajna:        [11, 17, 24, 43, 47, 4],
+  throat:      [8, 12, 16, 20, 23, 31, 33, 35, 45, 56, 62],
   g:           [1, 2, 7, 10, 13, 15, 25, 46],
   ego:         [21, 26, 40, 51],
   solarPlexus: [6, 22, 30, 36, 37, 49, 55],
   spleen:      [18, 28, 32, 44, 48, 50, 57],
   sacral:      [3, 5, 9, 14, 27, 29, 34, 42, 59],
-  root:        [19, 39, 41, 52, 53, 54, 58, 60]
+  root:        [19, 39, 41, 52, 53, 54, 58, 60, 38]
 };
 
   // Helper: get both direct + reverse linked gates
@@ -288,6 +288,6 @@ function getFullAWithHalfBConnections(gatesA, gatesB) {
 }
 
 
-module.exports = { gateConnections, centerGates, getUniqFireGates1, 
+module.exports = { gateConnections, centerGates, getLinkedGatesBothDirections, getUniqFireGates1, 
     getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates,
      getFullyConnectedExclusiveGates, getFullAWithHalfBConnections};

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { runSingle } = require('./lib/commands/single');
 const { runPair } = require('./lib/commands/pair');
-const { analyzeConnections, fireScore, peaceScore, growthScore, stability, areMeditative } = require('./algorithm');
+const { analyzeConnections, fireScore, peaceScore, growthScore, stability, areMeditative, diversity} = require('./algorithm');
 
 
 async function main(argv) {
@@ -46,11 +46,14 @@ async function main(argv) {
       const growthScoreS= growthScore(result2);
       const stabilityS = stability(result2);
       const areMeditativeS = areMeditative(result2);
+            const diversityS = diversity(result2);
+
 
       console.log({
         fireScore: fireS,
         peaceScore: peaceScoreS,
         growthScore: growthScoreS,
+        diversityS:diversityS,
         stability: stabilityS,
         areMeditative: areMeditativeS
       });

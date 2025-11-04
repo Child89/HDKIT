@@ -1,4 +1,4 @@
-const { gateConnections, centerGates, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates, getFullAWithHalfBConnections } = require('./algo_functions');
+const { gateConnections, centerGates,getLinkedGatesBothDirections, getUniqFireGates1, getUniqFireGates2, getEqualIsolatedGates, getFullyIsolatedGates, getFullyConnectedExclusiveGates, getFullAWithHalfBConnections } = require('./algo_functions');
 
 
 function getEqualGates(gatesA, gatesB) {
@@ -30,7 +30,9 @@ function analyzeCenters(gates) {
     const sourceCenter = getCenterForGate(g);
     if (!sourceCenter) continue; // 🧱 skip invalid gate
 
-    const links = gateConnections[g] || [];
+    //const links = gateConnections[g] || [];
+    const links = getLinkedGatesBothDirections(g);
+
     for (const linkGate of links) {
       if (!gates.includes(linkGate)) continue;
 
@@ -288,12 +290,18 @@ function growthScore(params)
     let fire_plus_equal = (P_HE + P_SHE) * 0.5 + params.exclusiveGates1p2.count + params.exclusiveGates1p1.count 
     /*+params.uniqueEqualGates.count*/;
     const fire_const = 10;
-    if(fire_plus_equal > fire_const )fire = fire_const;
+    if(fire_plus_equal > fire_const )fire_plus_equal = fire_const;
 
     return ((params.uniqueGates1p1.count +
     params.uniqueGates1p2.count)) *
     (fire_plus_equal / fire_const); //growth between 0 - fire_const
 }
+
+function diversity(params) 
+{
+    return ((params.uniqueGates1p1.count +
+    params.uniqueGates1p2.count)) ;
+  }
 
 function stability(params) 
 {
@@ -356,5 +364,5 @@ async function analyzePair(pairData)
 }
 
 module.exports = { analyzePair, analyzeConnections, 
-    fireScore, peaceScore, growthScore, stability, areMeditative
+    fireScore, peaceScore, growthScore, stability, areMeditative,diversity
 };
