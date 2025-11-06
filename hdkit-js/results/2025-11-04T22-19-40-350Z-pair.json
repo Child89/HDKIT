@@ -1,0 +1,426 @@
+{
+  "person1": {
+    "type": "Reflector",
+    "profile": "4 / 6",
+    "strategy": "Outer",
+    "incarnationCross": "RightAngleCrossOfTension2",
+    "allActiveGates": [
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 8,
+        "description": "Contribution to the collective; style and articulation of unique contribution."
+      },
+      {
+        "gate": 14,
+        "description": "Power skills; role in providing resources and value."
+      },
+      {
+        "gate": 18,
+        "description": "Correction; critique to improve systems and form."
+      },
+      {
+        "gate": 21,
+        "description": "Control and management; resources and regulation."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 39,
+        "description": "Provocation and stimulation; initiating emotional reactions."
+      },
+      {
+        "gate": 40,
+        "description": "Aloneness and deliverance; rest and work balance."
+      },
+      {
+        "gate": 43,
+        "description": "Insight and uniqueness; breakthrough ideas and alienation."
+      },
+      {
+        "gate": 48,
+        "description": "Depth and resource; talent and need for correction and skill."
+      },
+      {
+        "gate": 53,
+        "description": "Beginnings and cycles; initiation of incremental journeys."
+      },
+      {
+        "gate": 54,
+        "description": "Ambition and drive; converting resources into status and growth."
+      },
+      {
+        "gate": 56,
+        "description": "Stimulation through story; wandering mind and storytelling."
+      },
+      {
+        "gate": 61,
+        "description": "Inner truth and mystery; inspiration and philosophical insight."
+      },
+      {
+        "gate": 63,
+        "description": "Doubt and questioning; critical inquiry and verification."
+      }
+    ]
+  },
+  "person2": {
+    "type": "Manifestor",
+    "profile": "4 / 6",
+    "strategy": "Emotional",
+    "incarnationCross": "RightAngleCrossOfTheUnexpected",
+    "allActiveGates": [
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 14,
+        "description": "Power skills; role in providing resources and value."
+      },
+      {
+        "gate": 17,
+        "description": "Opinions and logical formulation; patterns of thought."
+      },
+      {
+        "gate": 18,
+        "description": "Correction; critique to improve systems and form."
+      },
+      {
+        "gate": 19,
+        "description": "Sensitivity and needs; the voice of community need and close ties."
+      },
+      {
+        "gate": 21,
+        "description": "Control and management; resources and regulation."
+      },
+      {
+        "gate": 26,
+        "description": "Integrity of persuasion; salesmanship and ego integrity."
+      },
+      {
+        "gate": 27,
+        "description": "Caring and nourishment; responsibility for others' wellbeing."
+      },
+      {
+        "gate": 28,
+        "description": "Struggle and purpose; confronting risk to find meaning."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 31,
+        "description": "Leadership through influence; democratic voice and leadership."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 36,
+        "description": "Crisis and emotional depth; exploration of feeling experiences."
+      },
+      {
+        "gate": 39,
+        "description": "Provocation and stimulation; initiating emotional reactions."
+      },
+      {
+        "gate": 41,
+        "description": "Contraction and imagination; beginnings and fantasy."
+      },
+      {
+        "gate": 45,
+        "description": "Gathering and rulership; distribution of resources and leadership."
+      },
+      {
+        "gate": 48,
+        "description": "Depth and resource; talent and need for correction and skill."
+      },
+      {
+        "gate": 49,
+        "description": "Principles and revolution; values leading to social change."
+      },
+      {
+        "gate": 54,
+        "description": "Ambition and drive; converting resources into status and growth."
+      },
+      {
+        "gate": 56,
+        "description": "Stimulation through story; wandering mind and storytelling."
+      },
+      {
+        "gate": 61,
+        "description": "Inner truth and mystery; inspiration and philosophical insight."
+      }
+    ]
+  },
+  "sharedGates": {
+    "all": [
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 14,
+        "description": "Power skills; role in providing resources and value."
+      },
+      {
+        "gate": 18,
+        "description": "Correction; critique to improve systems and form."
+      },
+      {
+        "gate": 21,
+        "description": "Control and management; resources and regulation."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 39,
+        "description": "Provocation and stimulation; initiating emotional reactions."
+      },
+      {
+        "gate": 48,
+        "description": "Depth and resource; talent and need for correction and skill."
+      },
+      {
+        "gate": 54,
+        "description": "Ambition and drive; converting resources into status and growth."
+      },
+      {
+        "gate": 56,
+        "description": "Stimulation through story; wandering mind and storytelling."
+      },
+      {
+        "gate": 61,
+        "description": "Inner truth and mystery; inspiration and philosophical insight."
+      }
+    ],
+    "count": 11
+  },
+  "_results": {
+    "sharedGates": [
+      5,
+      14,
+      18,
+      21,
+      30,
+      35,
+      39,
+      48,
+      54,
+      56,
+      61
+    ],
+    "uniqueFireGates1p1": [
+      {
+        "gateA": 21,
+        "gateB": 45,
+        "pair": "21-45"
+      },
+      {
+        "gateA": 30,
+        "gateB": 41,
+        "pair": "30-41"
+      },
+      {
+        "gateA": 35,
+        "gateB": 36,
+        "pair": "35-36"
+      },
+      {
+        "gateA": 38,
+        "gateB": 28,
+        "pair": "28-38"
+      }
+    ],
+    "uniqueFireGates1p2": [
+      {
+        "gateA": 28,
+        "gateB": 38,
+        "pair": "28-38"
+      }
+    ],
+    "uniqueEqualGates": {
+      "count": 8,
+      "gates": [
+        5,
+        14,
+        18,
+        39,
+        48,
+        54,
+        56,
+        61
+      ]
+    },
+    "uniqueGates1p1": {
+      "count": 5,
+      "gates": [
+        8,
+        40,
+        43,
+        53,
+        63
+      ]
+    },
+    "uniqueGates1p2": {
+      "count": 4,
+      "gates": [
+        17,
+        26,
+        27,
+        31
+      ]
+    },
+    "exclusiveGates1p1": {
+      "count": 0,
+      "pairs": []
+    },
+    "exclusiveGates1p2": {
+      "count": 1,
+      "pairs": [
+        {
+          "gateA": 19,
+          "linkedGate": 49,
+          "pair": "19-49"
+        }
+      ]
+    },
+    "person1_PeaceOn2": {
+      "count": 3,
+      "pairs": [
+        {
+          "gateA1": 21,
+          "gateA2": 45,
+          "pair": "21-45",
+          "hangingGateInB": 21
+        },
+        {
+          "gateA1": 30,
+          "gateA2": 41,
+          "pair": "30-41",
+          "hangingGateInB": 30
+        },
+        {
+          "gateA1": 35,
+          "gateA2": 36,
+          "pair": "35-36",
+          "hangingGateInB": 35
+        }
+      ]
+    },
+    "person2_PeaceOn1": {
+      "count": 0,
+      "pairs": []
+    },
+    "person1Centers": {
+      "centerLinks": {
+        "head": [],
+        "ajna": [],
+        "throat": [],
+        "g": [],
+        "ego": [],
+        "solarPlexus": [],
+        "spleen": [],
+        "sacral": [],
+        "root": []
+      },
+      "centerLinksActiveCount": 0,
+      "activeCenters": []
+    },
+    "person2Centers": {
+      "centerLinks": {
+        "head": [],
+        "ajna": [],
+        "throat": [
+          "ego",
+          "solarPlexus"
+        ],
+        "g": [],
+        "ego": [
+          "throat"
+        ],
+        "solarPlexus": [
+          "root",
+          "throat"
+        ],
+        "spleen": [],
+        "sacral": [],
+        "root": [
+          "solarPlexus"
+        ]
+      },
+      "centerLinksActiveCount": 4,
+      "activeCenters": [
+        "throat",
+        "ego",
+        "solarPlexus",
+        "root"
+      ]
+    },
+    "mergedCenters": {
+      "centerLinks": {
+        "head": [],
+        "ajna": [],
+        "throat": [
+          "ego",
+          "solarPlexus"
+        ],
+        "g": [],
+        "ego": [
+          "throat"
+        ],
+        "solarPlexus": [
+          "root",
+          "throat"
+        ],
+        "spleen": [
+          "root"
+        ],
+        "sacral": [],
+        "root": [
+          "solarPlexus",
+          "spleen"
+        ]
+      },
+      "centerLinksActiveCount": 5,
+      "activeCenters": [
+        "throat",
+        "ego",
+        "solarPlexus",
+        "spleen",
+        "root"
+      ]
+    }
+  },
+  "score": {
+    "fireScore": 2,
+    "peaceScore": 7,
+    "growthScore": 2.6999999999999997,
+    "diversityS": 4.5,
+    "stability": 5,
+    "areMeditative": true
+  },
+  "_meta": {
+    "elapsed_seconds": 2.19
+  }
+}

@@ -1,0 +1,4033 @@
+{
+  "_meta": {
+    "year": 1989,
+    "totalDays": 365
+  },
+  "person1": {
+    "date": "1989-06-04T14:10",
+    "lat": "46.6581",
+    "lon": "16.1610"
+  },
+  "person2": {
+    "base": "1989-04-24T13:10",
+    "lat": "46.1400",
+    "lon": "14.2200"
+  },
+  "scores": [
+    {
+      "date": "1989-01-01T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 2.5,
+        "growth": 5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-01-02T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 2,
+        "growth": 5.4,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-01-03T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 1.5,
+        "growth": 5.2,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-01-04T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 2,
+        "growth": 5.3999999999999995,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-01-05T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 0,
+        "growth": 4.95,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-06T13:10",
+      "score": {
+        "fire": -2,
+        "peace": -1,
+        "growth": 4.5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-01-07T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -1,
+        "growth": 5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-01-08T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": -1.5,
+        "growth": 4.95,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-09T13:10",
+      "score": {
+        "fire": -2,
+        "peace": 0,
+        "growth": 4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-01-10T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 4,
+        "growth": 2.6999999999999997,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-01-11T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 3.5,
+        "growth": 2.2,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-12T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3.5,
+        "growth": 3.3,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-13T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 1.5,
+        "growth": 3.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-01-14T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 1.5,
+        "growth": 3.25,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-01-15T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 2,
+        "growth": 2.75,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-16T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 3,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-01-17T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 2.5,
+        "growth": 4.05,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-01-18T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4,
+        "growth": 3.6,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-01-19T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 2,
+        "growth": 3.8499999999999996,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-20T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 0.5,
+        "growth": 4.95,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-21T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 0.5,
+        "growth": 4.4,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-22T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 0.5,
+        "growth": 6.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-01-23T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3,
+        "growth": 5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-01-24T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 1.5,
+        "growth": 4.95,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-25T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 1.5,
+        "growth": 4.95,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-26T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 2,
+        "growth": 4.4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-27T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 1.5,
+        "growth": 4.800000000000001,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-01-28T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 2,
+        "growth": 3.3,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-29T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 2,
+        "growth": 4.95,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-01-30T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 1,
+        "growth": 4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-01-31T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 2,
+        "growth": 4.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-02-01T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 0,
+        "growth": 3.9,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-02-02T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -3,
+        "growth": 1.8,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 18
+      }
+    },
+    {
+      "date": "1989-02-03T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -1.5,
+        "growth": 2.8000000000000003,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-02-04T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -2,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-02-05T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -0.5,
+        "growth": 4.800000000000001,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-02-06T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 3,
+        "growth": 3.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-02-07T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": -1.5,
+        "growth": 4.95,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-02-08T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3.5,
+        "growth": 4.8,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-02-09T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3.5,
+        "growth": 4.8,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-02-10T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 0.5,
+        "growth": 4.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-02-11T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 2.5,
+        "growth": 3.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-02-12T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 1.5,
+        "growth": 3.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-02-13T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 4,
+        "growth": 3.6,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-02-14T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 3.5,
+        "growth": 3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-02-15T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 1.5,
+        "growth": 2.4000000000000004,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-02-16T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 0.5,
+        "growth": 3.3,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-02-17T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": 1.5,
+        "growth": 3.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-02-18T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 0.5,
+        "growth": 4.5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-02-19T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 2.5,
+        "growth": 4,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-02-20T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3.5,
+        "growth": 4,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-02-21T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3,
+        "growth": 4,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-02-22T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -1,
+        "growth": 6,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-02-23T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 0.5,
+        "growth": 6.050000000000001,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-02-24T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 4,
+        "growth": 4.4,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-02-25T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3,
+        "growth": 3.3,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-02-26T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 5,
+        "growth": 2.6999999999999997,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-02-27T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3,
+        "growth": 3.3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-02-28T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 3.5,
+        "growth": 2.75,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-03-01T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 3.5,
+        "growth": 3.3,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-03-02T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6,
+        "growth": 2,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-03-03T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 9,
+        "growth": 1.7999999999999998,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-03-04T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 8.5,
+        "growth": 2.1,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-03-05T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 8.5,
+        "growth": 2.1,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-03-06T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 7,
+        "growth": 1.75,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-03-07T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5.5,
+        "growth": 2,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-03-08T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 4.5,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-09T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 7,
+        "growth": 3.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-03-10T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 6.5,
+        "growth": 3.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-03-11T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 4,
+        "growth": 3.2,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-03-12T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 4,
+        "growth": 3.2,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-03-13T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 2,
+        "growth": 4,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-14T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 2.5,
+        "growth": 4.05,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-03-15T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 1,
+        "growth": 5.5,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-16T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 1,
+        "growth": 5.5,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-17T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 3.5,
+        "growth": 4.8,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-03-18T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3,
+        "growth": 4.5,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-03-19T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5.5,
+        "growth": 2.4499999999999997,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-03-20T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 4,
+        "growth": 3.15,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-03-21T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 4,
+        "growth": 6,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-22T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 1,
+        "growth": 4.800000000000001,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-03-23T13:10",
+      "score": {
+        "fire": 0,
+        "peace": -0.5,
+        "growth": 5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-24T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 2.5,
+        "growth": 5.5,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-03-25T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 3,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-26T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 2.5,
+        "growth": 6.050000000000001,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-03-27T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 0.5,
+        "growth": 6.050000000000001,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-03-28T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 0.5,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-03-29T13:10",
+      "score": {
+        "fire": 2,
+        "peace": -0.5,
+        "growth": 6,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-03-30T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 3.5,
+        "growth": 4.95,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-03-31T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 3,
+        "growth": 5,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-04-01T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 4.5,
+        "growth": 5.3999999999999995,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-04-02T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3,
+        "growth": 4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-04-03T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 1.5,
+        "growth": 4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-04-04T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3,
+        "growth": 4.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-04-05T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 0.5,
+        "growth": 5,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-04-06T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": -1,
+        "growth": 4.95,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-04-07T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": -3,
+        "growth": 4.55,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-04-08T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": -2.5,
+        "growth": 4.199999999999999,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-04-09T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 0.5,
+        "growth": 3.3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-04-10T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": -1,
+        "growth": 3.8499999999999996,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-04-11T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": -0.5,
+        "growth": 3.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-04-12T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 0,
+        "growth": 2.75,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-04-13T13:10",
+      "score": {
+        "fire": 0,
+        "peace": -1.5,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-04-14T13:10",
+      "score": {
+        "fire": 0,
+        "peace": -3.5,
+        "growth": 3.4000000000000004,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 17
+      }
+    },
+    {
+      "date": "1989-04-15T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -1,
+        "growth": 4.2,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-04-16T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -0.5,
+        "growth": 3.9,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-04-17T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 1,
+        "growth": 3.9,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-04-18T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": -0.5,
+        "growth": 4.55,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-04-19T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -2,
+        "growth": 3.5999999999999996,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-04-20T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -1.5,
+        "growth": 4.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-04-21T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": -1,
+        "growth": 4.8999999999999995,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-04-22T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -2,
+        "growth": 3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-04-23T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -1.5,
+        "growth": 3.2,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-04-24T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": -1,
+        "growth": 4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-04-25T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": -2.5,
+        "growth": 4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-04-26T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -2,
+        "growth": 4.2,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-04-27T13:10",
+      "score": {
+        "fire": 1,
+        "peace": -2.5,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-04-28T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 0.5,
+        "growth": 4.2,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-04-29T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": -1.5,
+        "growth": 3.75,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-04-30T13:10",
+      "score": {
+        "fire": 0,
+        "peace": -2,
+        "growth": 4.5,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-05-01T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 0,
+        "growth": 1.95,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-05-02T13:10",
+      "score": {
+        "fire": 0,
+        "peace": -3,
+        "growth": 1.7000000000000002,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 17
+      }
+    },
+    {
+      "date": "1989-05-03T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": -1,
+        "growth": 3.5,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-05-04T13:10",
+      "score": {
+        "fire": -1,
+        "peace": -4.5,
+        "growth": 3.2,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-05-05T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": -3,
+        "growth": 5.25,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-05-06T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": -3,
+        "growth": 3.75,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-05-07T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-05-08T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 2.5,
+        "growth": 4.55,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-05-09T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 3,
+        "growth": 4.4,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-05-10T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 1,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-05-11T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": -1.5,
+        "growth": 3.75,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-05-12T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": -0.5,
+        "growth": 3.25,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-05-13T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 1,
+        "growth": 2.4000000000000004,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-05-14T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 0.5,
+        "growth": 1.3,
+        "stability": 4,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-05-15T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 1.5,
+        "growth": 2.2,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-05-16T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 0,
+        "growth": 2.4000000000000004,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-05-17T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 0,
+        "growth": 2.4000000000000004,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-05-18T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 0,
+        "growth": 3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-05-19T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 0.5,
+        "growth": 2.75,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-05-20T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 2.5,
+        "growth": 2.25,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-05-21T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 2.5,
+        "growth": 3.15,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-05-22T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 6,
+        "growth": 2.4000000000000004,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-05-23T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 3,
+        "growth": 2,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-05-24T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 3,
+        "growth": 2,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-05-25T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 6,
+        "growth": 2,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-05-26T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 6.5,
+        "growth": 2.1,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-05-27T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 6,
+        "growth": 1.8,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-05-28T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 5,
+        "growth": 1.1,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-05-29T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4.5,
+        "growth": 1.5,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-05-30T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 6,
+        "growth": 2.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-05-31T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 6,
+        "growth": 0.8,
+        "stability": 4,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-06-01T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 7.5,
+        "growth": 0.4,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-06-02T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 13.5,
+        "growth": 0.15000000000000002,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 3
+      }
+    },
+    {
+      "date": "1989-06-03T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 12.5,
+        "growth": 0,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 3
+      }
+    },
+    {
+      "date": "1989-06-04T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 15,
+        "growth": 0,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 0
+      }
+    },
+    {
+      "date": "1989-06-05T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 11.5,
+        "growth": 0,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 3
+      }
+    },
+    {
+      "date": "1989-06-06T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 11.5,
+        "growth": 0.75,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 3
+      }
+    },
+    {
+      "date": "1989-06-07T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 11.5,
+        "growth": 0.75,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 3
+      }
+    },
+    {
+      "date": "1989-06-08T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 8.5,
+        "growth": 1.7999999999999998,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-06-09T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 9,
+        "growth": 1.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-06-10T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 10,
+        "growth": 2,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-06-11T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6.5,
+        "growth": 2.8,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-06-12T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 6,
+        "growth": 3,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-06-13T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 9,
+        "growth": 3,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-06-14T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 8,
+        "growth": 2.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-06-15T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 8.5,
+        "growth": 1.8,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 4
+      }
+    },
+    {
+      "date": "1989-06-16T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 7.5,
+        "growth": 2.4000000000000004,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-06-17T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 6.5,
+        "growth": 3,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-06-18T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 7.5,
+        "growth": 2.4000000000000004,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-06-19T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 8.5,
+        "growth": 2.0999999999999996,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-06-20T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 7,
+        "growth": 4.05,
+        "stability": 4,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-06-21T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 5,
+        "growth": 3.8499999999999996,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-06-22T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 8,
+        "growth": 3.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-06-23T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 7,
+        "growth": 3.15,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-06-24T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 9,
+        "growth": 2.4499999999999997,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-06-25T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 6.5,
+        "growth": 3.6,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-06-26T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 4,
+        "growth": 4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-06-27T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 6.5,
+        "growth": 3.15,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-06-28T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4.5,
+        "growth": 3.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-06-29T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 6.5,
+        "growth": 2.6999999999999997,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-06-30T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 6.5,
+        "growth": 2.6999999999999997,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-07-01T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 7.5,
+        "growth": 2.8000000000000003,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-07-02T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 9,
+        "growth": 2.1,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-07-03T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 5.5,
+        "growth": 2.6999999999999997,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-07-04T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5.5,
+        "growth": 3.15,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-07-05T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 5,
+        "growth": 2.8,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-07-06T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 7,
+        "growth": 2.8000000000000003,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-07-07T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 5.5,
+        "growth": 3.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-07-08T13:10",
+      "score": {
+        "fire": -1,
+        "peace": 3,
+        "growth": 4.4,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-09T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": 2,
+        "growth": 3.8499999999999996,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-10T13:10",
+      "score": {
+        "fire": -2,
+        "peace": 3.5,
+        "growth": 3,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-07-11T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 5.5,
+        "growth": 2.4,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-07-12T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 4,
+        "growth": 2.8,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-07-13T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 4.5,
+        "growth": 1.65,
+        "stability": 4,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-14T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": 4.5,
+        "growth": 2.25,
+        "stability": 4,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-07-15T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 7,
+        "growth": 2.75,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-16T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 5.5,
+        "growth": 2.75,
+        "stability": 5,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-17T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 8.5,
+        "growth": 2.4499999999999997,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-07-18T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 5.5,
+        "growth": 2.6999999999999997,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-07-19T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3.5,
+        "growth": 4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-07-20T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 5,
+        "growth": 2.8,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-07-21T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 3,
+        "growth": 3.3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-22T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 3,
+        "growth": 3.8499999999999996,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-07-23T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 4,
+        "growth": 3.9,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-07-24T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3.5,
+        "growth": 4.2,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-07-25T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 3,
+        "growth": 3.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-07-26T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 1.5,
+        "growth": 2.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-07-27T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 1.5,
+        "growth": 2.4000000000000004,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-07-28T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 2.5,
+        "growth": 2.4000000000000004,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-07-29T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 4.5,
+        "growth": 2.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-07-30T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 6,
+        "growth": 3.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-07-31T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 8.5,
+        "growth": 3.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-08-01T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 8,
+        "growth": 4.95,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-08-02T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 6.5,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-08-03T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5,
+        "growth": 2.75,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-08-04T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5,
+        "growth": 2.75,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-08-05T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 5,
+        "growth": 3.3,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-08-06T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3,
+        "growth": 2.6,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-08-07T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 4,
+        "growth": 2.2,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-08-08T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 4,
+        "growth": 3.5999999999999996,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-08-09T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 5.5,
+        "growth": 3.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-08-10T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 6.5,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-08-11T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 6.5,
+        "growth": 3.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-12T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 9,
+        "growth": 2.4000000000000004,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-08-13T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 10.5,
+        "growth": 2.25,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-08-14T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 10,
+        "growth": 2.7,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-08-15T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 9.5,
+        "growth": 2.4000000000000004,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-08-16T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 9.5,
+        "growth": 3.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-17T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 7,
+        "growth": 2.8000000000000003,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-18T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 8.5,
+        "growth": 2.7,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-08-19T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 6.5,
+        "growth": 3.2,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-08-20T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 5,
+        "growth": 3.6,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-08-21T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4,
+        "growth": 3.8500000000000005,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-22T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 4,
+        "growth": 4.4,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-08-23T13:10",
+      "score": {
+        "fire": -0.5,
+        "peace": 3.5,
+        "growth": 2.4499999999999997,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-24T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": 1.5,
+        "growth": 3.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-08-25T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": 5,
+        "growth": 2.4499999999999997,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-26T13:10",
+      "score": {
+        "fire": -2,
+        "peace": 3,
+        "growth": 2.6999999999999997,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-08-27T13:10",
+      "score": {
+        "fire": -2,
+        "peace": 6,
+        "growth": 1.5,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-08-28T13:10",
+      "score": {
+        "fire": -2,
+        "peace": 5.5,
+        "growth": 1.7999999999999998,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-08-29T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4,
+        "growth": 3.15,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-08-30T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 6,
+        "growth": 3.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-08-31T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4.5,
+        "growth": 3.15,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-09-01T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 5.5,
+        "growth": 4,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-09-02T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 8.5,
+        "growth": 2.0999999999999996,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-09-03T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 7,
+        "growth": 2.1,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-09-04T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 8.5,
+        "growth": 1.2000000000000002,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-09-05T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 7,
+        "growth": 1.2,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-09-06T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 6.5,
+        "growth": 1.3499999999999999,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-09-07T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 6,
+        "growth": 1.3499999999999999,
+        "stability": 5,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-09-08T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 7,
+        "growth": 2.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-09-09T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 6,
+        "growth": 1.8,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-09-10T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 6,
+        "growth": 3.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-09-11T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 3.5,
+        "growth": 5.4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-09-12T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 5.5,
+        "growth": 6,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-09-13T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4.5,
+        "growth": 4.55,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-09-14T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 5.5,
+        "growth": 4.2,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-09-15T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6,
+        "growth": 3.8500000000000005,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-09-16T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 6,
+        "growth": 4.199999999999999,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-09-17T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 3,
+        "growth": 3.9000000000000004,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-09-18T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 4,
+        "growth": 5.3999999999999995,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-09-19T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 3.5,
+        "growth": 5.2,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-09-20T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 3.5,
+        "growth": 5.2,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-09-21T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 2.5,
+        "growth": 3.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-09-22T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 2,
+        "growth": 2.8000000000000003,
+        "stability": 5,
+        "meditate": true,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-09-23T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 3.5,
+        "growth": 1.95,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-09-24T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5.5,
+        "growth": 1.65,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-09-25T13:10",
+      "score": {
+        "fire": 0,
+        "peace": 3,
+        "growth": 2,
+        "stability": 3,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-09-26T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 1,
+        "growth": 3.25,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-09-27T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 4,
+        "growth": 4.4,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-09-28T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 5.5,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-09-29T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 3,
+        "growth": 3.8499999999999996,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-09-30T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 6.5,
+        "growth": 4.5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-01T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 4,
+        "growth": 4.95,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-02T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 4.5,
+        "growth": 5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-03T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 5.5,
+        "growth": 4.5,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-04T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 5.5,
+        "growth": 4.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-05T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 6.5,
+        "growth": 4.05,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-10-06T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 7.5,
+        "growth": 4.95,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-07T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 7,
+        "growth": 6.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-08T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 3,
+        "growth": 7,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-10-09T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 2,
+        "growth": 6.6000000000000005,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-10-10T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 2,
+        "growth": 6.050000000000001,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-11T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 2.5,
+        "growth": 5.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-12T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 3.5,
+        "growth": 4.95,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-13T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 4.5,
+        "growth": 4.4,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-10-14T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-15T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 4.5,
+        "growth": 4.4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-16T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 5,
+        "growth": 4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-17T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3.5,
+        "growth": 5.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-18T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 4.5,
+        "growth": 4.4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-19T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 4,
+        "growth": 3.3,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-20T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 6.5,
+        "growth": 3.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-10-21T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 3.5,
+        "growth": 4.800000000000001,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-10-22T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 3.5,
+        "growth": 4.95,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-10-23T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 3.5,
+        "growth": 4.199999999999999,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-10-24T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 4.5,
+        "growth": 5.4,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-10-25T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 7,
+        "growth": 5.3999999999999995,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-10-26T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 5.5,
+        "growth": 5.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-27T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 7,
+        "growth": 5.3999999999999995,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-10-28T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 5.5,
+        "growth": 6,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-29T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 7,
+        "growth": 4.95,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-10-30T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 5.5,
+        "growth": 5.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-10-31T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 4.5,
+        "growth": 5.8500000000000005,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-11-01T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 6.5,
+        "growth": 4.4,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-11-02T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 7,
+        "growth": 4.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-11-03T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 7,
+        "growth": 4.5,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-11-04T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 6.5,
+        "growth": 3.8499999999999996,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-11-05T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 6,
+        "growth": 4.800000000000001,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-11-06T13:10",
+      "score": {
+        "fire": 6,
+        "peace": 8.5,
+        "growth": 5.3999999999999995,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-11-07T13:10",
+      "score": {
+        "fire": 5.5,
+        "peace": 9,
+        "growth": 4.4,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-11-08T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 9,
+        "growth": 3.8500000000000005,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-11-09T13:10",
+      "score": {
+        "fire": 6,
+        "peace": 10.5,
+        "growth": 3,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-11-10T13:10",
+      "score": {
+        "fire": 6.5,
+        "peace": 11,
+        "growth": 3.9000000000000004,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-11-11T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 9.5,
+        "growth": 3.5999999999999996,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-11-12T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 9.5,
+        "growth": 3.25,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-11-13T13:10",
+      "score": {
+        "fire": 6,
+        "peace": 9,
+        "growth": 3.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-11-14T13:10",
+      "score": {
+        "fire": 5.5,
+        "peace": 8,
+        "growth": 4.55,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-11-15T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 9.5,
+        "growth": 3.5999999999999996,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-11-16T13:10",
+      "score": {
+        "fire": 6,
+        "peace": 9,
+        "growth": 4.8999999999999995,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-11-17T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 7,
+        "growth": 3.8500000000000005,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-11-18T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 4.5,
+        "growth": 4.95,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-11-19T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 5,
+        "growth": 3.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-11-20T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5,
+        "growth": 2.8,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-11-21T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 4.5,
+        "growth": 3.15,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-11-22T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 7,
+        "growth": 3,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 5
+      }
+    },
+    {
+      "date": "1989-11-23T13:10",
+      "score": {
+        "fire": 0.5,
+        "peace": 5,
+        "growth": 3.8500000000000005,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-11-24T13:10",
+      "score": {
+        "fire": -1.5,
+        "peace": 5,
+        "growth": 3.9000000000000004,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 6
+      }
+    },
+    {
+      "date": "1989-11-25T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 5.5,
+        "growth": 4.5,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 10
+      }
+    },
+    {
+      "date": "1989-11-26T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6,
+        "growth": 4.95,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-11-27T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6,
+        "growth": 4.95,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 9
+      }
+    },
+    {
+      "date": "1989-11-28T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 6,
+        "growth": 3.6,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-11-29T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 6,
+        "growth": 4.55,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 7
+      }
+    },
+    {
+      "date": "1989-11-30T13:10",
+      "score": {
+        "fire": 2.5,
+        "peace": 4.5,
+        "growth": 4.4,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 8
+      }
+    },
+    {
+      "date": "1989-12-01T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 0,
+        "growth": 5.8500000000000005,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-02T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": -1,
+        "growth": 5.6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-12-03T13:10",
+      "score": {
+        "fire": 1.5,
+        "peace": 0.5,
+        "growth": 5.25,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-04T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 3.5,
+        "growth": 3,
+        "stability": 7,
+        "meditate": false,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-05T13:10",
+      "score": {
+        "fire": 1,
+        "peace": 3.5,
+        "growth": 2.8000000000000003,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-06T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 5,
+        "growth": 4.2,
+        "stability": 4,
+        "meditate": true,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-07T13:10",
+      "score": {
+        "fire": 5,
+        "peace": 5.5,
+        "growth": 6.5,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-08T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 3,
+        "growth": 6.4,
+        "stability": 6,
+        "meditate": false,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-12-09T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 2.5,
+        "growth": 7.15,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-10T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 4,
+        "growth": 6,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-12-11T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 4.5,
+        "growth": 6.050000000000001,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 11
+      }
+    },
+    {
+      "date": "1989-12-12T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 3,
+        "growth": 6.5,
+        "stability": 9,
+        "meditate": false,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-13T13:10",
+      "score": {
+        "fire": 5.5,
+        "peace": 5,
+        "growth": 6.6000000000000005,
+        "stability": 8,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-12-14T13:10",
+      "score": {
+        "fire": 4,
+        "peace": 2,
+        "growth": 7.199999999999999,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-12-15T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 0,
+        "growth": 7.700000000000001,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-16T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 1.5,
+        "growth": 6.3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-17T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 1.5,
+        "growth": 6.3,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-18T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 1.5,
+        "growth": 5.2,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-19T13:10",
+      "score": {
+        "fire": 2,
+        "peace": 0,
+        "growth": 5.6000000000000005,
+        "stability": 8,
+        "meditate": false,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-20T13:10",
+      "score": {
+        "fire": 2,
+        "peace": -1.5,
+        "growth": 4.8,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 16
+      }
+    },
+    {
+      "date": "1989-12-21T13:10",
+      "score": {
+        "fire": 0,
+        "peace": -3.5,
+        "growth": 6,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-22T13:10",
+      "score": {
+        "fire": 2,
+        "peace": -3,
+        "growth": 5.1,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 17
+      }
+    },
+    {
+      "date": "1989-12-23T13:10",
+      "score": {
+        "fire": 2,
+        "peace": -1,
+        "growth": 4.5,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-24T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 0.5,
+        "growth": 5.6000000000000005,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 14
+      }
+    },
+    {
+      "date": "1989-12-25T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": 1,
+        "growth": 5.8500000000000005,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-26T13:10",
+      "score": {
+        "fire": 4.5,
+        "peace": 2,
+        "growth": 7.15,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 13
+      }
+    },
+    {
+      "date": "1989-12-27T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 0.5,
+        "growth": 7.199999999999999,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 12
+      }
+    },
+    {
+      "date": "1989-12-28T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": -0.5,
+        "growth": 8.25,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-29T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": -0.5,
+        "growth": 8.25,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-30T13:10",
+      "score": {
+        "fire": 3.5,
+        "peace": -0.5,
+        "growth": 8.25,
+        "stability": 7,
+        "meditate": true,
+        "diversity": 15
+      }
+    },
+    {
+      "date": "1989-12-31T13:10",
+      "score": {
+        "fire": 3,
+        "peace": 1,
+        "growth": 7,
+        "stability": 6,
+        "meditate": true,
+        "diversity": 14
+      }
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "person1": {
+    "type": "ManifestingGenerator",
+    "profile": "3 / 5",
+    "strategy": "Sacral",
+    "incarnationCross": "RightAngleCrossOfConsciousness2",
+    "allActiveGates": [
+      {
+        "gate": 1,
+        "description": "Self-expression, creative self; the energy to initiate unique contribution."
+      },
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 8,
+        "description": "Contribution to the collective; style and articulation of unique contribution."
+      },
+      {
+        "gate": 12,
+        "description": "Caution in expression; spoken expression that can attract or repel."
+      },
+      {
+        "gate": 15,
+        "description": "Extremes and humanity; rhythm and acceptance of diversity."
+      },
+      {
+        "gate": 29,
+        "description": "Commitment; perseverance through trial and repetition."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 37,
+        "description": "Community and friendship; family and group cooperation."
+      },
+      {
+        "gate": 38,
+        "description": "Opposition and struggle; finding meaning through challenge."
+      },
+      {
+        "gate": 44,
+        "description": "Alertness to patterns; historical instinct and team dynamics."
+      },
+      {
+        "gate": 45,
+        "description": "Gathering and rulership; distribution of resources and leadership."
+      },
+      {
+        "gate": 49,
+        "description": "Principles and revolution; values leading to social change."
+      },
+      {
+        "gate": 55,
+        "description": "Spirit and abundance; emotional fullness and existential mood."
+      },
+      {
+        "gate": 58,
+        "description": "Joy and vitality; corrective energy toward wellbeing."
+      },
+      {
+        "gate": 59,
+        "description": "Intimacy and bonding; sexual connection and breaking barriers."
+      },
+      {
+        "gate": 62,
+        "description": "Detail and articulation; precise expression and organization."
+      },
+      {
+        "gate": 63,
+        "description": "Doubt and questioning; critical inquiry and verification."
+      },
+      {
+        "gate": 64,
+        "description": "Confusion to abstraction; mental pressure to sense patterns."
+      }
+    ]
+  },
+  "person2": {
+    "type": "Manifestor",
+    "profile": "4 / 6",
+    "strategy": "Emotional",
+    "incarnationCross": "RightAngleCrossOfTheUnexpected",
+    "allActiveGates": [
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 14,
+        "description": "Power skills; role in providing resources and value."
+      },
+      {
+        "gate": 17,
+        "description": "Opinions and logical formulation; patterns of thought."
+      },
+      {
+        "gate": 18,
+        "description": "Correction; critique to improve systems and form."
+      },
+      {
+        "gate": 19,
+        "description": "Sensitivity and needs; the voice of community need and close ties."
+      },
+      {
+        "gate": 21,
+        "description": "Control and management; resources and regulation."
+      },
+      {
+        "gate": 26,
+        "description": "Integrity of persuasion; salesmanship and ego integrity."
+      },
+      {
+        "gate": 27,
+        "description": "Caring and nourishment; responsibility for others' wellbeing."
+      },
+      {
+        "gate": 28,
+        "description": "Struggle and purpose; confronting risk to find meaning."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 31,
+        "description": "Leadership through influence; democratic voice and leadership."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 36,
+        "description": "Crisis and emotional depth; exploration of feeling experiences."
+      },
+      {
+        "gate": 39,
+        "description": "Provocation and stimulation; initiating emotional reactions."
+      },
+      {
+        "gate": 41,
+        "description": "Contraction and imagination; beginnings and fantasy."
+      },
+      {
+        "gate": 45,
+        "description": "Gathering and rulership; distribution of resources and leadership."
+      },
+      {
+        "gate": 48,
+        "description": "Depth and resource; talent and need for correction and skill."
+      },
+      {
+        "gate": 49,
+        "description": "Principles and revolution; values leading to social change."
+      },
+      {
+        "gate": 54,
+        "description": "Ambition and drive; converting resources into status and growth."
+      },
+      {
+        "gate": 56,
+        "description": "Stimulation through story; wandering mind and storytelling."
+      },
+      {
+        "gate": 61,
+        "description": "Inner truth and mystery; inspiration and philosophical insight."
+      }
+    ]
+  },
+  "sharedGates": {
+    "all": [
+      {
+        "gate": 5,
+        "description": "Fixed patterns; rhythm and consistency in life."
+      },
+      {
+        "gate": 30,
+        "description": "Intensity of feelings; desire and emotional experience."
+      },
+      {
+        "gate": 35,
+        "description": "Change and experience; cycles of progress and new experiences."
+      },
+      {
+        "gate": 45,
+        "description": "Gathering and rulership; distribution of resources and leadership."
+      },
+      {
+        "gate": 49,
+        "description": "Principles and revolution; values leading to social change."
+      }
+    ],
+    "count": 5
+  },
+  "_results": {
+    "sharedGates": [
+      5,
+      30,
+      35,
+      45,
+      49
+    ],
+    "uniqueFireGates1p1": [
+      {
+        "gateA": 30,
+        "gateB": 41,
+        "pair": "30-41"
+      },
+      {
+        "gateA": 35,
+        "gateB": 36,
+        "pair": "35-36"
+      },
+      {
+        "gateA": 38,
+        "gateB": 28,
+        "pair": "28-38"
+      },
+      {
+        "gateA": 44,
+        "gateB": 26,
+        "pair": "26-44"
+      },
+      {
+        "gateA": 45,
+        "gateB": 21,
+        "pair": "21-45"
+      },
+      {
+        "gateA": 49,
+        "gateB": 19,
+        "pair": "19-49"
+      },
+      {
+        "gateA": 55,
+        "gateB": 39,
+        "pair": "39-55"
+      },
+      {
+        "gateA": 58,
+        "gateB": 18,
+        "pair": "18-58"
+      },
+      {
+        "gateA": 62,
+        "gateB": 17,
+        "pair": "17-62"
+      }
+    ],
+    "uniqueFireGates1p2": [
+      {
+        "gateA": 5,
+        "gateB": 15,
+        "pair": "5-15"
+      },
+      {
+        "gateA": 17,
+        "gateB": 62,
+        "pair": "17-62"
+      },
+      {
+        "gateA": 18,
+        "gateB": 58,
+        "pair": "18-58"
+      },
+      {
+        "gateA": 26,
+        "gateB": 44,
+        "pair": "26-44"
+      },
+      {
+        "gateA": 28,
+        "gateB": 38,
+        "pair": "28-38"
+      },
+      {
+        "gateA": 39,
+        "gateB": 55,
+        "pair": "39-55"
+      }
+    ],
+    "uniqueEqualGates": {
+      "count": 0,
+      "gates": []
+    },
+    "uniqueGates1p1": {
+      "count": 6,
+      "gates": [
+        12,
+        29,
+        37,
+        59,
+        63,
+        64
+      ]
+    },
+    "uniqueGates1p2": {
+      "count": 7,
+      "gates": [
+        14,
+        27,
+        31,
+        48,
+        54,
+        56,
+        61
+      ]
+    },
+    "exclusiveGates1p1": {
+      "count": 1,
+      "pairs": [
+        {
+          "gateA": 1,
+          "linkedGate": 8,
+          "pair": "1-8"
+        }
+      ]
+    },
+    "exclusiveGates1p2": {
+      "count": 0,
+      "pairs": []
+    },
+    "person1_PeaceOn2": {
+      "count": 4,
+      "pairs": [
+        {
+          "gateA1": 19,
+          "gateA2": 49,
+          "pair": "19-49",
+          "hangingGateInB": 49
+        },
+        {
+          "gateA1": 21,
+          "gateA2": 45,
+          "pair": "21-45",
+          "hangingGateInB": 45
+        },
+        {
+          "gateA1": 30,
+          "gateA2": 41,
+          "pair": "30-41",
+          "hangingGateInB": 30
+        },
+        {
+          "gateA1": 35,
+          "gateA2": 36,
+          "pair": "35-36",
+          "hangingGateInB": 35
+        }
+      ]
+    },
+    "person2_PeaceOn1": {
+      "count": 1,
+      "pairs": [
+        {
+          "gateA1": 5,
+          "gateA2": 15,
+          "pair": "5-15",
+          "hangingGateInB": 5
+        }
+      ]
+    },
+    "person1Centers": {
+      "centerLinks": {
+        "head": [],
+        "ajna": [],
+        "throat": [
+          "g"
+        ],
+        "g": [
+          "throat",
+          "sacral"
+        ],
+        "ego": [],
+        "solarPlexus": [],
+        "spleen": [],
+        "sacral": [
+          "g"
+        ],
+        "root": []
+      },
+      "centerLinksActiveCount": 3,
+      "activeCenters": [
+        "throat",
+        "g",
+        "sacral"
+      ]
+    },
+    "person2Centers": {
+      "centerLinks": {
+        "head": [],
+        "ajna": [],
+        "throat": [
+          "ego",
+          "solarPlexus"
+        ],
+        "g": [],
+        "ego": [
+          "throat"
+        ],
+        "solarPlexus": [
+          "root",
+          "throat"
+        ],
+        "spleen": [],
+        "sacral": [],
+        "root": [
+          "solarPlexus"
+        ]
+      },
+      "centerLinksActiveCount": 4,
+      "activeCenters": [
+        "throat",
+        "ego",
+        "solarPlexus",
+        "root"
+      ]
+    },
+    "mergedCenters": {
+      "centerLinks": {
+        "head": [],
+        "ajna": [
+          "throat"
+        ],
+        "throat": [
+          "g",
+          "solarPlexus",
+          "ego",
+          "ajna"
+        ],
+        "g": [
+          "throat",
+          "sacral"
+        ],
+        "ego": [
+          "spleen",
+          "throat"
+        ],
+        "solarPlexus": [
+          "root",
+          "throat"
+        ],
+        "spleen": [
+          "root",
+          "ego"
+        ],
+        "sacral": [
+          "g"
+        ],
+        "root": [
+          "solarPlexus",
+          "spleen"
+        ]
+      },
+      "centerLinksActiveCount": 8,
+      "activeCenters": [
+        "ajna",
+        "throat",
+        "g",
+        "ego",
+        "solarPlexus",
+        "spleen",
+        "sacral",
+        "root"
+      ]
+    }
+  },
+  "score": {
+    "fireScore": 7,
+    "peaceScore": 3,
+    "growthScore": 10.4,
+    "diversityS": 13,
+    "stability": 8,
+    "areMeditative": true
+  },
+  "_meta": {
+    "elapsed_seconds": 2.165
+  }
+}

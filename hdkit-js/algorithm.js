@@ -300,7 +300,7 @@ function growthScore(params)
 function diversity(params) 
 {
     return ((params.uniqueGates1p1.count +
-    params.uniqueGates1p2.count)) ;
+    params.uniqueGates1p2.count));
   }
 
 function stability(params) 
