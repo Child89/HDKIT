@@ -2,7 +2,31 @@
 const fs = require('fs');
 const path = require('path');
 
-// --- Load JSON helper ---
+/**
+ * 🧘 CONFIGURATION (edit this section)
+ * You can still tweak filters, sorting, etc.
+ */
+const config = {
+  filter: {
+    meditate: false,   // Only include meditate == true entries
+    stabilityMin: 5,   // Minimum stability
+    stabilityMax: 8,   // Maximum stability
+    fireMin: 2,     // Minimum fire value (null = disabled)
+    peaceMin: 3,    // Minimum peace value (null = disabled)
+    growthMin: null    // Minimum growth (null = disabled)
+  },
+
+  sort: {
+    field: 'avgFirePeace',     // Sort by: 'fire', 'peace', or 'avgFirePeace'
+    order: 'desc'      // 'desc' or 'asc'
+  },
+
+  topN: 3000           // Number of top results to show
+};
+
+/**
+ * --- Load JSON helper ---
+ */
 function loadJSON(filePath) {
   const full = path.resolve(filePath);
   if (!fs.existsSync(full)) {
@@ -12,8 +36,10 @@ function loadJSON(filePath) {
   return JSON.parse(fs.readFileSync(full, 'utf8'));
 }
 
-// --- Main data processing ---
-function findBestMeditativeScores(data, topN = 10, filterMeditate = true) {
+/**
+ * --- Core processing ---
+ */
+function findBestScores(data, cfg) {
   if (!data || !Array.isArray(data.scores)) {
     console.error('❌ Invalid file format. Expected .scores array.');
     process.exit(1);
@@ -21,15 +47,27 @@ function findBestMeditativeScores(data, topN = 10, filterMeditate = true) {
 
   let filtered = data.scores;
 
-  // Optional filter for meditate flag
-  if (filterMeditate) {
+  // --- Filtering ---
+  if (cfg.filter.meditate) {
     filtered = filtered.filter(entry => entry.score.meditate === true);
   }
 
-  // Always filter stability 6–8
-  filtered = filtered.filter(entry => entry.score.stability >= 6 && entry.score.stability <= 8);
+  filtered = filtered.filter(entry =>
+    entry.score.stability >= cfg.filter.stabilityMin &&
+    entry.score.stability <= cfg.filter.stabilityMax
+  );
 
-  // Map derived values
+  if (cfg.filter.fireMin !== null) {
+    filtered = filtered.filter(entry => entry.score.fire >= cfg.filter.fireMin);
+  }
+  if (cfg.filter.peaceMin !== null) {
+    filtered = filtered.filter(entry => entry.score.peace >= cfg.filter.peaceMin);
+  }
+  if (cfg.filter.growthMin !== null) {
+    filtered = filtered.filter(entry => entry.score.growth >= cfg.filter.growthMin);
+  }
+
+  // --- Derived values ---
   filtered = filtered.map(entry => {
     const avgFirePeace = (entry.score.fire + entry.score.peace) / 2;
     const difference = Math.abs(entry.score.fire - entry.score.peace);
@@ -46,37 +84,39 @@ function findBestMeditativeScores(data, topN = 10, filterMeditate = true) {
     };
   });
 
-  // Sort descending by avgFirePeace
-  filtered.sort((a, b) => b.avgFirePeace - a.avgFirePeace);
+  // --- Sorting ---
+  const validSorts = ['fire', 'peace', 'avgFirePeace'];
+  let field = cfg.sort.field;
+  if (!validSorts.includes(field)) {
+    console.warn(`⚠️ Invalid sort field "${field}", defaulting to avgFirePeace`);
+    field = 'avgFirePeace';
+  }
 
-  return filtered.slice(0, topN);
+  filtered.sort((a, b) =>
+    cfg.sort.order === 'asc' ? a[field] - b[field] : b[field] - a[field]
+  );
+
+  return filtered.slice(0, cfg.topN);
 }
 
-// --- Main entry point ---
+/**
+ * --- Main ---
+ */
 function main() {
   const args = process.argv.slice(2);
   if (args.length === 0) {
-    console.log('Usage: node bestMeditative.js <path-to-pair-time.json> [--top N] [--meditate true|false]');
+    console.log('Usage: node bestMeditative.js <path-to-pair-time.json>');
     process.exit(1);
   }
 
-  const filePath = args[0];
-  const topNIdx = args.indexOf('--top');
-  const meditateIdx = args.indexOf('--meditate');
-
-  const topN = topNIdx !== -1 && args.length > topNIdx + 1 ? parseInt(args[topNIdx + 1]) : 10;
-  const filterMeditate =
-    meditateIdx !== -1 && args.length > meditateIdx + 1
-      ? args[meditateIdx + 1].toLowerCase() === 'true'
-      : true; // default true
-
-  const data = loadJSON(filePath);
-  const bestScores = findBestMeditativeScores(data, topN, filterMeditate);
+  const inputFile = args[0];
+  const data = loadJSON(inputFile);
+  const bestScores = findBestScores(data, config);
 
   // --- Prepare output ---
   let output = `🧘‍♂️ Top ${bestScores.length} ${
-    filterMeditate ? 'meditative' : 'all'
-  } days (stability 6–8, highest (fire+peace)/2):\n\n`;
+    config.filter.meditate ? 'meditative' : 'all'
+  } days (stability ${config.filter.stabilityMin}-${config.filter.stabilityMax}, sorted by ${config.sort.field} ${config.sort.order}):\n\n`;
 
   bestScores.forEach((entry, i) => {
     output +=
@@ -89,29 +129,20 @@ function main() {
       ` | avgFirePeace=${entry.avgFirePeace.toFixed(2)}\n`;
   });
 
-  console.log('\n' + output);
+  //console.log('\n' + output);
 
   // --- Save to results/ folder ---
   const resultsDir = path.join(__dirname, 'results');
-  if (!fs.existsSync(resultsDir)) {
-    fs.mkdirSync(resultsDir, { recursive: true });
-  }
+  if (!fs.existsSync(resultsDir)) fs.mkdirSync(resultsDir, { recursive: true });
 
-  // ✅ One clean timestamp: YYYY-MM-DD_HH-MM
   const now = new Date();
   const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(
     now.getDate()
   ).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
 
-  // ✅ Clean base name
-  let baseName = path.basename(filePath, path.extname(filePath));
-  baseName = baseName.replace(/^bestMeditative[_-]?/i, '');
-
-  const mode = filterMeditate ? 'meditativeOnly' : 'all';
-
-  // ✅ Only one datetime per file name
-  //const outputFile = path.join(resultsDir, `${baseName}_${mode}_${timestamp}.txt`);
-  const outputFile = path.join(resultsDir, `${baseName}_${mode}.txt`);
+  const baseName = path.basename(inputFile, path.extname(inputFile));
+  const mode = config.filter.meditate ? 'meditativeOnly' : 'all';
+  const outputFile = path.join(resultsDir, `${baseName}_${mode}_${config.sort.field}_${timestamp}.txt`);
 
   fs.writeFileSync(outputFile, output, 'utf8');
   console.log(`✅ Results saved to: ${outputFile}\n`);

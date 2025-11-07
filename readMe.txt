@@ -80,3 +80,7 @@ node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/
 
 USE MEDITATE FALSE do not use meditate filter:
 node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/2025-11-07T00-26-11-643Z-pair-time.json --top 1000 --meditate false
+
+node bestMeditative.js pair-time.json	Default (meditate only, sort by avgFirePeace)	pair-time_meditativeOnly_avgFirePeace_2025-11-07_21-12.txt
+node bestMeditative.js pair-time.json --sort fire	Sorts by fire descending	pair-time_meditativeOnly_fire_2025-11-07_21-12.txt
+node bestMeditative.js pair-time.json --sort peace --meditate false	Sorts by peace, includes all entries	pair-time_all_peace_2025-11-07_21-12.txt

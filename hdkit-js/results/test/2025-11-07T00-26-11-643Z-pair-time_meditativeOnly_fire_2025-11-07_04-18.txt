@@ -1,0 +1,8 @@
+🧘‍♂️ Top 6 meditative days (stability 4-8, sorted by fire desc):
+
+01. 1990-06-12T13:10 | meditate=true | fire=7.5 | peace=5.5 | stability=8 | growth=10.20 | avgFirePeace=6.50
+02. 1990-09-19T13:10 | meditate=true | fire=7.5 | peace=5 | stability=6 | growth=10.50 | avgFirePeace=6.25
+03. 1988-03-30T13:10 | meditate=true | fire=7 | peace=3.5 | stability=6 | growth=10.50 | avgFirePeace=5.25
+04. 1990-06-13T13:10 | meditate=true | fire=7 | peace=5 | stability=7 | growth=8.80 | avgFirePeace=6.00
+05. 1993-04-25T13:10 | meditate=true | fire=7 | peace=3 | stability=8 | growth=10.40 | avgFirePeace=5.00
+06. 1993-07-05T13:10 | meditate=true | fire=7 | peace=3.5 | stability=7 | growth=10.50 | avgFirePeace=5.25

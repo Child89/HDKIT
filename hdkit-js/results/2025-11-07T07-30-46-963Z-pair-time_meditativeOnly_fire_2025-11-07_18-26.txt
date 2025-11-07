@@ -1,0 +1,14 @@
+🧘‍♂️ Top 12 meditative days (stability 8-8, sorted by fire desc):
+
+01. 1990-06-12T13:10 | meditate=true | fire=7.5 | peace=5.5 | stability=8 | growth=10.20 | avgFirePeace=6.50
+02. 1992-03-23T13:10 | meditate=true | fire=6.5 | peace=6 | stability=8 | growth=8.25 | avgFirePeace=6.25
+03. 1997-06-12T13:10 | meditate=true | fire=6.5 | peace=6 | stability=8 | growth=6.00 | avgFirePeace=6.25
+04. 1991-12-26T13:10 | meditate=true | fire=6 | peace=6.5 | stability=8 | growth=6.60 | avgFirePeace=6.25
+05. 1998-03-14T13:10 | meditate=true | fire=6 | peace=5.5 | stability=8 | growth=7.20 | avgFirePeace=5.75
+06. 1998-03-28T13:10 | meditate=true | fire=6 | peace=6 | stability=8 | growth=6.40 | avgFirePeace=6.00
+07. 1989-12-13T13:10 | meditate=true | fire=5.5 | peace=5 | stability=8 | growth=6.60 | avgFirePeace=5.25
+08. 1992-03-06T13:10 | meditate=true | fire=5.5 | peace=7 | stability=8 | growth=6.00 | avgFirePeace=6.25
+09. 1992-12-04T13:10 | meditate=true | fire=5.5 | peace=8 | stability=8 | growth=6.00 | avgFirePeace=6.75
+10. 1998-03-16T13:10 | meditate=true | fire=5.5 | peace=5.5 | stability=8 | growth=6.75 | avgFirePeace=5.50
+11. 1998-03-29T13:10 | meditate=true | fire=5.5 | peace=5.5 | stability=8 | growth=6.80 | avgFirePeace=5.50
+12. 1998-10-05T13:10 | meditate=true | fire=5 | peace=5 | stability=8 | growth=7.20 | avgFirePeace=5.00
