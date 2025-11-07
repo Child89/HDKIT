@@ -66,3 +66,14 @@ dotnet run --project /home/buddha/Documents/HDKIT/HDKitSample/HDKitSample.csproj
 
 
  node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./results/2025-11-04T23-09-51-673Z-pair-time.json --top 50
+
+
+node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js pair-time "1993-04-24T13:10" 46.1400 14.2200 "1993-04-25T13:10" 46.1400 14.2200 --save --pretty
+
+node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/2025-11-04T23-38-20-409Z-pair-time.json --top 100
+
+
+node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js pair-time "1993-04-24T12:30" 46.1400 14.2200 "1988-04-25T14:10" 46.6581 16.1610 --save --pretty
+
+
+node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/22025-11-07T00-26-11-643Z-pair-time.json --top 1000

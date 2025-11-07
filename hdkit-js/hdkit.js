@@ -12,7 +12,7 @@ const {
 } = require('./algorithm');
 
 async function main(argv) {
-  const start = process.hrtime.bigint(); // 🕒 start timing
+  const start = process.hrtime.bigint();
 
   const args = argv.slice(2);
   if (args.length === 0) {
@@ -21,7 +21,6 @@ async function main(argv) {
   }
 
   const cmd = args[0];
-  // handle flags: --json (default), --save, --out <path>, --pretty
   const jsonIdx = args.indexOf('--json');
   if (jsonIdx !== -1) args.splice(jsonIdx, 1);
   const saveIdx = args.indexOf('--save');
@@ -47,91 +46,82 @@ async function main(argv) {
     // 🔹 PAIR MODE
     } else if (cmd === 'pair') {
       parsed = await runPair(args, { json: true });
-
       const result2 = await analyzeConnections(parsed);
       parsed._results = result2;
 
-      const fireS = fireScore(result2);
-      const peaceScoreS = peaceScore(result2);
-      const growthScoreS = growthScore(result2);
-      const stabilityS = stability(result2);
-      const areMeditativeS = areMeditative(result2);
-      const diversityS = diversity(result2);
-
       parsed.score = {
-        fireScore: fireS,
-        peaceScore: peaceScoreS,
-        growthScore: growthScoreS,
-        diversityS: diversityS,
-        stability: stabilityS,
-        areMeditative: areMeditativeS
+        fireScore: fireScore(result2),
+        peaceScore: peaceScore(result2),
+        growthScore: growthScore(result2),
+        diversityS: diversity(result2),
+        stability: stability(result2),
+        areMeditative: areMeditative(result2)
       };
 
       console.log(parsed.score);
 
-    // 🔹 PAIR-TIME MODE (same CLI call form, iterate 365 days)
+    // 🔹 PAIR-TIME MODE — Iterate across 7 years
     } else if (cmd === 'pair-time') {
       const [command, date1, lat1, lon1, date2Initial, lat2, lon2] = args;
-  
-      // Extract year & time from second datetime
+
       const yearMatch = date2Initial.match(/^(\d{4})-/);
       const timeMatch = date2Initial.match(/T(\d{2}:\d{2})/);
-      console.log(args);
-      console.log(timeMatch);
       if (!yearMatch) {
         console.log(JSON.stringify({ error: 'Second datetime must include a year (e.g., 1993-04-25T13:10)' }));
         return 1;
       }
-      const year = parseInt(yearMatch[1]);
-      const baseTime = timeMatch ? timeMatch[1] : '12:00';
 
-      // Leap-year check
-      const isLeap = new Date(year, 1, 29).getDate() === 29;
-      const totalDays = isLeap ? 366 : 365;
+      const baseYear = parseInt(yearMatch[1]);
+      const baseTime = timeMatch ? timeMatch[1] : '12:00';
+      const numYears = 12;
 
       const results = [];
-      console.log(`🌀 Running yearly pair-time analysis for ${year} (${totalDays} days)...`);
+      console.log(`🌀 Running multi-year pair-time analysis for ${numYears} years starting from ${baseYear}...`);
 
-      for (let day = 1; day <= totalDays; day++) {
-        const d = new Date(Date.UTC(year, 0, day));
-        const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-        const dayStr = String(d.getUTCDate()).padStart(2, '0');
-        const date2 = `${year}-${month}-${dayStr}T${baseTime}`;
+      for (let y = 0; y < numYears; y++) {
+        const year = baseYear + y;
+        const isLeap = new Date(year, 1, 29).getDate() === 29;
+        const totalDays = isLeap ? 366 : 365;
 
-        console.log(`🔸 Processing day ${day}/${totalDays}: ${date1}  :  ${date2} ...`);
-        // 🔸 use the same exact runPair form as before
-        args[4]=date2;
-        args[0]='pair';
-        console.log(args);
-        const parsedPair = await runPair(args, { json: true });
-         const result2 = await analyzeConnections(parsedPair);
- 
-        const fireS = fireScore(result2);
-        const peaceS = peaceScore(result2);
-        const growthS = growthScore(result2);
-        const stabilityS = stability(result2);
-        const meditateS = areMeditative(result2);
-        const diversityS = diversity(result2);
+        for (let day = 1; day <= totalDays; day++) {
+          const d = new Date(Date.UTC(year, 0, day));
+          const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+          const dayStr = String(d.getUTCDate()).padStart(2, '0');
+          const date2 = `${year}-${month}-${dayStr}T${baseTime}`;
+          console.log(`Processing date: ${date2} ...`);
+          args[4] = date2;
+          args[0] = 'pair';
 
-        results.push({
-          date: date2,
-          score: {
-            fire: fireS,
-            peace: peaceS,
-            growth: growthS,
-            stability: stabilityS,
-            meditate: meditateS,
-            diversity: diversityS,
-          },
-        });
+          const parsedPair = await runPair(args, { json: true });
+          const result2 = await analyzeConnections(parsedPair);
 
-        if (day % 30 === 0 || day === totalDays) {
-          console.log(`  ...processed ${day}/${totalDays} days`);
+          const fireS = fireScore(result2);
+          const peaceS = peaceScore(result2);
+          const growthS = growthScore(result2);
+          const stabilityS = stability(result2);
+          const meditateS = areMeditative(result2);
+          const diversityS = diversity(result2);
+
+          results.push({
+            date: date2,
+            score: {
+              fire: fireS,
+              peace: peaceS,
+              growth: growthS,
+              stability: stabilityS,
+              meditate: meditateS,
+              diversity: diversityS,
+            },
+          });
+
+          if (day % 50 === 0 || (day === totalDays && y === numYears - 1)) {
+            console.log(`  ...processed ${day}/${totalDays} days of ${year}`);
+          }
         }
       }
 
       const summary = {
-        _meta: { year, totalDays: results.length },
+        _meta: { baseYear, numYears, totalEntries: results.length },
         person1: { date: date1, lat: lat1, lon: lon1 },
         person2: { base: date2Initial, lat: lat2, lon: lon2 },
         scores: results,
@@ -157,11 +147,9 @@ async function main(argv) {
       return 1;
     }
 
-    // 🕒 calculate elapsed time
     const end = process.hrtime.bigint();
     const elapsedSec = Number(end - start) / 1e9;
     if (parsed) parsed._meta = { elapsed_seconds: +elapsedSec.toFixed(3) };
-
     return 0;
 
   } catch (ex) {
@@ -175,10 +163,6 @@ async function main(argv) {
     console.log(JSON.stringify(payload));
     return 1;
   }
-}
-
-function usage() {
-  console.log('Usage: hdkit single <datetime> <lat> <lon> [--json]');
 }
 
 if (require.main === module) {

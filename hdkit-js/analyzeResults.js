@@ -23,6 +23,7 @@ function findBestMeditativeScores(data, topN = 10) {
     .filter(entry => entry.score.stability >= 6 && entry.score.stability <= 8)
     .map(entry => {
       const avgFirePeace = (entry.score.fire + entry.score.peace) / 2;
+      const difference = Math.abs(entry.score.fire - entry.score.peace);
       return {
         date: entry.date,
         fire: entry.score.fire,
@@ -31,14 +32,15 @@ function findBestMeditativeScores(data, topN = 10) {
         stability: entry.score.stability,
         diversity: entry.score.diversity,
         meditate: entry.score.meditate,
-        avgFirePeace
+        avgFirePeace,
+        difference
       };
     });
 
   // Sort descending by avgFirePeace
   filtered.sort((a, b) => b.avgFirePeace - a.avgFirePeace);
+  //filtered.sort((a, b) => b.fire - a.fire);
 
-  // Return top N
   return filtered.slice(0, topN);
 }
 
@@ -56,12 +58,32 @@ function main() {
   const data = loadJSON(filePath);
   const bestScores = findBestMeditativeScores(data, topN);
 
-  console.log(`\n🧘‍♂️ Top ${bestScores.length} meditative days with stability 6-8 and highest (fire+peace)/2:\n`);
+  // --- Prepare output ---
+  let output = `🧘‍♂️ Top ${bestScores.length} meditative days (stability 6–8, highest (fire+peace)/2):\n\n`;
   bestScores.forEach((entry, i) => {
-    console.log(
-      `${String(i + 1).padStart(2, '0')}. ${entry.date} | fire=${entry.fire} | peace=${entry.peace} | stability=${entry.stability} | avgFirePeace=${entry.avgFirePeace.toFixed(2)}`
-    );
+    output +=
+      `${String(i + 1).padStart(2, '0')}. ${entry.date}` +
+      ` | meditate=${entry.meditate}` +
+      ` | fire=${entry.fire}` +
+      ` | peace=${entry.peace}` +
+      ` | stability=${entry.stability}` +
+      ` | growth=${Number(entry.growth).toFixed(2)}` +
+      ` | avgFirePeace=${entry.avgFirePeace.toFixed(2)}\n`;
   });
+
+  console.log('\n' + output);
+
+  // --- Save to results/ folder ---
+  const resultsDir = path.join(__dirname, 'results');
+  if (!fs.existsSync(resultsDir)) {
+    fs.mkdirSync(resultsDir, { recursive: true });
+  }
+
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const outputFile = path.join(resultsDir, `bestMeditative_${timestamp}.txt`);
+
+  fs.writeFileSync(outputFile, output, 'utf8');
+  console.log(`✅ Results saved to: ${outputFile}\n`);
 }
 
 main();
