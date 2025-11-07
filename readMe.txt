@@ -76,4 +76,7 @@ node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/
 node /home/buddha/Documents/HDKIT/hdkit-js/hdkit.js pair-time "1993-04-24T12:30" 46.1400 14.2200 "1988-04-25T14:10" 46.6581 16.1610 --save --pretty
 
 
-node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/22025-11-07T00-26-11-643Z-pair-time.json --top 1000
+node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/2025-11-07T00-26-11-643Z-pair-time.json --top 1000
+
+USE MEDITATE FALSE do not use meditate filter:
+node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/2025-11-07T00-26-11-643Z-pair-time.json --top 1000 --meditate false
