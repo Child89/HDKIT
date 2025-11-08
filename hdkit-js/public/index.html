@@ -10,7 +10,7 @@
   label { display: block; margin-top: 10px; }
   input { padding: 6px; width: 220px; }
   button { margin-top: 20px; padding: 10px 20px; font-size: 15px; cursor: pointer; }
-  table { border-collapse: collapse; width: 100%; font-size: 14px; background: white; margin-top: 40px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; background: white; margin-top: 20px; }
   th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
   th { background: #f2f2f2; position: sticky; top: 0; }
   th button.sort-btn { background: none; border: none; cursor: pointer; margin-left: 5px; font-size: 12px; }
@@ -18,7 +18,6 @@
   tr:hover { background: #f5faff; }
   #output { white-space: pre; background: #f9f9f9; padding: 10px; border-radius: 6px; margin-top: 20px; }
 
-  /* Scroll chart styles */
   .chart-container { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
   .chart-row { display: flex; align-items: center; gap: 10px; position: relative; }
   .bar { position: relative; flex: 1; height: 8px; background: #ddd; border-radius: 4px; overflow: hidden; }
@@ -41,46 +40,37 @@
   .fill.meditate { background: #6699ff; }
   .fill.avg { background: #6633cc; }
 
-  /* Red stability guide lines */
   .stab-line { position: absolute; top: -3px; width: 2px; height: 14px; background: red; opacity: 0.5; }
-
-  /* Tooltip styling */
-  .tooltip {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.8);
-    color: #fff;
-    font-size: 12px;
-    padding: 6px 8px;
-    border-radius: 4px;
-    display: none;
-    white-space: nowrap;
-  }
+  .tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; padding: 6px 8px; border-radius: 4px; display: none; white-space: nowrap; }
   .bar:hover .tooltip { display: block; }
 </style>
 </head>
 <body>
 
-<h1>HDKit Pair-Time Data Table</h1>
+<h1>HDKit Made by A.O.</h1>
 
+<!-- Form for HDKit Pair -->
 <form id="calcForm">
-  <label>DateTime 1: <input type="datetime-local" name="dt1" required></label>
-  <label>Latitude 1: <input type="number" name="lat1" step="any" required></label>
-  <label>Longitude 1: <input type="number" name="lon1" step="any" required></label>
+  <label>DateTime 1: <input type="datetime-local" name="dt1" value="1993-04-24T12:30" required></label>
+  <label>Latitude 1: <input type="number" name="lat1" step="any" value="46.1400" required></label>
+  <label>Longitude 1: <input type="number" name="lon1" step="any" value="14.2200" required></label>
 
-  <label>DateTime 2: <input type="datetime-local" name="dt2" required></label>
-  <label>Latitude 2: <input type="number" name="lat2" step="any" required></label>
-  <label>Longitude 2: <input type="number" name="lon2" step="any" required></label>
+  <label>DateTime 2: <input type="datetime-local" name="dt2" value="1993-07-04T12:30" required></label>
+  <label>Latitude 2: <input type="number" name="lat2" step="any" value="46.1400" required></label>
+  <label>Longitude 2: <input type="number" name="lon2" step="any" value="14.2200" required></label>
 
   <button type="submit">Run HDKit Pair</button>
 </form>
 
+<!-- History Toggle -->
+<div>
+  <label>History Mode: </label>
+  <button id="historyToggle">M</button>
+</div>
+
 <div id="loading" style="display:none;">⏳ Running hdkit pair...</div>
 <pre id="output"></pre>
 
-<!-- scroll charts here -->
 <div class="chart-container" id="scrollCharts"></div>
 
 <table id="dataTable">
@@ -105,11 +95,20 @@ let baseData = [];
 let liveItem = null;
 let currentSort = { field: "avgFirePeaceScore", desc: true };
 let ranges = {};
+let historyMode = "M"; // default
 
 const tableBody = document.querySelector("#dataTable tbody");
 const output = document.getElementById("output");
 const loading = document.getElementById("loading");
 const chartBox = document.getElementById("scrollCharts");
+const historyToggle = document.getElementById("historyToggle");
+
+// History toggle logic
+historyToggle.addEventListener("click", () => {
+  historyMode = historyMode === "M" ? "A" : "M";
+  historyToggle.textContent = historyMode;
+  loadBaseData();
+});
 
 function computeRanges() {
   const fields = ["fire", "peace", "growth", "stability", "diversity", "avgFirePeaceScore"];
@@ -127,23 +126,31 @@ function norm(value, field) {
 }
 
 async function loadBaseData() {
-  const res = await fetch("/2025-11-07T07-24-28-986Z-pair-time.json");
-  const json = await res.json();
-  baseData = json.scores.map(entry => {
-    const s = entry.score;
-    return {
-      date: entry.date,
-      fire: s.fire,
-      peace: s.peace,
-      growth: s.growth,
-      stability: s.stability,
-      diversity: s.diversity,
-      meditate: s.meditate,
-      avgFirePeaceScore: (s.fire + s.peace) * 0.5
-    };
-  });
-  computeRanges();
-  sortAndRender();
+  const jsonFile = historyMode === "M"
+    ? "/2025-11-07T07-24-28-986Z-pair-time.json"
+    : "/2025-11-07T07-30-46-963Z-pair-time.json";
+
+  try {
+    const res = await fetch(jsonFile);
+    const json = await res.json();
+    baseData = json.scores.map(entry => {
+      const s = entry.score;
+      return {
+        date: entry.date,
+        fire: s.fire,
+        peace: s.peace,
+        growth: s.growth,
+        stability: s.stability,
+        diversity: s.diversity,
+        meditate: s.meditate,
+        avgFirePeaceScore: (s.fire + s.peace) * 0.5
+      };
+    });
+    computeRanges();
+    sortAndRender();
+  } catch (err) {
+    console.error("Failed to load history JSON:", err);
+  }
 }
 
 function sortAndRender() {
@@ -273,7 +280,7 @@ document.getElementById("calcForm").addEventListener("submit", async (e) => {
   try {
     const res = await fetch("/run", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-api-key": "my-secret-key" },
       body: JSON.stringify(obj)
     });
     const hdData = await res.json();
@@ -300,6 +307,7 @@ document.getElementById("calcForm").addEventListener("submit", async (e) => {
   }
 });
 
+// Load default history JSON on page load
 loadBaseData();
 </script>
 </body>

@@ -84,3 +84,9 @@ node /home/buddha/Documents/HDKIT/hdkit-js/analyzeResults.js ./hdkit-js/results/
 node bestMeditative.js pair-time.json	Default (meditate only, sort by avgFirePeace)	pair-time_meditativeOnly_avgFirePeace_2025-11-07_21-12.txt
 node bestMeditative.js pair-time.json --sort fire	Sorts by fire descending	pair-time_meditativeOnly_fire_2025-11-07_21-12.txt
 node bestMeditative.js pair-time.json --sort peace --meditate false	Sorts by peace, includes all entries	pair-time_all_peace_2025-11-07_21-12.txt
+
+#if you want to run server:
+"node server.js"
+and in seprate terminal run 
+"ngrok http 3000"
+to open it for outside use :: server is on : https://brinish-samara-supersquamosal.ngrok-free.dev/
