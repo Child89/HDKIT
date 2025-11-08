@@ -10,13 +10,55 @@
   label { display: block; margin-top: 10px; }
   input { padding: 6px; width: 220px; }
   button { margin-top: 20px; padding: 10px 20px; font-size: 15px; cursor: pointer; }
-  table { border-collapse: collapse; width: 100%; font-size: 14px; background: white; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; background: white; margin-top: 40px; }
   th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
   th { background: #f2f2f2; position: sticky; top: 0; }
   th button.sort-btn { background: none; border: none; cursor: pointer; margin-left: 5px; font-size: 12px; }
   tr.highlight { background: #b9e0ff !important; transition: background 1s ease; }
   tr:hover { background: #f5faff; }
   #output { white-space: pre; background: #f9f9f9; padding: 10px; border-radius: 6px; margin-top: 20px; }
+
+  /* Scroll chart styles */
+  .chart-container { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  .chart-row { display: flex; align-items: center; gap: 10px; position: relative; }
+  .bar { position: relative; flex: 1; height: 8px; background: #ddd; border-radius: 4px; overflow: hidden; }
+  .fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; opacity: 0.6; }
+  .mid-line { position: absolute; left: 50%; top: -3px; width: 2px; height: 14px; background: #000; opacity: 0.3; }
+  .dot { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; }
+  .dot.fire { background: #ffd633; }
+  .dot.peace { background: #66cc66; }
+  .dot.growth { background: #999; }
+  .dot.diversity { background: #ff4d4d; }
+  .dot.stability { background: #cc9966; }
+  .dot.meditate { background: #6699ff; }
+  .dot.avg { background: #6633cc; }
+
+  .fill.fire { background: #ffd633; }
+  .fill.peace { background: #66cc66; }
+  .fill.growth { background: #999; }
+  .fill.diversity { background: #ff4d4d; }
+  .fill.stability { background: #cc9966; }
+  .fill.meditate { background: #6699ff; }
+  .fill.avg { background: #6633cc; }
+
+  /* Red stability guide lines */
+  .stab-line { position: absolute; top: -3px; width: 2px; height: 14px; background: red; opacity: 0.5; }
+
+  /* Tooltip styling */
+  .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    display: none;
+    white-space: nowrap;
+  }
+  .bar:hover .tooltip { display: block; }
 </style>
 </head>
 <body>
@@ -38,6 +80,9 @@
 <div id="loading" style="display:none;">⏳ Running hdkit pair...</div>
 <pre id="output"></pre>
 
+<!-- scroll charts here -->
+<div class="chart-container" id="scrollCharts"></div>
+
 <table id="dataTable">
   <thead>
     <tr>
@@ -57,17 +102,33 @@
 
 <script>
 let baseData = [];
-let liveItem = null; // stores current HDKit "Live" result
+let liveItem = null;
 let currentSort = { field: "avgFirePeaceScore", desc: true };
+let ranges = {};
+
 const tableBody = document.querySelector("#dataTable tbody");
 const output = document.getElementById("output");
 const loading = document.getElementById("loading");
+const chartBox = document.getElementById("scrollCharts");
 
-// Load dataset
+function computeRanges() {
+  const fields = ["fire", "peace", "growth", "stability", "diversity", "avgFirePeaceScore"];
+  ranges = {};
+  for (const field of fields) {
+    const vals = baseData.map(d => d[field]);
+    ranges[field] = { min: Math.min(...vals), max: Math.max(...vals) };
+  }
+}
+
+function norm(value, field) {
+  const { min, max } = ranges[field];
+  if (max === min) return 0.5;
+  return (value - min) / (max - min);
+}
+
 async function loadBaseData() {
   const res = await fetch("/2025-11-07T07-24-28-986Z-pair-time.json");
   const json = await res.json();
-
   baseData = json.scores.map(entry => {
     const s = entry.score;
     return {
@@ -81,30 +142,24 @@ async function loadBaseData() {
       avgFirePeaceScore: (s.fire + s.peace) * 0.5
     };
   });
-
+  computeRanges();
   sortAndRender();
 }
 
-// Sort + render (always includes live item if present)
 function sortAndRender() {
   const { field, desc } = currentSort;
   let combined = [...baseData];
   if (liveItem) {
-    // Remove old "Live" if exists in combined before reinserting
     combined = combined.filter(item => item.date !== "Live");
     combined.push(liveItem);
   }
-
   const sorted = combined.sort((a, b) => {
     let av = a[field], bv = b[field];
     if (typeof av === "boolean") { av = av ? 1 : 0; bv = bv ? 1 : 0; }
     return desc ? bv - av : av - bv;
   });
-
   const highlightIndex = liveItem ? sorted.findIndex(d => d.date === "Live") : null;
   renderTable(sorted, highlightIndex);
-
-  // Scroll to highlight if exists
   if (highlightIndex !== null) {
     setTimeout(() => {
       const row = tableBody.querySelector(".highlight");
@@ -113,7 +168,6 @@ function sortAndRender() {
   }
 }
 
-// Render table
 function renderTable(data, highlightIndex = null) {
   tableBody.innerHTML = "";
   data.forEach((d, i) => {
@@ -134,17 +188,81 @@ function renderTable(data, highlightIndex = null) {
   });
 }
 
-// Sorting buttons with Live item reposition logic
+function drawScrollCharts() {
+  chartBox.innerHTML = "";
+  if (!liveItem) return;
+
+  const fields = [
+    { key: "fire", color: "fire", label: "Fire" },
+    { key: "peace", color: "peace", label: "Peace" },
+    { key: "growth", color: "growth", label: "Growth" },
+    { key: "stability", color: "stability", label: "Stability" },
+    { key: "diversity", color: "diversity", label: "Diversity" },
+    { key: "avgFirePeaceScore", color: "avg", label: "Avg(Fire,Peace)" },
+    { key: "meditate", color: "meditate", label: "Meditate" }
+  ];
+
+  fields.forEach(f => {
+    const row = document.createElement("div");
+    row.className = "chart-row";
+    const label = document.createElement("span");
+    label.textContent = f.label;
+    const bar = document.createElement("div");
+    bar.className = "bar";
+
+    const val = f.key === "meditate"
+      ? (liveItem.meditate ? 1 : 0)
+      : norm(liveItem[f.key], f.key);
+
+    const fill = document.createElement("div");
+    fill.className = `fill ${f.color}`;
+    fill.style.width = (val * 100) + "%";
+    bar.appendChild(fill);
+
+    if (f.key !== "meditate") {
+      const mid = document.createElement("div");
+      mid.className = "mid-line";
+      bar.appendChild(mid);
+    }
+
+    if (f.key === "stability") {
+      const { min, max } = ranges.stability;
+      const n6 = ((6 - min) / (max - min)) * 100;
+      const n8 = ((8 - min) / (max - min)) * 100;
+      const l6 = document.createElement("div");
+      l6.className = "stab-line";
+      l6.style.left = `${n6}%`;
+      bar.appendChild(l6);
+      const l8 = document.createElement("div");
+      l8.className = "stab-line";
+      l8.style.left = `${n8}%`;
+      bar.appendChild(l8);
+      const tooltip = document.createElement("div");
+      tooltip.className = "tooltip";
+      tooltip.textContent = "Between 6–8: stable relationship. 9 = too solid, under 6 = too loose.";
+      bar.appendChild(tooltip);
+    }
+
+    const dot = document.createElement("div");
+    dot.className = `dot ${f.color}`;
+    dot.style.left = (val * 100) + "%";
+    bar.appendChild(dot);
+
+    row.appendChild(label);
+    row.appendChild(bar);
+    chartBox.appendChild(row);
+  });
+}
+
 document.querySelectorAll(".sort-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const field = btn.dataset.field;
-    const sameField = currentSort.field === field;
-    currentSort = { field, desc: sameField ? !currentSort.desc : true };
-    sortAndRender(); // automatically repositions the live row
+    const same = currentSort.field === field;
+    currentSort = { field, desc: same ? !currentSort.desc : true };
+    sortAndRender();
   });
 });
 
-// Handle HDKit calculation
 document.getElementById("calcForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -163,7 +281,6 @@ document.getElementById("calcForm").addEventListener("submit", async (e) => {
     output.textContent = JSON.stringify(hdData, null, 2);
     if (hdData.error) return;
 
-    // store new live item
     liveItem = {
       date: "Live",
       fire: hdData.fireScore,
@@ -175,14 +292,14 @@ document.getElementById("calcForm").addEventListener("submit", async (e) => {
       avgFirePeaceScore: (hdData.fireScore + hdData.peaceScore) * 0.5
     };
 
-    sortAndRender(); // inserts in correct place based on current sorting
+    sortAndRender();
+    drawScrollCharts();
   } catch (err) {
     loading.style.display = "none";
     output.textContent = "❌ " + err.message;
   }
 });
 
-// Initialize
 loadBaseData();
 </script>
 </body>
