@@ -73,7 +73,7 @@ async function main(argv) {
 
       const baseYear = parseInt(yearMatch[1]);
       const baseTime = timeMatch ? timeMatch[1] : '12:00';
-      const numYears = 12;
+      const numYears = 4;
 
       const results = [];
       console.log(`🌀 Running multi-year pair-time analysis for ${numYears} years starting from ${baseYear}...`);
