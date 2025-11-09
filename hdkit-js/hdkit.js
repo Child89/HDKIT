@@ -57,8 +57,8 @@ async function main(argv) {
         stability: stability(result2),
         areMeditative: areMeditative(result2)
       };
-
       console.log(parsed.score);
+      console.log(parsed._results.mergedCenters.activeCenters);
 
     // 🔹 PAIR-TIME MODE — Iterate across 7 years
     } else if (cmd === 'pair-time') {

@@ -42,10 +42,29 @@ console.log("Received parameters:", { dt1, lat1, lon1, dt2, lat2, lon2 });
     try {
       const braceStart = stdout.lastIndexOf("{");
       const braceEnd = stdout.lastIndexOf("}");
-      const raw = stdout.slice(braceStart, braceEnd + 1).trim();
-      const fixed = raw.replace(/([{,]\s*)([a-zA-Z0-9_]+)\s*:/g, '$1"$2":').replace(/'/g, '"');
-      const parsed = JSON.parse(fixed);
-      res.json(parsed);
+      const bracketStart = stdout.lastIndexOf("[");
+      const bracketEnd = stdout.lastIndexOf("]");
+
+      // Extract object part
+      const rawObj = stdout.slice(braceStart, braceEnd + 1).trim();
+      const fixedObj = rawObj
+        .replace(/([{,]\s*)([a-zA-Z0-9_]+)\s*:/g, '$1"$2":')
+        .replace(/'/g, '"');
+      const parsedObj = JSON.parse(fixedObj);
+
+      // Extract array part
+      const rawArr = stdout.slice(bracketStart, bracketEnd + 1).trim();
+      const fixedArr = rawArr.replace(/'/g, '"');
+      const parsedArr = JSON.parse(fixedArr);
+
+      // Combine into one result
+      const result = {
+        data: parsedObj,
+        centers: parsedArr
+      };
+
+      res.json(result);
+
     } catch (ex) {
       console.error("JSON parse error:", ex);
       res.status(500).json({ error: "Failed to parse hdkit output", raw: stdout });

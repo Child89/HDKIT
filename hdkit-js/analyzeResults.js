@@ -8,10 +8,10 @@ const path = require('path');
  */
 const config = {
   filter: {
-    meditate: false,   // Only include meditate == true entries
-    stabilityMin: 5,   // Minimum stability
+    meditate: true,   // Only include meditate == true entries
+    stabilityMin: 8,   // Minimum stability
     stabilityMax: 8,   // Maximum stability
-    fireMin: 2,     // Minimum fire value (null = disabled)
+    fireMin: 4,     // Minimum fire value (null = disabled)
     peaceMin: 3,    // Minimum peace value (null = disabled)
     growthMin: null    // Minimum growth (null = disabled)
   },

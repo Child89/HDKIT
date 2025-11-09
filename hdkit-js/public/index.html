@@ -43,11 +43,14 @@
   .stab-line { position: absolute; top: -3px; width: 2px; height: 14px; background: red; opacity: 0.5; }
   .tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; padding: 6px 8px; border-radius: 4px; display: none; white-space: nowrap; }
   .bar:hover .tooltip { display: block; }
+
+  .centers-box { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+  .center-item { background: #ddd; padding: 4px 10px; border-radius: 8px; font-size: 13px; }
 </style>
 </head>
 <body>
 
-<h1>HDKit Made by A.O.</h1>
+<h1>HDKit</h1>
 
 <!-- Form for HDKit Pair -->
 <form id="calcForm">
@@ -72,6 +75,7 @@
 <pre id="output"></pre>
 
 <div class="chart-container" id="scrollCharts"></div>
+<div id="centersBox" class="centers-box"></div>
 
 <table id="dataTable">
   <thead>
@@ -101,6 +105,7 @@ const tableBody = document.querySelector("#dataTable tbody");
 const output = document.getElementById("output");
 const loading = document.getElementById("loading");
 const chartBox = document.getElementById("scrollCharts");
+const centersBox = document.getElementById("centersBox");
 const historyToggle = document.getElementById("historyToggle");
 
 // History toggle logic
@@ -261,6 +266,18 @@ function drawScrollCharts() {
   });
 }
 
+// ✅ Draw active centers
+function drawCenters(centers) {
+  centersBox.innerHTML = "";
+  if (!centers || centers.length === 0) return;
+  centers.forEach(c => {
+    const item = document.createElement("div");
+    item.className = "center-item";
+    item.textContent = c;
+    centersBox.appendChild(item);
+  });
+}
+
 document.querySelectorAll(".sort-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const field = btn.dataset.field;
@@ -288,19 +305,23 @@ document.getElementById("calcForm").addEventListener("submit", async (e) => {
     output.textContent = JSON.stringify(hdData, null, 2);
     if (hdData.error) return;
 
+    // ✅ Handle new data structure
+    const d = hdData.data || hdData; 
     liveItem = {
       date: "Live",
-      fire: hdData.fireScore,
-      peace: hdData.peaceScore,
-      growth: hdData.growthScore,
-      stability: hdData.stability,
-      diversity: hdData.diversityS,
-      meditate: hdData.areMeditative,
-      avgFirePeaceScore: (hdData.fireScore + hdData.peaceScore) * 0.5
+      fire: d.fireScore,
+      peace: d.peaceScore,
+      growth: d.growthScore,
+      stability: d.stability,
+      diversity: d.diversityS,
+      meditate: d.areMeditative,
+      avgFirePeaceScore: (d.fireScore + d.peaceScore) * 0.5,
+      centers: hdData.centers || []
     };
 
     sortAndRender();
     drawScrollCharts();
+    drawCenters(liveItem.centers);
   } catch (err) {
     loading.style.display = "none";
     output.textContent = "❌ " + err.message;
