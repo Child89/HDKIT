@@ -396,16 +396,16 @@ document.getElementById("calcForm").addEventListener("submit", async e => {
     <div style="line-height:1.2em; font-size:14px;">
         <strong style="color:#1e40af; font-weight:700;">Person 1:</strong> ${person1.type} | Profile: ${person1.profile} | Strategy: ${person1.strategy} | Incarnation Cross: ${person1.incarnationCross}
         <div style="padding-left:8px; margin-top:2px;">Gates only Person 1 has: [${styleArray(gatesOnly1, '#1e40af')}]</div>
-        <div style="padding-left:8px; margin-top:1px;">Fire gates received from Person 2: [${styleArray(person1FireFrom2, '#1e40af')}]</div>
         <div style="padding-left:8px; margin-top:1px;">Fire gate only Person 1 has: [${styleArray(fireOnly1, '#1e40af')}]</div>
-    </div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gates combined with Person 2: [${styleArray(person1FireFrom2, '#1e40af')}]</div>
+        </div>
 
     <div style="line-height:1.2em; font-size:14px; margin-top:0px;">
         <strong style="color:#b91c1c; font-weight:700;">Person 2:</strong> ${person2.type} | Profile: ${person2.profile} | Strategy: ${person2.strategy} | Incarnation Cross: ${person2.incarnationCross}
         <div style="padding-left:8px; margin-top:2px;">Gates only Person 2 has: [${styleArray(gatesOnly2, '#b91c1c')}]</div>
-        <div style="padding-left:8px; margin-top:1px;">Fire gates received from Person 1: [${styleArray(person2FireFrom1, '#b91c1c')}]</div>
         <div style="padding-left:8px; margin-top:1px;">Fire gate only Person 2 has: [${styleArray(fireOnly2, '#b91c1c')}]</div>
-    </div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gates combined with Person 1: [${styleArray(person2FireFrom1, '#b91c1c')}]</div>
+        </div>
 
     <div style="line-height:1.2em; font-size:14px; margin-top:2px;">
         <div style="padding-left:8px; margin-top:1px;">Equal unique gates for both pairs without connection: [${styleArray(gatesEqualBoth, 'green')}]</div>
