@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>HDKit Pair-Time Data Table</title>
+<title>HDKit</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body { font-family: system-ui, sans-serif; margin: 40px; background: #fafafa; scroll-behavior: smooth; }
@@ -108,15 +108,34 @@
 <h1>HDKit</h1>
 
 <form id="calcForm">
-  <label>DateTime 1: <input type="datetime-local" name="dt1" value="1993-04-24T12:30" required></label>
-  <label>Latitude 1: <input type="number" name="lat1" step="any" value="46.1400" required></label>
-  <label>Longitude 1: <input type="number" name="lon1" step="any" value="14.2200" required></label>
+  <!-- City 1 -->
+  <label style="font-size:14px; margin-top:8px;">
+    City 1: 
+    <input type="text" id="city1" placeholder="Enter city name" style="width:150px; padding:4px; font-size:13px;">
+    <button type="button" id="fillCoords1" style="padding:4px 8px; font-size:13px;">Fill Coordinates</button>
+  </label>
+  <label style="font-size:14px;">Latitude 1: <input type="number" name="lat1" step="any" value="46.1400" required style="width:120px; padding:4px;"></label>
+  <label style="font-size:14px;">Longitude 1: <input type="number" name="lon1" step="any" value="14.2200" required style="width:120px; padding:4px;"></label>
 
-  <label>DateTime 2: <input type="datetime-local" name="dt2" value="1993-07-04T12:30" required></label>
-  <label>Latitude 2: <input type="number" name="lat2" step="any" value="46.1400" required></label>
-  <label>Longitude 2: <input type="number" name="lon2" step="any" value="14.2200" required></label>
+  <!-- Datetime 1 -->
+  <label>DateTime 1: <input type="datetime-local" name="dt1" value="1993-04-24T12:30" required style="padding:4px;"></label>
 
-  <button type="submit">Run HDKit Pair</button>
+  <!-- Horizontal line separator -->
+  <hr style="margin:15px 0; border:1px solid #ccc;">
+
+  <!-- City 2 -->
+  <label style="font-size:14px; margin-top:8px;">
+    City 2: 
+    <input type="text" id="city2" placeholder="Enter city name" style="width:150px; padding:4px; font-size:13px;">
+    <button type="button" id="fillCoords2" style="padding:4px 8px; font-size:13px;">Fill Coordinates</button>
+  </label>
+  <label style="font-size:14px;">Latitude 2: <input type="number" name="lat2" step="any" value="46.1400" required style="width:120px; padding:4px;"></label>
+  <label style="font-size:14px;">Longitude 2: <input type="number" name="lon2" step="any" value="14.2200" required style="width:120px; padding:4px;"></label>
+
+  <!-- Datetime 2 -->
+  <label>DateTime 2: <input type="datetime-local" name="dt2" value="1993-07-04T12:30" required style="padding:4px;"></label>
+
+  <button type="submit" style="margin-top:12px; padding:8px 16px; font-size:14px;">Run HDKit Pair</button>
   <button type="button" id="jumpBtn" style="display:none;">Jump to Pair</button>
 </form>
 
@@ -313,8 +332,46 @@ function drawCenters(activeCenters) {
   });
 }
 
+async function getCoordsFromCity(city) {
+  if (!city) return null;
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data && data.length > 0) {
+      return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+    } else {
+      alert("City not found!");
+    }
+  } catch (err) {
+    console.error("Geocoding error:", err);
+    alert("Error fetching coordinates");
+  }
+  return null;
+}
+
+document.getElementById("fillCoords1").addEventListener("click", async () => {
+  const city = document.getElementById("city1").value.trim();
+  const coords = await getCoordsFromCity(city);
+  if (coords) {
+    document.querySelector('input[name="lat1"]').value = coords.lat;
+    document.querySelector('input[name="lon1"]').value = coords.lon;
+  }
+});
+
+document.getElementById("fillCoords2").addEventListener("click", async () => {
+  const city = document.getElementById("city2").value.trim();
+  const coords = await getCoordsFromCity(city);
+  if (coords) {
+    document.querySelector('input[name="lat2"]').value = coords.lat;
+    document.querySelector('input[name="lon2"]').value = coords.lon;
+  }
+});
+
+
 document.getElementById("calcForm").addEventListener("submit", async e => {
   e.preventDefault();
+  
   const formData = new FormData(e.target);
   const obj = Object.fromEntries(formData.entries());
   loading.style.display = "block";
