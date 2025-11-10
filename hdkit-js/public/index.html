@@ -5,7 +5,7 @@
 <title>HDKit Pair-Time Data Table</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  body { font-family: system-ui, sans-serif; margin: 40px; background: #fafafa; }
+  body { font-family: system-ui, sans-serif; margin: 40px; background: #fafafa; scroll-behavior: smooth; }
   form { margin-bottom: 30px; }
   label { display: block; margin-top: 10px; }
   input { padding: 6px; width: 220px; }
@@ -22,37 +22,91 @@
   .chart-row { display: flex; align-items: center; gap: 10px; position: relative; }
   .bar { position: relative; flex: 1; height: 8px; background: #ddd; border-radius: 4px; overflow: hidden; }
   .fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; opacity: 0.6; }
-  .mid-line { position: absolute; left: 50%; top: -3px; width: 2px; height: 14px; background: #000; opacity: 0.3; }
   .dot { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; }
-  .dot.fire { background: #ffd633; }
-  .dot.peace { background: #66cc66; }
-  .dot.growth { background: #999; }
-  .dot.diversity { background: #ff4d4d; }
-  .dot.stability { background: #cc9966; }
-  .dot.meditate { background: #6699ff; }
-  .dot.avg { background: #6633cc; }
 
-  .fill.fire { background: #ffd633; }
-  .fill.peace { background: #66cc66; }
-  .fill.growth { background: #999; }
-  .fill.diversity { background: #ff4d4d; }
-  .fill.stability { background: #cc9966; }
-  .fill.meditate { background: #6699ff; }
-  .fill.avg { background: #6633cc; }
+  /* Color palette */
+  .dot.fire, .fill.fire { background: #ffd633; }
+  .dot.peace, .fill.peace { background: #66cc66; }
+  .dot.growth, .fill.growth { background: #999; }
+  .dot.stability, .fill.stability { background: #cc9966; }
+  .dot.diversity, .fill.diversity { background: #ff4d4d; }
+  .dot.meditate, .fill.meditate { background: #6699ff; }
+  .dot.avg, .fill.avg { background: #6633cc; }
 
-  .stab-line { position: absolute; top: -3px; width: 2px; height: 14px; background: red; opacity: 0.5; }
-  .tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; padding: 6px 8px; border-radius: 4px; display: none; white-space: nowrap; }
-  .bar:hover .tooltip { display: block; }
+  .tooltip { 
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: none;
+    white-space: nowrap;
+    z-index: 10;
+  }
 
-  .centers-box { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
-  .center-item { background: #ddd; padding: 4px 10px; border-radius: 8px; font-size: 13px; }
+  /* Centers grid */
+  .centers-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 25px;
+  }
+  .center-item {
+    position: relative;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .center-item:hover { transform: scale(1.05); }
+
+  /* Buttons */
+  #jumpBtn {
+    margin-left: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+  }
+  #jumpBtn:hover { background: #0056b3; }
+
+  .chart-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.bar .marker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 14px;
+  background: red;
+  z-index: 2;
+}
+
 </style>
 </head>
 <body>
 
 <h1>HDKit</h1>
 
-<!-- Form for HDKit Pair -->
 <form id="calcForm">
   <label>DateTime 1: <input type="datetime-local" name="dt1" value="1993-04-24T12:30" required></label>
   <label>Latitude 1: <input type="number" name="lat1" step="any" value="46.1400" required></label>
@@ -63,9 +117,9 @@
   <label>Longitude 2: <input type="number" name="lon2" step="any" value="14.2200" required></label>
 
   <button type="submit">Run HDKit Pair</button>
+  <button type="button" id="jumpBtn" style="display:none;">Jump to Pair</button>
 </form>
 
-<!-- History Toggle -->
 <div>
   <label>History Mode: </label>
   <button id="historyToggle">M</button>
@@ -75,6 +129,9 @@
 <pre id="output"></pre>
 
 <div class="chart-container" id="scrollCharts"></div>
+
+<h2>Centers Overview</h2>
+<p style="font-size:14px;color:#444;margin-top:-10px;">Blue = Defined centers, Transparent = Undefined centers</p>
 <div id="centersBox" class="centers-box"></div>
 
 <table id="dataTable">
@@ -88,7 +145,7 @@
       <th>Stability <button class="sort-btn" data-field="stability">⇅</button></th>
       <th>Diversity <button class="sort-btn" data-field="diversity">⇅</button></th>
       <th>Meditate <button class="sort-btn" data-field="meditate">⇅</button></th>
-      <th>avgFirePeaceScore <button class="sort-btn" data-field="avgFirePeaceScore">⇅</button></th>
+      <th>Avg(Fire,Peace) <button class="sort-btn" data-field="avgFirePeaceScore">⇅</button></th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -97,18 +154,19 @@
 <script>
 let baseData = [];
 let liveItem = null;
+let highlightIndex = null;
 let currentSort = { field: "avgFirePeaceScore", desc: true };
 let ranges = {};
-let historyMode = "M"; // default
+let historyMode = "M";
 
 const tableBody = document.querySelector("#dataTable tbody");
 const output = document.getElementById("output");
 const loading = document.getElementById("loading");
 const chartBox = document.getElementById("scrollCharts");
 const centersBox = document.getElementById("centersBox");
+const jumpBtn = document.getElementById("jumpBtn");
 const historyToggle = document.getElementById("historyToggle");
 
-// History toggle logic
 historyToggle.addEventListener("click", () => {
   historyMode = historyMode === "M" ? "A" : "M";
   historyToggle.textContent = historyMode;
@@ -137,8 +195,9 @@ async function loadBaseData() {
 
   try {
     const res = await fetch(jsonFile);
+    if (!res.ok) throw new Error("Failed to fetch JSON file");
     const json = await res.json();
-    baseData = json.scores.map(entry => {
+    baseData = (json.scores || []).map(entry => {
       const s = entry.score;
       return {
         date: entry.date,
@@ -165,19 +224,9 @@ function sortAndRender() {
     combined = combined.filter(item => item.date !== "Live");
     combined.push(liveItem);
   }
-  const sorted = combined.sort((a, b) => {
-    let av = a[field], bv = b[field];
-    if (typeof av === "boolean") { av = av ? 1 : 0; bv = bv ? 1 : 0; }
-    return desc ? bv - av : av - bv;
-  });
-  const highlightIndex = liveItem ? sorted.findIndex(d => d.date === "Live") : null;
+  const sorted = combined.sort((a, b) => desc ? b[field] - a[field] : a[field] - b[field]);
+  highlightIndex = liveItem ? sorted.findIndex(d => d.date === "Live") : null;
   renderTable(sorted, highlightIndex);
-  if (highlightIndex !== null) {
-    setTimeout(() => {
-      const row = tableBody.querySelector(".highlight");
-      if (row) row.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100);
-  }
 }
 
 function renderTable(data, highlightIndex = null) {
@@ -200,6 +249,113 @@ function renderTable(data, highlightIndex = null) {
   });
 }
 
+// ✅ sorting buttons restored
+document.querySelectorAll(".sort-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const field = btn.dataset.field;
+    const same = currentSort.field === field;
+    currentSort = { field, desc: same ? !currentSort.desc : true };
+    sortAndRender();
+
+    // 🔽 After sorting, automatically jump to the highlighted row
+    if (highlightIndex !== null) {
+      const rows = document.querySelectorAll("#dataTable tbody tr");
+      const targetRow = rows[highlightIndex];
+      if (targetRow) {
+        targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
+        // Optional: flash animation for visibility
+        targetRow.style.transition = "background 0.6s ease";
+        targetRow.style.background = "#ffeb99";
+        setTimeout(() => (targetRow.style.background = ""), 1000);
+      }
+    }
+  });
+});
+
+function drawCenters(activeCenters) {
+  centersBox.innerHTML = "";
+
+  const allCenters = ["head","ajna","throat","g","ego","solarPlexus","spleen","sacral","root"];
+  const descriptions = {
+    head:"Inspiration and questions; the source of ideas.",
+    ajna:"Conceptualization and analysis; how you form opinions.",
+    throat:"Communication and manifestation; speaking and doing.",
+    g:"Love, direction, and sense of self.",
+    ego:"Willpower, motivation, and material drive.",
+    solarPlexus:"Emotional awareness and waves of feeling.",
+    spleen:"Intuition, instinct, and physical wellbeing.",
+    sacral:"Life force energy and sustainable work power.",
+    root:"Pressure for action, drive, and momentum."
+  };
+
+  const defined = allCenters.filter(c => activeCenters.includes(c));
+  const undefined = allCenters.filter(c => !activeCenters.includes(c));
+  const ordered = [...defined, ...undefined];
+
+  ordered.forEach(name => {
+    const isDefined = activeCenters.includes(name);
+    const div = document.createElement("div");
+    div.className = "center-item";
+    div.style.background = isDefined ? "#3b82f6" : "transparent";
+    div.style.color = isDefined ? "#fff" : "#333";
+    div.style.border = isDefined ? "none" : "2px solid #ccc";
+    div.innerHTML = `<strong>${name}</strong>`;
+
+    const tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.textContent = descriptions[name];
+    div.appendChild(tooltip);
+
+    div.addEventListener("mouseenter", () => tooltip.style.display = "block");
+    div.addEventListener("mouseleave", () => tooltip.style.display = "none");
+
+    centersBox.appendChild(div);
+  });
+}
+
+document.getElementById("calcForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const obj = Object.fromEntries(formData.entries());
+  loading.style.display = "block";
+  output.textContent = "";
+
+  try {
+    const res = await fetch("/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": "my-secret-key" },
+      body: JSON.stringify(obj)
+    });
+    const text = await res.text();
+    loading.style.display = "none";
+    if (!text) throw new Error("Empty server response");
+    const hdData = JSON.parse(text);
+    //output.textContent = JSON.stringify(hdData, null, 2);
+    output.textContent = "";
+    if (hdData.error) return;
+
+    const d = hdData.data || hdData;
+    liveItem = {
+      date: "Live",
+      fire: d.fireScore,
+      peace: d.peaceScore,
+      growth: d.growthScore,
+      stability: d.stability,
+      diversity: d.diversityS,
+      meditate: d.areMeditative,
+      avgFirePeaceScore: (d.fireScore + d.peaceScore) * 0.5
+    };
+
+    sortAndRender();
+    drawCenters(hdData.centers || []);
+    drawScrollCharts();
+    jumpBtn.style.display = "inline-block";
+  } catch (err) {
+    loading.style.display = "none";
+    output.textContent = "❌ " + err.message;
+  }
+});
+
 function drawScrollCharts() {
   chartBox.innerHTML = "";
   if (!liveItem) return;
@@ -217,8 +373,11 @@ function drawScrollCharts() {
   fields.forEach(f => {
     const row = document.createElement("div");
     row.className = "chart-row";
+
     const label = document.createElement("span");
     label.textContent = f.label;
+    label.style.width = "110px";
+
     const bar = document.createElement("div");
     bar.className = "bar";
 
@@ -231,104 +390,55 @@ function drawScrollCharts() {
     fill.style.width = (val * 100) + "%";
     bar.appendChild(fill);
 
-    if (f.key !== "meditate") {
-      const mid = document.createElement("div");
-      mid.className = "mid-line";
-      bar.appendChild(mid);
-    }
-
-    if (f.key === "stability") {
-      const { min, max } = ranges.stability;
-      const n6 = ((6 - min) / (max - min)) * 100;
-      const n8 = ((8 - min) / (max - min)) * 100;
-      const l6 = document.createElement("div");
-      l6.className = "stab-line";
-      l6.style.left = `${n6}%`;
-      bar.appendChild(l6);
-      const l8 = document.createElement("div");
-      l8.className = "stab-line";
-      l8.style.left = `${n8}%`;
-      bar.appendChild(l8);
-      const tooltip = document.createElement("div");
-      tooltip.className = "tooltip";
-      tooltip.textContent = "Between 6–8: stable relationship. 9 = too solid, under 6 = too loose.";
-      bar.appendChild(tooltip);
-    }
-
     const dot = document.createElement("div");
     dot.className = `dot ${f.color}`;
     dot.style.left = (val * 100) + "%";
     bar.appendChild(dot);
 
+    // ✅ Add red stability range markers (6 to 8)
+    if (f.key === "stability") {
+      const minMark = (6 - ranges.stability.min) / (ranges.stability.max - ranges.stability.min);
+      const maxMark = (8 - ranges.stability.min) / (ranges.stability.max - ranges.stability.min);
+      const m1 = document.createElement("div");
+      const m2 = document.createElement("div");
+      m1.className = "marker";
+      m2.className = "marker";
+      m1.style.left = (minMark * 100) + "%";
+      m2.style.left = (maxMark * 100) + "%";
+      bar.appendChild(m1);
+      bar.appendChild(m2);
+    }
+
+    // ✅ Add numeric value beside bar
+    const valueLabel = document.createElement("span");
+    let rawValue;
+    if (f.key === "meditate") {
+      rawValue = liveItem.meditate ? "Yes" : "No";
+    } else {
+      rawValue = liveItem[f.key]?.toFixed(2);
+    }
+    valueLabel.textContent = rawValue;
+    valueLabel.style.minWidth = "40px";
+    valueLabel.style.textAlign = "right";
+    valueLabel.style.fontWeight = "500";
+
     row.appendChild(label);
     row.appendChild(bar);
+    row.appendChild(valueLabel);
     chartBox.appendChild(row);
   });
 }
 
-// ✅ Draw active centers
-function drawCenters(centers) {
-  centersBox.innerHTML = "";
-  if (!centers || centers.length === 0) return;
-  centers.forEach(c => {
-    const item = document.createElement("div");
-    item.className = "center-item";
-    item.textContent = c;
-    centersBox.appendChild(item);
-  });
-}
 
-document.querySelectorAll(".sort-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const field = btn.dataset.field;
-    const same = currentSort.field === field;
-    currentSort = { field, desc: same ? !currentSort.desc : true };
-    sortAndRender();
-  });
-});
-
-document.getElementById("calcForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const obj = Object.fromEntries(formData.entries());
-  loading.style.display = "block";
-  output.textContent = "";
-
-  try {
-    const res = await fetch("/run", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": "my-secret-key" },
-      body: JSON.stringify(obj)
-    });
-    const hdData = await res.json();
-    loading.style.display = "none";
-    output.textContent = JSON.stringify(hdData, null, 2);
-    if (hdData.error) return;
-
-    // ✅ Handle new data structure
-    const d = hdData.data || hdData; 
-    liveItem = {
-      date: "Live",
-      fire: d.fireScore,
-      peace: d.peaceScore,
-      growth: d.growthScore,
-      stability: d.stability,
-      diversity: d.diversityS,
-      meditate: d.areMeditative,
-      avgFirePeaceScore: (d.fireScore + d.peaceScore) * 0.5,
-      centers: hdData.centers || []
-    };
-
-    sortAndRender();
-    drawScrollCharts();
-    drawCenters(liveItem.centers);
-  } catch (err) {
-    loading.style.display = "none";
-    output.textContent = "❌ " + err.message;
+// 🟦 Jump to highlighted (pair) row
+jumpBtn.addEventListener("click", () => {
+  if (highlightIndex !== null) {
+    const rows = document.querySelectorAll("#dataTable tbody tr");
+    const targetRow = rows[highlightIndex];
+    if (targetRow) targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 });
 
-// Load default history JSON on page load
 loadBaseData();
 </script>
 </body>
