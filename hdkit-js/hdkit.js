@@ -57,9 +57,10 @@ async function main(argv) {
         stability: stability(result2),
         areMeditative: areMeditative(result2)
       };
-      console.log(parsed.score);
-      console.log(parsed._results.mergedCenters.activeCenters);
-
+      //console.log(parsed.score);
+      //console.log(parsed._results.mergedCenters.activeCenters);
+     // console.log(parsed);
+      console.log(JSON.stringify(parsed));
     // 🔹 PAIR-TIME MODE — Iterate across 7 years
     } else if (cmd === 'pair-time') {
       const [command, date1, lat1, lon1, date2Initial, lat2, lon2] = args;

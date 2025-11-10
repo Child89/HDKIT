@@ -40,7 +40,9 @@ console.log("Received parameters:", { dt1, lat1, lon1, dt2, lat2, lon2 });
     }
 
     try {
-      const braceStart = stdout.lastIndexOf("{");
+      // console.log(parsed);
+
+    /*  const braceStart = stdout.lastIndexOf("{");
       const braceEnd = stdout.lastIndexOf("}");
       const bracketStart = stdout.lastIndexOf("[");
       const bracketEnd = stdout.lastIndexOf("]");
@@ -55,15 +57,31 @@ console.log("Received parameters:", { dt1, lat1, lon1, dt2, lat2, lon2 });
       // Extract array part
       const rawArr = stdout.slice(bracketStart, bracketEnd + 1).trim();
       const fixedArr = rawArr.replace(/'/g, '"');
-      const parsedArr = JSON.parse(fixedArr);
+      const parsedArr = JSON.parse(fixedArr);*/
 
-      // Combine into one result
-      const result = {
+      //console.log(parsed.score);
+      //console.log(parsed._results.mergedCenters.activeCenters);
+      // Combine into one result, keeping full parsed object as well
+      const parsed = JSON.parse(stdout);
+    //    console.log(parsed)
+     //const jsonStr = JSON.stringify(parsed);
+    // If you want to extract score and mergedCenters for convenience
+        const result = {
+          data: parsed.score,
+          centers: parsed._results?.mergedCenters?.activeCenters || [],
+          parsed: parsed
+        };
+
+        res.json(result);
+     /* const result = {
         data: parsedObj,
-        centers: parsedArr
-      };
+        centers: parsedArr,
+        parsed: JSON.parse(stdout)
+      };*/
 
-      res.json(result);
+ 
+
+      //res.json(result);
 
     } catch (ex) {
       console.error("JSON parse error:", ex);

@@ -330,10 +330,95 @@ document.getElementById("calcForm").addEventListener("submit", async e => {
     loading.style.display = "none";
     if (!text) throw new Error("Empty server response");
     const hdData = JSON.parse(text);
-    //output.textContent = JSON.stringify(hdData, null, 2);
-    output.textContent = "";
+    //console.log("HDKit Response:", hdData);
     if (hdData.error) return;
 
+    const person1 = hdData.parsed.person1;
+    const person2 = hdData.parsed.person2;
+    const results = hdData.parsed._results;
+
+    const gatesEqualBoth = results.uniqueEqualGates?.gates || [];
+    const person1FireFrom2 = results.uniqueFireGates1p1?.map(g => g.pair) || [];
+    const person2FireFrom1 = results.uniqueFireGates1p2?.map(g => g.pair) || [];
+    const gatesOnly1 = results.uniqueGates1p1?.gates || [];
+    const gatesOnly2 = results.uniqueGates1p2?.gates || [];
+    const fireOnly1 = results.exclusiveGates1p1?.pairs?.map(p => p.pair) || [];
+    const fireOnly2 = results.exclusiveGates1p2?.pairs?.map(p => p.pair) || [];
+
+  // REMOVE previous summaryDiv and toggleBtn if exist
+    const oldSummary = document.getElementById("summaryDiv");
+    if (oldSummary) oldSummary.remove();
+    const oldBtn = document.getElementById("toggleSummaryBtn");
+    if (oldBtn) oldBtn.remove();
+
+    // Create summary container
+    const summaryDiv = document.createElement("div");
+    summaryDiv.id = "summaryDiv";
+    summaryDiv.style.margin = "15px 0";
+    summaryDiv.style.padding = "12px";
+    summaryDiv.style.border = "1px solid #ccc";
+    summaryDiv.style.borderRadius = "10px";
+    summaryDiv.style.background = "#f9f9f9";
+    summaryDiv.style.fontFamily = "system-ui, sans-serif";
+    summaryDiv.style.lineHeight = "1.5em";
+    summaryDiv.style.whiteSpace = "pre-line";
+    summaryDiv.style.display = "none"; // start hidden
+
+    // Create toggle button
+    const toggleBtn = document.createElement("button");
+    toggleBtn.id = "toggleSummaryBtn";
+    toggleBtn.textContent = "Show Summary"; // initial text
+    toggleBtn.style.marginBottom = "8px";
+    toggleBtn.style.padding = "6px 12px";
+    toggleBtn.style.cursor = "pointer";
+    toggleBtn.style.borderRadius = "5px";
+    toggleBtn.style.border = "1px solid #666";
+    toggleBtn.style.background = "#eee";
+
+    // Toggle functionality
+    toggleBtn.addEventListener("click", () => {
+    if (summaryDiv.style.display === "none") {
+        summaryDiv.style.display = "block";
+        toggleBtn.textContent = "Hide Summary";
+    } else {
+        summaryDiv.style.display = "none";
+        toggleBtn.textContent = "Show Summary";
+    }
+    });
+
+    // Helper to style array content without bullet dots
+    const styleArray = (arr, color) => arr.length
+    ? arr.map(v => `<span style="color:${color};">${v}</span>`).join(", ")
+    : "—";
+
+    // Build HTML content
+    summaryDiv.innerHTML = `
+    <div style="line-height:1.2em; font-size:14px;">
+        <strong style="color:#1e40af; font-weight:700;">Person 1:</strong> ${person1.type} | Profile: ${person1.profile} | Strategy: ${person1.strategy} | Incarnation Cross: ${person1.incarnationCross}
+        <div style="padding-left:8px; margin-top:2px;">Gates only Person 1 has: [${styleArray(gatesOnly1, '#1e40af')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gates received from Person 2: [${styleArray(person1FireFrom2, '#1e40af')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gate only Person 1 has: [${styleArray(fireOnly1, '#1e40af')}]</div>
+    </div>
+
+    <div style="line-height:1.2em; font-size:14px; margin-top:0px;">
+        <strong style="color:#b91c1c; font-weight:700;">Person 2:</strong> ${person2.type} | Profile: ${person2.profile} | Strategy: ${person2.strategy} | Incarnation Cross: ${person2.incarnationCross}
+        <div style="padding-left:8px; margin-top:2px;">Gates only Person 2 has: [${styleArray(gatesOnly2, '#b91c1c')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gates received from Person 1: [${styleArray(person2FireFrom1, '#b91c1c')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gate only Person 2 has: [${styleArray(fireOnly2, '#b91c1c')}]</div>
+    </div>
+
+    <div style="line-height:1.2em; font-size:14px; margin-top:2px;">
+        <div style="padding-left:8px; margin-top:1px;">Equal unique gates for both pairs without connection: [${styleArray(gatesEqualBoth, 'green')}]</div>
+    </div>
+    `;
+
+    // Insert the toggle button and summary above the output pre block
+    output.parentNode.insertBefore(toggleBtn, output);
+    output.parentNode.insertBefore(summaryDiv, output);
+
+
+
+    // Keep all other functionality intact
     const d = hdData.data || hdData;
     liveItem = {
       date: "Live",
@@ -350,11 +435,13 @@ document.getElementById("calcForm").addEventListener("submit", async e => {
     drawCenters(hdData.centers || []);
     drawScrollCharts();
     jumpBtn.style.display = "inline-block";
+    
   } catch (err) {
     loading.style.display = "none";
     output.textContent = "❌ " + err.message;
   }
 });
+
 
 function drawScrollCharts() {
   chartBox.innerHTML = "";
