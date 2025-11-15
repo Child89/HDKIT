@@ -48,10 +48,22 @@ async function main(argv) {
       parsed = await runPair(args, { json: true });
       const result2 = await analyzeConnections(parsed);
       parsed._results = result2;
+      let gates1, gates2 = []
+      try 
+      {
+        const { person1, person2 } = parsed;
+        gates1 = person1.allActiveGates.map(g => g.gate);
+        gates2 = person2.allActiveGates.map(g => g.gate);
+      } 
+      catch (error) 
+      {
+        console.error("Error extracting pair data for equal gates:", error);
+      }
+
 
       parsed.score = {
         fireScore: fireScore(result2),
-        peaceScore: peaceScore(result2),
+        peaceScore: peaceScore(result2, gates1, gates2),
         growthScore: growthScore(result2),
         diversityS: diversity(result2),
         stability: stability(result2),
@@ -74,7 +86,7 @@ async function main(argv) {
 
       const baseYear = parseInt(yearMatch[1]);
       const baseTime = timeMatch ? timeMatch[1] : '12:00';
-      const numYears = 4;
+      const numYears = 10;
 
       const results = [];
       console.log(`🌀 Running multi-year pair-time analysis for ${numYears} years starting from ${baseYear}...`);
@@ -93,11 +105,23 @@ async function main(argv) {
           args[4] = date2;
           args[0] = 'pair';
 
+
           const parsedPair = await runPair(args, { json: true });
+          let gates1, gates2 = []
+          try 
+          {
+            const { person1, person2 } = parsedPair;
+            gates1 = person1.allActiveGates.map(g => g.gate);
+            gates2 = person2.allActiveGates.map(g => g.gate);
+          } 
+          catch (error) 
+          {
+            console.error("Error extracting pair data for equal gates:", error);
+          }
           const result2 = await analyzeConnections(parsedPair);
 
           const fireS = fireScore(result2);
-          const peaceS = peaceScore(result2);
+          const peaceS = peaceScore(result2, gates1, gates2);
           const growthS = growthScore(result2);
           const stabilityS = stability(result2);
           const meditateS = areMeditative(result2);

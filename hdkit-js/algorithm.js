@@ -272,7 +272,7 @@ function fireScore(params)
     return (P_HE + P_SHE) * 0.5; //total avg number of fire gates
 }
 
-function peaceScore(params) 
+function peaceScore2(params) 
 {
   let P_HE = params.uniqueFireGates1p1.length + params.uniqueEqualGates.count 
             + params.person2_PeaceOn1.count
@@ -280,6 +280,20 @@ function peaceScore(params)
   let P_SHE = params.uniqueFireGates1p2.length + params.uniqueEqualGates.count
   + params.person1_PeaceOn2.count
   - params.exclusiveGates1p1.count - params.uniqueGates1p1.count;
+  return (P_HE + P_SHE) * 0.5; //total avg number of fire gates
+}
+
+function peaceScore(params, gates1, gates2) 
+{
+  const  equal_gates = getEqualGates(gates1, gates2);
+
+  let P_HE = params.uniqueFireGates1p1.length + equal_gates.length /*equal gates are eqaul in both ends and infludnces as apeace maker */
+    - params.exclusiveGates1p2.count/*only person 1 has fire both ends are filed*/ 
+    - params.uniqueGates1p2.count /*only person 1 has and seconds does and second end is not filled */;
+
+ let P_SHE = params.uniqueFireGates1p2.length + equal_gates.length /*equal gates are eqaul in both ends and infludnces as apeace maker */
+    - params.exclusiveGates1p1.count/*only person 1 has fire both ends are filed*/ 
+    - params.uniqueGates1p1.count /*only person 1 has and seconds does and second end is not filled */;
   return (P_HE + P_SHE) * 0.5; //total avg number of fire gates
 }
 
@@ -364,5 +378,5 @@ async function analyzePair(pairData)
 }
 
 module.exports = { analyzePair, analyzeConnections, 
-    fireScore, peaceScore, growthScore, stability, areMeditative,diversity
+    fireScore, peaceScore, growthScore, stability, areMeditative,diversity, getEqualGates
 };
