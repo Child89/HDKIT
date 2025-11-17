@@ -187,10 +187,14 @@ const jumpBtn = document.getElementById("jumpBtn");
 const historyToggle = document.getElementById("historyToggle");
 
 historyToggle.addEventListener("click", () => {
-  historyMode = historyMode === "M" ? "A" : "M";
+  if (historyMode === "M") historyMode = "A";
+  else if (historyMode === "A") historyMode = "C";
+  else historyMode = "M"; // C → M
+  
   historyToggle.textContent = historyMode;
   loadBaseData();
 });
+
 
 function computeRanges() {
   const fields = ["fire", "peace", "growth", "stability", "diversity", "avgFirePeaceScore"];
@@ -208,10 +212,14 @@ function norm(value, field) {
 }
 
 async function loadBaseData() {
-  const jsonFile = historyMode === "M"
-    ? "/2025-11-07T07-24-28-986Z-pair-time.json"
-    : "/2025-11-07T07-30-46-963Z-pair-time.json";
-
+  let jsonFile = "";
+  if (historyMode === "M") {
+    jsonFile = "/2025-11-07T07-24-28-986Z-pair-time.json";
+  } else if (historyMode === "A") {
+    jsonFile = "/2025-11-07T07-30-46-963Z-pair-time.json";
+  } else {
+    jsonFile = "/2025-11-15T14-19-25-534Z-pair-time.json"; // C mode file
+  }
   try {
     const res = await fetch(jsonFile);
     if (!res.ok) throw new Error("Failed to fetch JSON file");
@@ -582,7 +590,7 @@ jumpBtn.addEventListener("click", () => {
     if (targetRow) targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 });
-
+historyToggle.textContent = historyMode;
 loadBaseData();
 </script>
 </body>
