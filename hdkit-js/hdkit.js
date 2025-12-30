@@ -60,7 +60,6 @@ async function main(argv) {
         console.error("Error extracting pair data for equal gates:", error);
       }
 
-
       parsed.score = {
         fireScore: fireScore(result2),
         peaceScore: peaceScore(result2, gates1, gates2),

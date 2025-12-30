@@ -63,7 +63,8 @@ console.log("Received parameters:", { dt1, lat1, lon1, dt2, lat2, lon2 });
       //console.log(parsed._results.mergedCenters.activeCenters);
       // Combine into one result, keeping full parsed object as well
       const parsed = JSON.parse(stdout);
-    //    console.log(parsed)
+      //onsole.log(JSON.stringify(parsed, null, 2));
+
      //const jsonStr = JSON.stringify(parsed);
     // If you want to extract score and mergedCenters for convenience
         const result = {

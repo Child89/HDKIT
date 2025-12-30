@@ -285,8 +285,12 @@ function peaceScore2(params)
 
 function peaceScore(params, gates1, gates2) 
 {
+  //const obj = Object.assign({}, gates1);
   const  equal_gates = getEqualGates(gates1, gates2);
-
+  //console.log("GATTESS:::",gates1, gates2);
+  //console.log(JSON.stringify(equal_gates));
+  // final output
+  //console.log("ALLOOequal_gates:", equal_gates);
   let P_HE = params.uniqueFireGates1p1.length + equal_gates.length /*equal gates are eqaul in both ends and infludnces as apeace maker */
     - params.exclusiveGates1p2.count/*only person 1 has fire both ends are filed*/ 
     - params.uniqueGates1p2.count /*only person 1 has and seconds does and second end is not filled */;
