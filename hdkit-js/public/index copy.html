@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HDKit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: system-ui, sans-serif; margin: 40px; background: #fafafa; scroll-behavior: smooth; }
+  form { margin-bottom: 30px; }
+  label { display: block; margin-top: 10px; }
+  input { padding: 6px; width: 220px; }
+  button { margin-top: 20px; padding: 10px 20px; font-size: 15px; cursor: pointer; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; background: white; margin-top: 20px; }
+  th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
+  th { background: #f2f2f2; position: sticky; top: 0; }
+  th button.sort-btn { background: none; border: none; cursor: pointer; margin-left: 5px; font-size: 12px; }
+  tr.highlight { background: #b9e0ff !important; transition: background 1s ease; }
+  tr:hover { background: #f5faff; }
+  #output { white-space: pre; background: #f9f9f9; padding: 10px; border-radius: 6px; margin-top: 20px; }
+
+  .chart-container { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  .chart-row { display: flex; align-items: center; gap: 10px; position: relative; }
+  .bar { position: relative; flex: 1; height: 8px; background: #ddd; border-radius: 4px; overflow: hidden; }
+  .fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; opacity: 0.6; }
+  .dot { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; }
+
+  /* Color palette */
+  .dot.fire, .fill.fire { background: #ffd633; }
+  .dot.peace, .fill.peace { background: #66cc66; }
+  .dot.growth, .fill.growth { background: #999; }
+  .dot.stability, .fill.stability { background: #cc9966; }
+  .dot.diversity, .fill.diversity { background: #ff4d4d; }
+  .dot.meditate, .fill.meditate { background: #6699ff; }
+  .dot.avg, .fill.avg { background: #6633cc; }
+
+  .tooltip { 
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: none;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  /* Centers grid */
+  .centers-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 25px;
+  }
+  .center-item {
+    position: relative;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .center-item:hover { transform: scale(1.05); }
+
+  /* Buttons */
+  #jumpBtn {
+    margin-left: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+  }
+  #jumpBtn:hover { background: #0056b3; }
+
+  .chart-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.bar .marker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 14px;
+  background: red;
+  z-index: 2;
+}
+
+</style>
+</head>
+<body>
+
+<h1>HDKit</h1>
+
+<form id="calcForm">
+  <!-- City 1 -->
+  <label style="font-size:14px; margin-top:8px;">
+    City 1: 
+    <input type="text" id="city1" placeholder="Enter city name" style="width:150px; padding:4px; font-size:13px;">
+    <button type="button" id="fillCoords1" style="padding:4px 8px; font-size:13px;">Fill Coordinates</button>
+  </label>
+  <label style="font-size:14px;">Latitude 1: <input type="number" name="lat1" step="any" value="46.0500268" required style="width:120px; padding:4px;"></label>
+  <label style="font-size:14px;">Longitude 1: <input type="number" name="lon1" step="any" value="14.5069289" required style="width:120px; padding:4px;"></label>
+
+  <!-- Datetime 1 -->
+  <label>DateTime 1: <input type="datetime-local" name="dt1" value="1984-02-16T12:00" required style="padding:4px;"></label>
+
+  <!-- Horizontal line separator -->
+  <hr style="margin:15px 0; border:1px solid #ccc;">
+
+  <!-- City 2 -->
+  <label style="font-size:14px; margin-top:8px;">
+    City 2: 
+    <input type="text" id="city2" placeholder="Enter city name" style="width:150px; padding:4px; font-size:13px;">
+    <button type="button" id="fillCoords2" style="padding:4px 8px; font-size:13px;">Fill Coordinates</button>
+  </label>
+  <label style="font-size:14px;">Latitude 2: <input type="number" name="lat2" step="any" value="46.0500268" required style="width:120px; padding:4px;"></label>
+  <label style="font-size:14px;">Longitude 2: <input type="number" name="lon2" step="any" value="14.5069289" required style="width:120px; padding:4px;"></label>
+
+  <!-- Datetime 2 -->
+  <label>DateTime 2: <input type="datetime-local" name="dt2" value="1985-10-03T12:00" required style="padding:4px;"></label>
+
+  <button type="submit" style="margin-top:12px; padding:8px 16px; font-size:14px;">Run HDKit Pair</button>
+  <button type="button" id="jumpBtn" style="display:none;">Jump to Pair</button>
+</form>
+
+<div>
+  <label>History Mode: </label>
+  <button id="historyToggle">M</button>
+</div>
+
+<div id="loading" style="display:none;">⏳ Running hdkit pair...</div>
+<pre id="output"></pre>
+
+<div class="chart-container" id="scrollCharts"></div>
+
+<h2>Centers Overview</h2>
+<p style="font-size:14px;color:#444;margin-top:-10px;">Blue = Defined centers, Transparent = Undefined centers</p>
+<div id="centersBox" class="centers-box"></div>
+
+<table id="dataTable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Fire <button class="sort-btn" data-field="fire">⇅</button></th>
+      <th>Peace <button class="sort-btn" data-field="peace">⇅</button></th>
+      <th>Growth <button class="sort-btn" data-field="growth">⇅</button></th>
+      <th>Stability <button class="sort-btn" data-field="stability">⇅</button></th>
+      <th>Diversity <button class="sort-btn" data-field="diversity">⇅</button></th>
+      <th>Meditate <button class="sort-btn" data-field="meditate">⇅</button></th>
+      <th>Avg(Fire,Peace) <button class="sort-btn" data-field="avgFirePeaceScore">⇅</button></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+let baseData = [];
+let liveItem = null;
+let highlightIndex = null;
+let currentSort = { field: "avgFirePeaceScore", desc: true };
+let ranges = {};
+let historyMode = "M";
+
+const tableBody = document.querySelector("#dataTable tbody");
+const output = document.getElementById("output");
+const loading = document.getElementById("loading");
+const chartBox = document.getElementById("scrollCharts");
+const centersBox = document.getElementById("centersBox");
+const jumpBtn = document.getElementById("jumpBtn");
+const historyToggle = document.getElementById("historyToggle");
+
+historyToggle.addEventListener("click", () => {
+  if (historyMode === "M") historyMode = "A";
+  else if (historyMode === "A") historyMode = "C";
+  else historyMode = "M"; // C → M
+  
+  historyToggle.textContent = historyMode;
+  loadBaseData();
+});
+
+
+function computeRanges() {
+  const fields = ["fire", "peace", "growth", "stability", "diversity", "avgFirePeaceScore"];
+  ranges = {};
+  for (const field of fields) {
+    const vals = baseData.map(d => d[field]);
+    ranges[field] = { min: Math.min(...vals), max: Math.max(...vals) };
+  }
+}
+
+function norm(value, field) {
+  const { min, max } = ranges[field];
+  if (max === min) return 0.5;
+  return (value - min) / (max - min);
+}
+
+async function loadBaseData() {
+  let jsonFile = "";
+  if (historyMode === "M") {
+    jsonFile = "/2025-11-07T07-24-28-986Z-pair-time.json";
+  } else if (historyMode === "A") {
+    jsonFile = "/2025-11-07T07-30-46-963Z-pair-time.json";
+  } else {
+    jsonFile = "/2025-11-15T14-19-25-534Z-pair-time.json"; // C mode file
+  }
+  try {
+    const res = await fetch(jsonFile);
+    if (!res.ok) throw new Error("Failed to fetch JSON file");
+    const json = await res.json();
+    baseData = (json.scores || []).map(entry => {
+      const s = entry.score;
+      return {
+        date: entry.date,
+        fire: s.fire,
+        peace: s.peace,
+        growth: s.growth,
+        stability: s.stability,
+        diversity: s.diversity,
+        meditate: s.meditate,
+        avgFirePeaceScore: (s.fire + s.peace) * 0.5
+      };
+    });
+    computeRanges();
+    sortAndRender();
+  } catch (err) {
+    console.error("Failed to load history JSON:", err);
+  }
+}
+
+function sortAndRender() {
+  const { field, desc } = currentSort;
+  let combined = [...baseData];
+  if (liveItem) {
+    combined = combined.filter(item => item.date !== "Live");
+    combined.push(liveItem);
+  }
+  const sorted = combined.sort((a, b) => desc ? b[field] - a[field] : a[field] - b[field]);
+  highlightIndex = liveItem ? sorted.findIndex(d => d.date === "Live") : null;
+  renderTable(sorted, highlightIndex);
+}
+
+function renderTable(data, highlightIndex = null) {
+  tableBody.innerHTML = "";
+  data.forEach((d, i) => {
+    const row = document.createElement("tr");
+    if (i === highlightIndex) row.classList.add("highlight");
+    row.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${d.date}</td>
+      <td>${d.fire.toFixed(2)}</td>
+      <td>${d.peace.toFixed(2)}</td>
+      <td>${d.growth.toFixed(2)}</td>
+      <td>${d.stability.toFixed(2)}</td>
+      <td>${d.diversity.toFixed(2)}</td>
+      <td>${d.meditate ? "✅" : "❌"}</td>
+      <td>${d.avgFirePeaceScore.toFixed(2)}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// ✅ sorting buttons restored
+document.querySelectorAll(".sort-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const field = btn.dataset.field;
+    const same = currentSort.field === field;
+    currentSort = { field, desc: same ? !currentSort.desc : true };
+    sortAndRender();
+
+    // 🔽 After sorting, automatically jump to the highlighted row
+    if (highlightIndex !== null) {
+      const rows = document.querySelectorAll("#dataTable tbody tr");
+      const targetRow = rows[highlightIndex];
+      if (targetRow) {
+        targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
+        // Optional: flash animation for visibility
+        targetRow.style.transition = "background 0.6s ease";
+        targetRow.style.background = "#ffeb99";
+        setTimeout(() => (targetRow.style.background = ""), 1000);
+      }
+    }
+  });
+});
+
+function drawCenters(activeCenters) {
+  centersBox.innerHTML = "";
+
+  const allCenters = ["head","ajna","throat","g","ego","solarPlexus","spleen","sacral","root"];
+  const descriptions = {
+    head:"Inspiration and questions; the source of ideas.",
+    ajna:"Conceptualization and analysis; how you form opinions.",
+    throat:"Communication and manifestation; speaking and doing.",
+    g:"Love, direction, and sense of self.",
+    ego:"Willpower, motivation, and material drive.",
+    solarPlexus:"Emotional awareness and waves of feeling.",
+    spleen:"Intuition, instinct, and physical wellbeing.",
+    sacral:"Life force energy and sustainable work power.",
+    root:"Pressure for action, drive, and momentum."
+  };
+
+  const defined = allCenters.filter(c => activeCenters.includes(c));
+  const undefined = allCenters.filter(c => !activeCenters.includes(c));
+  const ordered = [...defined, ...undefined];
+
+  ordered.forEach(name => {
+    const isDefined = activeCenters.includes(name);
+    const div = document.createElement("div");
+    div.className = "center-item";
+    div.style.background = isDefined ? "#3b82f6" : "transparent";
+    div.style.color = isDefined ? "#fff" : "#333";
+    div.style.border = isDefined ? "none" : "2px solid #ccc";
+    div.innerHTML = `<strong>${name}</strong>`;
+
+    const tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.textContent = descriptions[name];
+    div.appendChild(tooltip);
+
+    div.addEventListener("mouseenter", () => tooltip.style.display = "block");
+    div.addEventListener("mouseleave", () => tooltip.style.display = "none");
+
+    centersBox.appendChild(div);
+  });
+}
+
+async function getCoordsFromCity(city) {
+  if (!city) return null;
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data && data.length > 0) {
+      return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+    } else {
+      alert("City not found!");
+    }
+  } catch (err) {
+    console.error("Geocoding error:", err);
+    alert("Error fetching coordinates");
+  }
+  return null;
+}
+
+document.getElementById("fillCoords1").addEventListener("click", async () => {
+  const city = document.getElementById("city1").value.trim();
+  const coords = await getCoordsFromCity(city);
+  if (coords) {
+    document.querySelector('input[name="lat1"]').value = coords.lat;
+    document.querySelector('input[name="lon1"]').value = coords.lon;
+  }
+});
+
+document.getElementById("fillCoords2").addEventListener("click", async () => {
+  const city = document.getElementById("city2").value.trim();
+  const coords = await getCoordsFromCity(city);
+  if (coords) {
+    document.querySelector('input[name="lat2"]').value = coords.lat;
+    document.querySelector('input[name="lon2"]').value = coords.lon;
+  }
+});
+
+
+document.getElementById("calcForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const obj = Object.fromEntries(formData.entries());
+  loading.style.display = "block";
+  output.textContent = "";
+
+  try {
+    const res = await fetch("/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": "my-secret-key" },
+      body: JSON.stringify(obj)
+    });
+    const text = await res.text();
+    loading.style.display = "none";
+    if (!text) throw new Error("Empty server response");
+    const hdData = JSON.parse(text);
+    //console.log("HDKit Response:", hdData);
+    if (hdData.error) return;
+
+    const person1 = hdData.parsed.person1;
+    const person2 = hdData.parsed.person2;
+    const results = hdData.parsed._results;
+
+    const gatesEqualBoth = results.uniqueEqualGates?.gates || [];
+    const person1FireFrom2 = results.uniqueFireGates1p1?.map(g => g.pair) || [];
+    const person2FireFrom1 = results.uniqueFireGates1p2?.map(g => g.pair) || [];
+    const gatesOnly1 = results.uniqueGates1p1?.gates || [];
+    const gatesOnly2 = results.uniqueGates1p2?.gates || [];
+    const fireOnly1 = results.exclusiveGates1p1?.pairs?.map(p => p.pair) || [];
+    const fireOnly2 = results.exclusiveGates1p2?.pairs?.map(p => p.pair) || [];
+
+  // REMOVE previous summaryDiv and toggleBtn if exist
+    const oldSummary = document.getElementById("summaryDiv");
+    if (oldSummary) oldSummary.remove();
+    const oldBtn = document.getElementById("toggleSummaryBtn");
+    if (oldBtn) oldBtn.remove();
+
+    // Create summary container
+    const summaryDiv = document.createElement("div");
+    summaryDiv.id = "summaryDiv";
+    summaryDiv.style.margin = "15px 0";
+    summaryDiv.style.padding = "12px";
+    summaryDiv.style.border = "1px solid #ccc";
+    summaryDiv.style.borderRadius = "10px";
+    summaryDiv.style.background = "#f9f9f9";
+    summaryDiv.style.fontFamily = "system-ui, sans-serif";
+    summaryDiv.style.lineHeight = "1.5em";
+    summaryDiv.style.whiteSpace = "pre-line";
+    summaryDiv.style.display = "none"; // start hidden
+
+    // Create toggle button
+    const toggleBtn = document.createElement("button");
+    toggleBtn.id = "toggleSummaryBtn";
+    toggleBtn.textContent = "Show Summary"; // initial text
+    toggleBtn.style.marginBottom = "8px";
+    toggleBtn.style.padding = "6px 12px";
+    toggleBtn.style.cursor = "pointer";
+    toggleBtn.style.borderRadius = "5px";
+    toggleBtn.style.border = "1px solid #666";
+    toggleBtn.style.background = "#eee";
+
+    // Toggle functionality
+    toggleBtn.addEventListener("click", () => {
+    if (summaryDiv.style.display === "none") {
+        summaryDiv.style.display = "block";
+        toggleBtn.textContent = "Hide Summary";
+    } else {
+        summaryDiv.style.display = "none";
+        toggleBtn.textContent = "Show Summary";
+    }
+    });
+
+    // Helper to style array content without bullet dots
+    const styleArray = (arr, color) => arr.length
+    ? arr.map(v => `<span style="color:${color};">${v}</span>`).join(", ")
+    : "—";
+
+    // Build HTML content
+    summaryDiv.innerHTML = `
+    <div style="line-height:1.2em; font-size:14px;">
+        <strong style="color:#1e40af; font-weight:700;">Person 1:</strong> ${person1.type} | Profile: ${person1.profile} | Strategy: ${person1.strategy} | Incarnation Cross: ${person1.incarnationCross}
+        <div style="padding-left:8px; margin-top:2px;">Gates only Person 1 has: [${styleArray(gatesOnly1, '#1e40af')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gate only Person 1 has: [${styleArray(fireOnly1, '#1e40af')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gates combined with Person 2: [${styleArray(person1FireFrom2, '#1e40af')}]</div>
+        </div>
+
+    <div style="line-height:1.2em; font-size:14px; margin-top:0px;">
+        <strong style="color:#b91c1c; font-weight:700;">Person 2:</strong> ${person2.type} | Profile: ${person2.profile} | Strategy: ${person2.strategy} | Incarnation Cross: ${person2.incarnationCross}
+        <div style="padding-left:8px; margin-top:2px;">Gates only Person 2 has: [${styleArray(gatesOnly2, '#b91c1c')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gate only Person 2 has: [${styleArray(fireOnly2, '#b91c1c')}]</div>
+        <div style="padding-left:8px; margin-top:1px;">Fire gates combined with Person 1: [${styleArray(person2FireFrom1, '#b91c1c')}]</div>
+        </div>
+
+    <div style="line-height:1.2em; font-size:14px; margin-top:2px;">
+        <div style="padding-left:8px; margin-top:1px;">Equal unique gates for both pairs without connection: [${styleArray(gatesEqualBoth, 'green')}]</div>
+    </div>
+    `;
+
+    // Insert the toggle button and summary above the output pre block
+    output.parentNode.insertBefore(toggleBtn, output);
+    output.parentNode.insertBefore(summaryDiv, output);
+
+
+
+    // Keep all other functionality intact
+    const d = hdData.data || hdData;
+    liveItem = {
+      date: "Live",
+      fire: d.fireScore,
+      peace: d.peaceScore,
+      growth: d.growthScore,
+      stability: d.stability,
+      diversity: d.diversityS,
+      meditate: d.areMeditative,
+      avgFirePeaceScore: (d.fireScore + d.peaceScore) * 0.5
+    };
+
+    sortAndRender();
+    drawCenters(hdData.centers || []);
+    drawScrollCharts();
+    jumpBtn.style.display = "inline-block";
+    
+  } catch (err) {
+    loading.style.display = "none";
+    output.textContent = "❌ " + err.message;
+  }
+});
+
+
+function drawScrollCharts() {
+  chartBox.innerHTML = "";
+  if (!liveItem) return;
+
+  const fields = [
+    { key: "fire", color: "fire", label: "Fire" },
+    { key: "peace", color: "peace", label: "Peace" },
+    { key: "growth", color: "growth", label: "Growth" },
+    { key: "stability", color: "stability", label: "Stability" },
+    { key: "diversity", color: "diversity", label: "Diversity" },
+    { key: "avgFirePeaceScore", color: "avg", label: "Avg(Fire,Peace)" },
+    { key: "meditate", color: "meditate", label: "Meditate" }
+  ];
+
+  fields.forEach(f => {
+    const row = document.createElement("div");
+    row.className = "chart-row";
+
+    const label = document.createElement("span");
+    label.textContent = f.label;
+    label.style.width = "110px";
+
+    const bar = document.createElement("div");
+    bar.className = "bar";
+
+    const val = f.key === "meditate"
+      ? (liveItem.meditate ? 1 : 0)
+      : norm(liveItem[f.key], f.key);
+
+    const fill = document.createElement("div");
+    fill.className = `fill ${f.color}`;
+    fill.style.width = (val * 100) + "%";
+    bar.appendChild(fill);
+
+    const dot = document.createElement("div");
+    dot.className = `dot ${f.color}`;
+    dot.style.left = (val * 100) + "%";
+    bar.appendChild(dot);
+
+    // ✅ Add red stability range markers (6 to 8)
+    if (f.key === "stability") {
+      const minMark = (6 - ranges.stability.min) / (ranges.stability.max - ranges.stability.min);
+      const maxMark = (8 - ranges.stability.min) / (ranges.stability.max - ranges.stability.min);
+      const m1 = document.createElement("div");
+      const m2 = document.createElement("div");
+      m1.className = "marker";
+      m2.className = "marker";
+      m1.style.left = (minMark * 100) + "%";
+      m2.style.left = (maxMark * 100) + "%";
+      bar.appendChild(m1);
+      bar.appendChild(m2);
+    }
+
+    // ✅ Add numeric value beside bar
+    const valueLabel = document.createElement("span");
+    let rawValue;
+    if (f.key === "meditate") {
+      rawValue = liveItem.meditate ? "Yes" : "No";
+    } else {
+      rawValue = liveItem[f.key]?.toFixed(2);
+    }
+    valueLabel.textContent = rawValue;
+    valueLabel.style.minWidth = "40px";
+    valueLabel.style.textAlign = "right";
+    valueLabel.style.fontWeight = "500";
+
+    row.appendChild(label);
+    row.appendChild(bar);
+    row.appendChild(valueLabel);
+    chartBox.appendChild(row);
+  });
+}
+
+
+// 🟦 Jump to highlighted (pair) row
+jumpBtn.addEventListener("click", () => {
+  if (highlightIndex !== null) {
+    const rows = document.querySelectorAll("#dataTable tbody tr");
+    const targetRow = rows[highlightIndex];
+    if (targetRow) targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+});
+historyToggle.textContent = historyMode;
+loadBaseData();
+</script>
+</body>
+</html>

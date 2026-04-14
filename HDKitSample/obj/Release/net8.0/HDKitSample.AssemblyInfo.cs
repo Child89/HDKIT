@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HDKitSample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d68ee8cd10bcdd5f15d206cd509f4ac3f0f8e2f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f657dc2a72dc3f060393ac977afc02850e26aa9")]
 [assembly: System.Reflection.AssemblyProductAttribute("HDKitSample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HDKitSample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
