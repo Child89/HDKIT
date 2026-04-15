@@ -93,6 +93,7 @@ button:hover { background:#3730a3; }
 .stability { background:linear-gradient(#cc9966,#8b5a2b); }
 .diversity { background:linear-gradient(#ff4d4d,#b91c1c); }
 .avg { background:linear-gradient(#6633cc,#4338ca); }
+  .meditate { background:linear-gradient(#7fb3ff,#2b6cb0); }
 
 /* ICONS */
 .icon { font-size:26px; }
@@ -118,6 +119,10 @@ button:hover { background:#3730a3; }
 
 .balance-icon { transition: transform 0.5s ease; }
 
+.meditate-icon { font-size:30px; transform:translateY(2px); }
+.threshold-line { position:absolute; left:0; right:0; height:2px; background:linear-gradient(rgba(220,38,38,0.95), rgba(185,28,28,0.95)); z-index:4; }
+.threshold-label { position:absolute; left:8px; font-size:11px; color:#b91c1c; font-weight:600; transform:translateY(50%); }
+
 .value { font-weight:600; }
 .label { font-size:12px; color:#666; }
 </style>
@@ -135,8 +140,8 @@ City 1:
 <button type="button" id="fillCoords1">Fill</button>
 </label>
 
-<label>Lat 1 <input type="number" name="lat1" value="46.0500268"></label>
-<label>Lon 1 <input type="number" name="lon1" value="14.5069289"></label>
+<label>Lat 1 <input type="number" name="lat1" step="any" value="46.0500268"></label>
+<label>Lon 1 <input type="number" name="lon1" step="any" value="14.5069289"></label>
 <label>Date 1 <input type="datetime-local" name="dt1" value="1984-02-16T12:00"></label>
 
 <hr>
@@ -147,8 +152,8 @@ City 2:
 <button type="button" id="fillCoords2">Fill</button>
 </label>
 
-<label>Lat 2 <input type="number" name="lat2" value="46.0500268"></label>
-<label>Lon 2 <input type="number" name="lon2" value="14.5069289"></label>
+<label>Lat 2 <input type="number" name="lat2" step="any" value="46.0500268"></label>
+<label>Lon 2 <input type="number" name="lon2" step="any" value="14.5069289"></label>
 <label>Date 2 <input type="datetime-local" name="dt2" value="1985-10-03T12:00"></label>
 
 <button type="submit">Analyze</button>
@@ -156,12 +161,31 @@ City 2:
 <div class="summary-toggle" id="toggleSummary">▼ Insights</div>
 <div class="summary" id="summary"></div>
 
+        
+
 </form>
 
 <div class="visual-grid" id="visuals"></div>
 
 <script>
 let ranges = {};
+
+// Google AI mode: on by default — this uses a small local formatter that
+// produces concise, Google-style one-line answers from longer descriptions.
+// Note: this is a local heuristic rephrasing (no external AI calls).
+const googleAIMode = true;
+
+function formatGoogleAI(text, maxSentences=1){
+  try{
+    if(!text) return '';
+    const s = String(text).replace(/\s+/g,' ').trim();
+    // split on sentence boundaries
+    const parts = s.split(/(?<=[.!?])\s+/);
+    const picked = parts.slice(0, maxSentences).join(' ');
+    // small cleanups
+    return picked.replace(/\s+\)/g,')').replace(/\(\s+/g,'(').trim();
+  }catch(e){ return String(text).slice(0,120); }
+}
 
 async function loadRanges(){
   try {
@@ -176,6 +200,11 @@ async function loadRanges(){
         ranges[f]={min:Math.min(...vals),max:Math.max(...vals)};
       }
     });
+    // include meditate range if present in data file
+    try{
+      const mvals = data.map(x=> x.meditate === true ? 1 : (x.meditate === false ? 0 : (Number(x.meditate)||0)) ).filter(v=>!Number.isNaN(v));
+      if (mvals.length) ranges['meditate'] = { min: Math.min(...mvals), max: Math.max(...mvals) };
+    }catch(e){}
   } catch (err) {
     console.warn('Could not load ranges file, using defaults:', err && err.message);
     // provide safe defaults so norm() won't throw
@@ -227,13 +256,22 @@ fillCoords2.onclick=async()=>{
 
 /* METRIC */
 function createMetric(val,key,icon,label,desc){
-  const p=norm(val,key);
+  // meditative metric is binary: 100% when true, otherwise 0%
+  let p;
+  if (key === 'meditate'){
+    const truth = (val === true) || (String(val).toLowerCase() === 'true') || Number(val) === 1;
+    p = truth ? 1 : 0;
+  } else {
+    p = norm(val,key);
+  }
 
   let iconClass="";
   if(key==="fire") iconClass="fire-icon";
   if(key==="peace") iconClass="peace-icon";
   if(key==="growth") iconClass="growth-icon";
   if(key==="avg") iconClass="balance-icon";
+
+  if(key==="meditate") iconClass="meditate-icon";
 
   const div=document.createElement("div");
   div.className="metric";
@@ -247,6 +285,75 @@ function createMetric(val,key,icon,label,desc){
     <div class="value">${(p*100).toFixed(0)}%</div>
     <div class="label">${label}</div>
   `;
+
+  // draw zero baseline for metrics that can span negative-to-positive values
+  try{
+    const boxEl = div.querySelector('.icon-box');
+    if (boxEl && ranges && ranges[key]){
+      const { min=0, max=0 } = ranges[key] || {};
+      if (isFinite(min) && isFinite(max) && max > min){
+        const zeroPos = (0 - min) / (max - min); // 0..1 normalized from bottom
+        if (zeroPos > 0 && zeroPos < 1){
+          const baseline = document.createElement('div');
+          baseline.className = 'baseline';
+          baseline.style.position = 'absolute';
+          baseline.style.left = '0';
+          baseline.style.right = '0';
+          baseline.style.height = '3px';
+          baseline.style.background = 'rgba(220,38,38,0.9)';
+          baseline.style.bottom = `${zeroPos * 100}%`;
+          baseline.style.zIndex = '3';
+          boxEl.appendChild(baseline);
+        }
+      }
+    }
+  }catch(e){ /* ignore */ }
+
+  // draw stability threshold lines for values 6,7,8 (show where 'ok' region sits)
+  try{
+    const boxEl2 = div.querySelector('.icon-box');
+    if (key === 'stability' && boxEl2){
+      let { min=0, max=9 } = (ranges && ranges[key]) || {};
+      // fallback to 0..9 if ranges are missing or invalid
+      if (!isFinite(min) || !isFinite(max) || max === min){ min = 0; max = 9; }
+      [6,7,8].forEach(v=>{
+        const pos = (v - min) / (max - min);
+        if (pos > 0 && pos < 1){
+          const line = document.createElement('div');
+          line.className = 'threshold-line';
+          line.style.bottom = `${pos * 100}%`;
+          boxEl2.appendChild(line);
+
+          const label = document.createElement('div');
+          label.className = 'threshold-label';
+          label.style.bottom = `${pos * 100}%`;
+          const pct = Math.round(pos * 100);
+          // show percentage number but without the '%' symbol as requested
+          //label.textContent = `${v} (${pct})`;
+          boxEl2.appendChild(label);
+        }
+      });
+    }
+  }catch(e){ /* ignore */ }
+
+  // add a single red middle line for diversity to indicate midpoint
+  try{
+    if (key === 'diversity'){
+      const boxEl3 = div.querySelector('.icon-box');
+      if (boxEl3){
+        const midPos = 0.5;
+        const dline = document.createElement('div');
+        dline.className = 'threshold-line';
+        dline.style.bottom = `${midPos * 100}%`;
+        boxEl3.appendChild(dline);
+  const dlabel = document.createElement('div');
+  dlabel.className = 'threshold-label';
+  dlabel.style.bottom = `${midPos * 100}%`;
+  //dlabel.textContent = 'mid (50)';
+        boxEl3.appendChild(dlabel);
+      }
+    }
+  }catch(e){ /* ignore */ }
 
   return div;
 }
@@ -285,12 +392,14 @@ calcForm.addEventListener("submit",async e=>{
 
   box.appendChild(createMetric(fire,"fire","🔥","Fire","Attraction"));
   box.appendChild(createMetric(peace,"peace","🍵","Peace","Harmony"));
-  box.appendChild(createMetric(d.growthScore,"growth","🌱","Growth","Expansion"));
+  // growth metric removed as requested
   box.appendChild(createMetric(d.stability,"stability","🪨","Stability","Grounding"));
   box.appendChild(createMetric(d.diversityS,"diversity","🌈","Diversity","Contrast"));
-  const balanceEl=createMetric(avg,"avg","⚖️","Balance","Fire vs Peace");
+  // replace Balance with Meditate metric (show buddha/guru icon)
+  // meditative metric is 100% when hd.data.areMeditative === true, otherwise 0%
+  const meditateVal = (d && d.areMeditative === true) ? 1 : 0;
+  const balanceEl=createMetric(meditateVal,"meditate","🧘","Meditate","Meditative presence");
   box.appendChild(balanceEl);
-
   const tilt=(fire-peace)/20;
   balanceEl.querySelector(".icon").style.transform=`rotate(${tilt}deg)`;
 
@@ -342,19 +451,37 @@ function formatGateItem(v, color){
   if (v === undefined || v === null) return `<span style='color:#999'>—</span>`;
   // pairs like "12-22"
   if (typeof v === 'string' && v.includes('-')){
-    return v.split('-').map(x=>formatGateItem(Number(x), color)).join('-');
+    // treat as a single channel: search both gates together
+    const parts = v.split('-').map(s=>s.trim()).filter(Boolean);
+    const nums = parts.join('-');
+    const query = `human design channel ${nums}`;
+    const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    const descCombined = parts.map(p=> gateDescMap[Number(p)] || '').filter(Boolean).join(' — ');
+  const ai = googleAIMode ? formatGoogleAI(descCombined,1) : '';
+  const title = ai || descCombined;
+    // return a single clickable channel link that opens Google search for both gates
+    return `<a href="${url}" onclick="window.open('${url}','_blank')" target="_blank" rel="noopener noreferrer" title="${title}" style="color:${color}; text-decoration:none; font-weight:600;">${v}</a>`;
   }
   const n = Number(v);
   if (!Number.isFinite(n)) return `<span style='color:${color}'>${String(v)}</span>`;
   const desc = gateDescMap[n] || '';
-  const url = `https://humdes.com/gate/${n}`;
-  return `<a href="${url}" target="_blank" rel="noopener noreferrer" title="${desc}" style="color:${color}; text-decoration:none; font-weight:600;">${n}</a>`;
+  const ai = googleAIMode ? formatGoogleAI(desc,1) : '';
+  const title = ai || desc;
+  const url = `https://www.google.com/search?q=${encodeURIComponent('human design gate '+n)}`;
+  // open Google search in a new tab (explicit window.open to ensure it runs)
+  return `<a href="${url}" onclick="window.open('${url}','_blank')" target="_blank" rel="noopener noreferrer" title="${title}" style="color:${color}; text-decoration:none; font-weight:600;">${n}</a>`;
 }
 
-const fmt = (arr,color) =>
-  (arr && arr.length)
-    ? arr.map(v=>formatGateItem(v,color)).join(', ')
-    : "<span style='color:#999'>—</span>";
+  const fmt = (arr,color) =>
+    (arr && arr.length)
+      ? arr.map(v=>formatGateItem(v,color)).join(', ')
+      : "<span style='color:#999'>—</span>";
+
+  // compatibility alias used in template
+  const styleArray = (arr, color) => fmt(arr, color);
+
+
+
 
 // 🔹 RENDER (FULL DATA) - build DOM so it's robust and always visible
 const container = document.createElement('div');
@@ -371,8 +498,11 @@ container.appendChild(titleDiv);
 const p1Div = document.createElement('div');
 // show type, profile, strategy, incarnation cross
 p1Div.innerHTML = `
-  <strong style="color:#1e40af">Person 1</strong><br>
-  ${p1.type||"—"} | ${p1.profile||"—"} | Strategy: ${p1.strategy||'—'} | Incarnation: ${p1.incarnationCross||'—'}<br>
+    <strong style="color:#1e40af">Person 1</strong><br>
+  <a href="https://www.google.com/search?q=${encodeURIComponent('human design '+p1.type)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('human design '+p1.type)}','_blank')" target="_blank" style="text-decoration:none;color:#1e40af;font-weight:700">${p1.type}</a> | 
+  Profile: <a href="https://www.google.com/search?q=${encodeURIComponent('human design profile '+p1.profile)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('human design profile '+p1.profile)}','_blank')" target="_blank" style="text-decoration:none;color:#1e40af">${p1.profile}</a> | 
+  Strategy: <a href="https://www.google.com/search?q=${encodeURIComponent('human design strategy '+p1.strategy)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('human design strategy '+p1.strategy)}','_blank')" target="_blank" style="text-decoration:none;color:#1e40af">${p1.strategy}</a> | 
+  Incarnation: <a href="https://www.google.com/search?q=${encodeURIComponent('incarnation cross '+p1.incarnationCross)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('incarnation cross '+p1.incarnationCross)}','_blank')" target="_blank" style="text-decoration:none;color:#1e40af">${p1.incarnationCross}</a><br>
   Gates: [${fmt(gatesOnly1,"#1e40af")} ]<br>
   Fire: [${fmt(fireOnly1,"#1e40af")} ]<br>
   Activated by Person 2: [${fmt(activated1,"#1e40af")} ]
@@ -395,14 +525,16 @@ const spacer = document.createElement('div'); spacer.style.height = '10px'; cont
 
 const p2Div = document.createElement('div');
 p2Div.innerHTML = `
-  <strong style="color:#b91c1c">Person 2</strong><br>
-  ${p2.type||"—"} | ${p2.profile||"—"} | Strategy: ${p2.strategy||'—'} | Incarnation: ${p2.incarnationCross||'—'}<br>
+    <strong style="color:#b91c1c">Person 2</strong><br>
+  <a href="https://www.google.com/search?q=${encodeURIComponent('human design '+p2.type)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('human design '+p2.type)}','_blank')" target="_blank" style="text-decoration:none;color:#b91c1c;font-weight:700">${p2.type}</a> | 
+  Profile: <a href="https://www.google.com/search?q=${encodeURIComponent('human design profile '+p2.profile)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('human design profile '+p2.profile)}','_blank')" target="_blank" style="text-decoration:none;color:#b91c1c">${p2.profile}</a> | 
+  Strategy: <a href="https://www.google.com/search?q=${encodeURIComponent('human design strategy '+p2.strategy)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('human design strategy '+p2.strategy)}','_blank')" target="_blank" style="text-decoration:none;color:#b91c1c">${p2.strategy}</a> | 
+  Incarnation: <a href="https://www.google.com/search?q=${encodeURIComponent('incarnation cross '+p2.incarnationCross)}" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent('incarnation cross '+p2.incarnationCross)}','_blank')" target="_blank" style="text-decoration:none;color:#b91c1c">${p2.incarnationCross}</a><br>
   Gates: [${fmt(gatesOnly2,"#b91c1c")} ]<br>
   Fire: [${fmt(fireOnly2,"#b91c1c")} ]<br>
   Activated by Person 1: [${fmt(activated2,"#b91c1c")} ]
 `;
 container.appendChild(p2Div);
-
 // centers for person 2
 try{
   const p2Centers = r.person2Centers || {};
@@ -417,9 +549,38 @@ try{
 
 const spacer2 = document.createElement('div'); spacer2.style.height = '10px'; container.appendChild(spacer2);
 
+// BOTH / MERGED CENTERS (centers active in both people, and merged centers from results)
+try{
+  const p1CentersList = (r.person1Centers && r.person1Centers.activeCenters) || [];
+  const p2CentersList = (r.person2Centers && r.person2Centers.activeCenters) || [];
+  const bothCenters = p1CentersList.filter(c => p2CentersList.includes(c));
+
+  if (bothCenters.length){
+    const bothDiv = document.createElement('div');
+    bothDiv.innerHTML = '<strong>Both Active Centers</strong><br>' + (bothCenters.map(c=>{
+      return `<span title="${centerDesc[c]||''}" style="display:inline-block;margin-right:6px;padding:6px 8px;border-radius:8px;background:#eef2ff;color:#1e40af;font-weight:700;font-size:12px;">${c}</span>`;
+    }).join(' '));
+    bothDiv.style.marginTop='8px';
+    container.appendChild(bothDiv);
+  }
+
+  // also show mergedCenters if provided by parsed._results (useful combined view)
+  const merged = r.mergedCenters || {};
+  if ((merged.activeCenters && merged.activeCenters.length) || (merged.centerLinks && Object.keys(merged.centerLinks||{}).length)){
+    const mdiv = document.createElement('div');
+    mdiv.style.marginTop='8px';
+    mdiv.innerHTML = '<strong>Merged Centers</strong><br>' + ((merged.activeCenters||[]).map(c=>{
+      return `<span title="${centerDesc[c]||''}" style="display:inline-block;margin-right:6px;padding:6px 8px;border-radius:8px;background:#f0f9ff;color:#034155;font-weight:700;font-size:12px;">${c}</span>`;
+    }).join(' ') || '<span style="color:#999">—</span>');
+    container.appendChild(mdiv);
+  }
+}catch(e){ /* ignore */ }
+
 const sharedDiv = document.createElement('div');
 sharedDiv.innerHTML = `<strong>Shared Gates</strong><br>[${fmt(sharedGates,'green')}]`;
 container.appendChild(sharedDiv);
+
+// (Shared Gates AI block removed by user request)
 
 // inject
 summary.innerHTML = '';
@@ -470,7 +631,33 @@ toggleSummary.onclick=()=>{
   summary.style.display=summary.style.display==="none"?"block":"none";
 };
 
-loadRanges();
+// Load ranges then auto-run the analysis once on page load so the
+// AI-mode answers appear automatically without user clicking.
+let _autoSubmitDone = false;
+loadRanges().then(()=>{
+  try{
+    // wait a bit so UI is ready
+    setTimeout(()=>{
+      // only auto-submit once and only when lat/lon/dt fields have values
+      if (_autoSubmitDone) return;
+      const lat1 = document.querySelector('[name=lat1]')?.value;
+      const lon1 = document.querySelector('[name=lon1]')?.value;
+      const dt1 = document.querySelector('[name=dt1]')?.value;
+      const lat2 = document.querySelector('[name=lat2]')?.value;
+      const lon2 = document.querySelector('[name=lon2]')?.value;
+      const dt2 = document.querySelector('[name=dt2]')?.value;
+      // if any required field is missing, skip auto-submit (user may still be filling)
+      if (!lat1 || !lon1 || !dt1 || !lat2 || !lon2 || !dt2) return;
+
+      if (typeof calcForm.requestSubmit === 'function') calcForm.requestSubmit();
+      else {
+        const btn = calcForm.querySelector('button[type=submit]');
+        if (btn) btn.click();
+      }
+      _autoSubmitDone = true;
+    }, 350);
+  }catch(e){ console.warn('auto-submit failed', e); }
+});
 </script>
 
 </body>
