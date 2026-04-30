@@ -605,7 +605,7 @@ fillCoords2.onclick = async () => {
   }
 };
 
-function createMetric(val, key, icon, label, desc) {
+/*function createMetric(val, key, icon, label, desc) {
   let p;
   if (key === 'meditate') {
     const truth = (val === true) || (String(val).toLowerCase() === 'true') || Number(val) === 1;
@@ -626,6 +626,93 @@ function createMetric(val, key, icon, label, desc) {
     <div class="value">${(p * 100).toFixed(0)}%</div>
     <div class="label">${label}</div>
   `;
+
+  return div;
+}*/
+function createMetric(val, key, icon, label, desc) {
+  // 1. Calculate percentage (normalized)
+  let p;
+  if (key === 'meditate') {
+    const truth = (val === true) || (String(val).toLowerCase() === 'true') || Number(val) === 1;
+    p = truth ? 1 : 0;
+  } else {
+    p = norm(val, key);
+  }
+
+  // 2. Set icon classes
+  let iconClass = "";
+  if (key === "fire") iconClass = "fire-icon";
+  if (key === "peace") iconClass = "peace-icon";
+  if (key === "growth") iconClass = "growth-icon";
+  if (key === "avg") iconClass = "balance-icon";
+  if (key === "meditate") iconClass = "meditate-icon";
+
+  const div = document.createElement("div");
+  div.className = "metric";
+  div.title = desc;
+
+  div.innerHTML = `
+    <div class="icon ${iconClass}">${icon}</div>
+    <div class="icon-box">
+      <div class="fill ${key}" style="height:${p * 100}%"></div>
+    </div>
+    <div class="value">${(p * 100).toFixed(0)}%</div>
+    <div class="label">${label}</div>
+  `;
+
+  const boxEl = div.querySelector('.icon-box');
+
+  // 3. Draw Zero Baseline (Red Line)
+  try {
+    if (boxEl && ranges && ranges[key]) {
+      const { min = 0, max = 0 } = ranges[key];
+      if (isFinite(min) && isFinite(max) && max > min) {
+        const zeroPos = (0 - min) / (max - min);
+        if (zeroPos > 0 && zeroPos < 1) {
+          const baseline = document.createElement('div');
+          baseline.className = 'baseline';
+          baseline.style.position = 'absolute';
+          baseline.style.left = '0'; baseline.style.right = '0';
+          baseline.style.height = '3px';
+          baseline.style.background = 'rgba(220,38,38,0.9)';
+          baseline.style.bottom = `${zeroPos * 100}%`;
+          baseline.style.zIndex = '3';
+          boxEl.appendChild(baseline);
+        }
+      }
+    }
+  } catch (e) { }
+
+  // 4. Stability Thresholds: 3 lines for 6/9, 7/9, 8/9
+  if (key === 'stability' && boxEl) {
+    [6, 7, 8].forEach(v => {
+      const pos = norm(v, 'stability'); // Use your existing norm() logic
+      if (pos > 0 && pos < 1) {
+        const line = document.createElement('div');
+        line.className = 'threshold-line';
+        line.style.position = 'absolute';
+        line.style.left = '0'; line.style.right = '0';
+        line.style.height = '1px';
+        line.style.background = 'rgba(0,0,0,0.3)';
+        line.style.bottom = `${pos * 100}%`;
+        line.style.zIndex = '2';
+        boxEl.appendChild(line);
+      }
+    });
+  }
+
+  // 5. Diversity Midpoint
+  if (key === 'diversity' && boxEl) {
+    const dline = document.createElement('div');
+    dline.className = 'threshold-line';
+    dline.style.position = 'absolute';
+    dline.style.left = '0'; dline.style.right = '0';
+    dline.style.height = '1px';
+    dline.style.background = 'rgba(220,38,38,0.5)';
+    dline.style.bottom = `50%`;
+    dline.style.zIndex = '2';
+    boxEl.appendChild(dline);
+  }
 
   return div;
 }
