@@ -75,7 +75,7 @@ form.hd-form {
 .grid-3 {
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
-  gap:8px;
+  gap: 25px;
   margin-top:10px;
 }
 
@@ -178,47 +178,264 @@ button:hover {
 
 .icon { font-size:26px; }
 
+.vs-box{
+  text-align:center;
+  font-weight:800;
+  margin:10px 0;
+  color:#4f46e5;
+}
+
+.live-preview{
+  max-width:980px;
+  margin:15px auto;
+  background:rgba(255,255,255,0.75);
+  padding:14px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+.text-rotator {
+  position: relative;
+  height: 70px;
+  overflow: hidden;
+}
+
+.text-slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+  font-size: 14px;
+  line-height: 1.4em;
+  text-align: center;
+  padding: 10px;
+}
+
+.text-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.live-preview {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #111827;
+  min-height: 80px;
+}
+
+#aiText {
+  transition: opacity 0.6s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.energy-stack{
+  opacity:0;
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.8s cubic-bezier(.2,.8,.2,1);
+  font-family: -apple-system, system-ui;
+}
+
+.energy-stack.show{
+  opacity:1;
+  transform: translateY(0) scale(1);
+}
+
+/* layers */
+.energy-layer{
+  margin:10px 0;
+  padding:10px;
+  border-radius:14px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow:visible;
+}
+
+/* scan line effect */
+.energy-layer::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: scan 2.5s linear infinite;
+}
+
+@keyframes scan{
+  to{ left:100%; }
+}
+
+.energy-label{
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:0.6;
+  margin-bottom:6px;
+}
+
+.energy-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* pills */
+.energy-pill{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* dominant pulse */
+.energy-pill.dominant{
+  background: linear-gradient(135deg,#6366f1,#3b82f6);
+  color:white;
+  box-shadow:0 0 12px rgba(99,102,241,0.6);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.08); }
+}
+
+/* instability shake */
+.energy-layer.base{
+  animation: subtleShake 3s infinite;
+}
+
+@keyframes subtleShake{
+  0%,100%{ transform:translateX(0); }
+  25%{ transform:translateX(1px); }
+  75%{ transform:translateX(-1px); }
+}
+.energy-pill{
+  position: relative;
+}
+
+/* custom HUD tooltip */
+.energy-pill::after{
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.95);
+  color: white;
+  padding: 8px 10px;
+  font-size: 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+  z-index: 9999;
+}
+
+.energy-pill:hover::after{
+  opacity: 1;
+}
 </style>
 </head>
 
 <body>
 
-<h1 style="text-align:center;font-weight:800;">HD Visual Dashboard</h1>
+<h1 style="text-align:center;font-weight:800;">Human Design Relationship Analysis</h1>
 
 <form id="calcForm" class="hd-form">
 
-<div class="form-title">🌍 Relationship Analysis Input</div>
+
+<div class="vs-box"> Description </div>
+
+<!--<div class="live-preview" id="livePreview">-->
+  <!-- <b>Live Comparison</b> -->
+ <!--  <p>An interactive web dashboard that takes two people’s birth/location inputs, 
+  sends them to a backend, and visualizes their relationship dynamics using 
+  Human Design–style metrics like Fire (attraction), Peace (harmony), Stability, and Diversity.</p>-->
+  <!--<div id="previewText"></div>-->
+<!--</div>-->
+
+<div class="live-preview" id="livePreview">
+  <div id="aiText"></div>
+  <!--<div class="text-rotator">
+    <div class="text-slide active">
+      Relationship Intelligence, Refined. A new way to see how two individuals connect, align, and evolve.
+    </div>
+
+    <div class="text-slide">      
+      An interactive web dashboard that takes two people’s birth/location inputs, sends them to a backend, and visualizes their relationship dynamics using Human Design–style metrics like Fire (attraction), Peace (harmony), Stability, and Diversity.
+    </div>
+
+    <div class="text-slide">
+      A higher standard of compatibility. Precision meets elegance in a system designed to reveal deeper relational dynamics.
+    </div>
+
+    <div class="text-slide">
+      Where energies meet. Hidden patterns between two people become visible—attraction, harmony, tension, and growth.
+    </div>
+
+    <div class="text-slide">
+      Relationship analysis, quantified. Data-driven insight into attraction, stability, and structural alignment.
+    </div>-->
+
+  </div>
+</div>
+<div class="form-title">🌍 Inputs</div>
 
 <div class="grid-2">
 
+  <!-- PERSON 1 -->
   <div class="card">
-    <label>City 1</label>
+    <div style="font-weight:700; margin-bottom:6px;">Person 1</div>
+
     <div class="row">
-      <input type="text" id="city1">
+      <input type="text" id="city1" placeholder="Enter city...">
       <button type="button" id="fillCoords1">Fill</button>
     </div>
+
     <div class="grid-3">
-      <input type="number" name="lat1" step="any" value="46.0500268">
-      <input type="number" name="lon1" step="any" value="14.5069289">
-      <input type="datetime-local" name="dt1" value="1984-02-16T12:00">
+      <input type="number" name="lat1" step="any" value="46.4459152" placeholder="Latitude">
+      <input type="number" name="lon1" step="any" value="14.0663103" placeholder="Longitude">
     </div>
+    <input type="datetime-local" name="dt1" value="1993-04-24T12:30">
   </div>
 
-  <!-- ✅ FIX: City 2 now correctly BELOW City 1 -->
+  <!-- PERSON 2 -->
   <div class="card">
-    <label>City 2</label>
+    <div style="font-weight:700; margin-bottom:6px;">Person 2</div>
+
     <div class="row">
-      <input type="text" id="city2">
+      <input type="text" id="city2" placeholder="Enter city...">
       <button type="button" id="fillCoords2">Fill</button>
     </div>
+
     <div class="grid-3">
-      <input type="number" name="lat2" step="any" value="46.0500268">
-      <input type="number" name="lon2" step="any" value="14.5069289">
-      <input type="datetime-local" name="dt2" value="1985-10-03T12:00">
+      <input type="number" name="lat2" step="any" value="46.6624644" placeholder="Latitude">
+      <input type="number" name="lon2" step="any" value="16.1655256" placeholder="Longitude">
     </div>
+    <input type="datetime-local" name="dt2" value="1989-06-04T14:10">
   </div>
 
 </div>
+
 
 <button class="analyze-btn" type="submit">Analyze Relationship</button>
 
@@ -230,6 +447,161 @@ button:hover {
 <div class="visual-grid" id="visuals"></div>
 
 <script>
+  
+function renderPyramid(signals){
+
+  const pyramid = document.createElement("div");
+  pyramid.style.textAlign = "center";
+  pyramid.style.fontFamily = "monospace";
+  pyramid.style.marginTop = "10px";
+
+  const levels = {
+    0: [],
+    1: [],
+    2: []
+  };
+
+  signals.forEach(s => {
+    levels[s.level].push(s.type);
+  });
+
+  function makeRow(items, width){
+    if(!items.length) return "";
+    const text = items.join("  ");
+    const pad = " ".repeat(Math.max(0, (width - text.length)/2));
+    return pad + text;
+  }
+
+  const width = 40;
+
+  let html = "";
+
+  html += `<div>`;
+
+  // TOP (dominant)
+  html += `<pre>🔺 ${makeRow(levels[1], width)}</pre>`;
+
+  // MIDDLE
+  html += `<pre>   ${makeRow(levels[2], width)}</pre>`;
+
+  // BASE (instability warning)
+  html += `<pre>🔻 ${makeRow(levels[0], width)}</pre>`;
+
+  html += `</div>`;
+
+  pyramid.innerHTML = html;
+
+  return pyramid;
+}
+
+const texts = [
+  "Relationship Intelligence, Refined. A new way to see how two individuals connect, align, and evolve.",
+
+  "An interactive web dashboard that takes two people’s birth/location inputs, sends them to a backend, and visualizes their relationship dynamics using Human Design–style metrics like Fire (attraction), Peace (harmony), Stability, and Diversity.",
+
+  "A higher standard of compatibility. Precision meets elegance in a system designed to reveal deeper relational dynamics.",
+
+  "Where energies meet. Hidden patterns between two people become visible—attraction, harmony, tension, and growth.",
+
+  "A precision-built analytical system translating birth data into measurable relationship dynamics through structured energy metrics.",
+  
+  "Two energies meet. Patterns emerge. This interface reveals the unseen architecture of connection, harmony, and transformation.",
+  
+  "Minimal. Intelligent. Effortless. Enter two lives — and watch clarity unfold in a single, elegant interaction."
+];
+
+let i = 0;
+let charIndex = 0;
+let currentText = "";
+const speed = 25; // typing speed
+const delayBetween = 2500;
+
+const el = document.getElementById("aiText");
+
+function typeEffect() {
+  if (charIndex < texts[i].length) {
+    currentText += texts[i].charAt(charIndex);
+    el.textContent = currentText;
+    charIndex++;
+    setTimeout(typeEffect, speed);
+  } else {
+    setTimeout(() => {
+      fadeOut();
+    }, delayBetween);
+  }
+}
+
+function fadeOut() {
+  el.classList.add("fade-out");
+  setTimeout(() => {
+    i = (i + 1) % texts.length;
+    charIndex = 0;
+    currentText = "";
+    el.textContent = "";
+    el.classList.remove("fade-out");
+    el.classList.add("fade-in");
+    typeEffect();
+  }, 600);
+}
+
+// start
+typeEffect();
+  /*const slides = document.querySelectorAll(".text-slide");
+  let currentSlide = 0;
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+  }, 3500);
+*/
+  function updatePreview(){
+  const f = new FormData(calcForm);
+
+  const p1 = `${city1.value || "—"} | ${f.get("lat1") || "—"}, ${f.get("lon1") || "—"} | ${f.get("dt1") || "—"}`;
+  const p2 = `${city2.value || "—"} | ${f.get("lat2") || "—"}, ${f.get("lon2") || "—"} | ${f.get("dt2") || "—"}`;
+
+  /*previewText.innerHTML = `
+    <div style="padding:6px; font-weight:500;">
+      ${p1} <span style="color:#6366f1; font-weight:700;"> VS </span> ${p2}
+    </div>
+  `;*/
+}
+
+  /*function updatePreview(){
+  const f = new FormData(calcForm);
+
+  const p1 = {
+    city: city1.value,
+    lat: f.get("lat1"),
+    lon: f.get("lon1"),
+    dt: f.get("dt1")
+  };
+
+  const p2 = {
+    city: city2.value,
+    lat: f.get("lat2"),
+    lon: f.get("lon2"),
+    dt: f.get("dt2")
+  };
+
+  previewText.innerHTML = `
+    <div style="padding:6px">
+      <b>Person 1</b><br>
+      ${p1.city || "—"} | ${p1.lat || "—"} , ${p1.lon || "—"} | ${p1.dt || "—"}
+      <br><br>
+      <b style="color:#4f46e5">VS</b>
+      <br><br>
+      <b>Person 2</b><br>
+      ${p2.city || "—"} | ${p2.lat || "—"} , ${p2.lon || "—"} | ${p2.dt || "—"}
+    </div>
+  `;
+}*/
+
+calcForm.addEventListener("input", updatePreview);
+updatePreview();
 /* =========================
    ALL YOUR ORIGINAL JS (UNCHANGED)
 ========================= */
@@ -411,7 +783,8 @@ function createMetric(val,key,icon,label,desc){
         }
       });
     }
-  }catch(e){ /* ignore */ }
+  }
+  catch(e){ /* ignore */ }
 
   // add a single red middle line for diversity to indicate midpoint
   try{
@@ -436,15 +809,197 @@ function createMetric(val,key,icon,label,desc){
 }
 
 /* REL TYPE */
-function getRelationshipType(fire,peace,growth,stability){
+/*function getRelationshipType(fire,peace,growth,stability){
   if(fire>7 && peace<4) return "🔥 Intense";
   if(peace>7 && fire<4) return "🌿 Calm";
   if(fire>6 && peace>6) return "⚡ Powerful";
   if(stability<3) return "🌪 Volatile";
   if(growth>7) return "🌱 Growth";
   return "⚖️ Balanced";
+}*/
+
+function getRelationshipType(fire, peace, growth, stability){
+
+  const signals = [];
+
+  // 🔥 top emotional drivers
+  if (fire > 7 && peace < 4) signals.push({type:"🔥 Intense", level:1});
+  if (fire > 6 && peace > 6) signals.push({type:"⚡ Powerful", level:1});
+  if (peace > 7 && fire < 4) signals.push({type:"🌿 Calm", level:1});
+
+  // 🌱 secondary evolution layer
+  if (growth > 7) signals.push({type:"🌱 Growth", level:2});
+
+  // 🌪 structural condition
+  if (stability < 3) signals.push({type:"🌪 Volatile", level:0});
+
+  // ⚖️ fallback base state
+  if (signals.length === 0) {
+    signals.push({type:"⚖️ Balanced", level:2});
+  }
+
+  return signals;
 }
 
+function renderEnergyStack(signals){
+
+  const container = document.createElement("div");
+  container.className = "energy-stack";
+
+  const levels = { 0: [], 1: [], 2: [] };
+  signals.forEach(s => levels[s.level].push(s));
+
+  const createLayer = (items, label, className) => {
+    const layer = document.createElement("div");
+    layer.className = `energy-layer ${className}`;
+
+    const title = document.createElement("div");
+    title.className = "energy-label";
+    title.textContent = label;
+
+    const row = document.createElement("div");
+    row.className = "energy-row";
+
+    items.forEach((s, i) => {
+      const pill = document.createElement("div");
+      pill.className = "energy-pill";
+      pill.textContent = s.type;
+
+      pill.title = signalMeaning[s.type] || "No description available";
+      pill.setAttribute(
+        "data-tip",
+        signalMeaning[s.type] || "No description available"
+      );
+      // dominant pulse
+      if(i === 0 && s.weight >= 3){
+        pill.classList.add("dominant");
+      }
+
+      row.appendChild(pill);
+    });
+
+    layer.appendChild(title);
+    layer.appendChild(row);
+    return layer;
+  };
+
+  container.appendChild(createLayer(levels[1], "▲ DOMINANT", "top"));
+  container.appendChild(createLayer(levels[2], "◆ DYNAMICS", "mid"));
+  container.appendChild(createLayer(levels[0], "▼ FOUNDATION", "base"));
+
+  // cinematic entrance
+  setTimeout(() => {
+    container.classList.add("show");
+  }, 50);
+
+  return container;
+}
+/*function analyzeRelationship(fire, peace, growth, stability){
+
+  const signals = [];
+
+  if (fire > 7 && peace < 4) signals.push({type:"🔥 Intense", level:1, weight:3});
+  if (fire > 6 && peace > 6) signals.push({type:"⚡ Powerful", level:1, weight:3});
+  if (peace > 7 && fire < 4) signals.push({type:"🌿 Calm", level:1, weight:3});
+
+  if (growth > 7) signals.push({type:"🌱 Growth", level:2, weight:2});
+  if (stability < 3) signals.push({type:"🌪 Volatile", level:0, weight:4});
+
+  if (!signals.length) signals.push({type:"⚖️ Balanced", level:2, weight:1});
+
+  signals.sort((a,b)=>b.weight-a.weight);
+
+  const pyramidEl = renderPyramid(signals);
+  return {
+    signals,
+    dominant: signals[0],
+    //pyramid: renderPyramid(signals)
+    pyramid: pyramidEl.outerHTML   // 👈 convert to string
+  };
+}*/
+
+/*
+function analyzeRelationship(fire, peace, growth, stability){
+
+  const signals = [];
+
+  if (fire > 7 && peace < 4) signals.push({type:"🔥 Intense", level:1, weight:3});
+  if (fire > 6 && peace > 6) signals.push({type:"⚡ Powerful", level:1, weight:3});
+  if (peace > 7 && fire < 4) signals.push({type:"🌿 Calm", level:1, weight:3});
+
+  if (growth > 7) signals.push({type:"🌱 Growth", level:2, weight:2});
+  if (stability < 5) signals.push({type:"🌪 Volatile", level:0, weight:4});
+
+  if (!signals.length) signals.push({type:"⚖️ Balanced", level:2, weight:1});
+
+  signals.sort((a,b)=>b.weight-a.weight);
+
+  return {
+    signals,
+    dominant: signals[0],
+    pyramid: renderEnergyStack(signals) // 🔥 new renderer
+  };
+}
+*/
+const signalMeaning = {
+  "🔥 Intense": "High attraction pressure. Fast emotional ignition, low stability tolerance.",
+  "⚡ Powerful": "Mutual amplification. Both energies reinforce each other strongly.",
+  "🌿 Calm": "Low friction interaction. Stable emotional exchange with minimal volatility.",
+
+  "🌱 Growth": "Active development phase. Relationship expands through shared evolution.",
+  "🌱 Latent Growth": "Potential for growth exists but is not currently activated.",
+
+  "🌪 Volatile": "Unstable structural base. Emotional or energetic unpredictability present.",
+  "⚖️ Stable Foundation": "Grounded structure. Supports consistency and long-term balance.",
+
+  "🌀 Ambient Flow": "Neutral background energy. No dominant emotional driver active.",
+  "⚖️ Balanced": "Equilibrium state. No strong polarity between forces."
+};
+
+function normalizeSignals(signals){
+
+  const has = (t) => signals.some(s => s.type === t);
+
+  if (!has("🔥 Intense") && !has("⚡ Powerful") && !has("🌿 Calm")){
+    signals.push({type:"🌀 Ambient Flow", level:1, weight:1});
+  }
+
+  if (!has("🌱 Growth")){
+    signals.push({type:"🌱 Latent Growth", level:2, weight:1});
+  }
+
+  if (!has("🌪 Volatile") && !has("⚖️ Balanced")){
+    signals.push({type:"⚖️ Structural Stability", level:0, weight:1});
+  }
+
+  return signals;
+}
+function analyzeRelationship(fire, peace, growth, stability){
+
+  let signals = [];
+
+  if (fire > 7 && peace < 4) signals.push({type:"🔥 Intense", level:1, weight:3});
+  if (fire > 6 && peace > 6) signals.push({type:"⚡ Powerful", level:1, weight:3});
+  if (peace > 7 && fire < 4) signals.push({type:"🌿 Calm", level:1, weight:3});
+
+  if (growth > 7) signals.push({type:"🌱 Growth", level:2, weight:2});
+  else signals.push({type:"🌱 Latent Growth", level:2, weight:1});
+
+  if (stability < 5) signals.push({type:"🌪 Volatile", level:0, weight:4});
+  else signals.push({type:"⚖️ Stable Foundation", level:0, weight:2});
+
+  signals = normalizeSignals(signals);
+
+  const dominant = signals.reduce((max, s) =>
+    s.weight > max.weight ? s : max
+  );
+
+  return {
+    signals,
+    dominant,
+    pyramid: renderEnergyStack(signals)
+  };
+}
 /* SUBMIT */
 calcForm.addEventListener("submit",async e=>{
   e.preventDefault();
@@ -569,7 +1124,12 @@ const titleDiv = document.createElement('div');
 titleDiv.style.fontSize = '15px';
 titleDiv.style.fontWeight = '600';
 titleDiv.style.marginBottom = '8px';
-titleDiv.textContent = getRelationshipType(fire,peace,d.growthScore,d.stability);
+//titleDiv.textContent = getRelationshipType(fire,peace,d.growthScore,d.stability);
+//titleDiv.textContent = analyzeRelationship(fire,peace,d.growthScore,d.stability).pyramid;
+const resultAR = analyzeRelationship(fire, peace, d.growthScore, d.stability);
+
+titleDiv.innerHTML = "";
+titleDiv.appendChild(resultAR.pyramid);
 container.appendChild(titleDiv);
 
 const p1Div = document.createElement('div');
