@@ -1115,8 +1115,8 @@ function normalizeSignals(signals){
     signals.push({type:"🌱 Latent Growth", level:2, weight:1});
   }
 
-  if (!has("🌪 Volatile") && !has("⚖️ Balanced")){
-    signals.push({type:"⚖️ Structural Stability", level:0, weight:1});
+  if (!has("🌪 Volatile") && !has("⚖️ Balanced")) {
+    signals.push({ type: "⚖️ Stable Foundation", level: 0, weight: 1 });
   }
 
   return signals;

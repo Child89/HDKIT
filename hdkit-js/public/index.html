@@ -726,22 +726,20 @@ const signalMeaning = {
   "🌪 Volatile": "Unstable structural base. Emotional or energetic unpredictability present.",
   "⚖️ Stable Foundation": "Grounded structure. Supports consistency and long-term balance.",
   "🌀 Ambient Flow": "Neutral background energy. No dominant emotional driver active.",
-  "⚖️ Balanced": "Equilibrium state. No strong polarity between forces."
+  "⚖️ Balanced": "Equilibrium state. No strong polarity between forces.",
+  "🏗 Structural Stability": "High internal consistency. The relationship has a solid, reliable framework for long-term growth.",
+  "⚖️ Balanced Foundation": "A steady, dependable baseline. Provides enough structure to support healthy interaction."
 };
 
 function normalizeSignals(signals) {
   const has = (t) => signals.some(s => s.type === t);
 
-  if (!has("🔥 Intense") && !has("⚡ Powerful") && !has("🌿 Calm")) {
+  if (!has("🔥 Intense") && !has("⚡ Powerful") && !has("🌿 Calm") && !has("🌀 Ambient Flow")) {
     signals.push({ type: "🌀 Ambient Flow", level: 1, weight: 1 });
   }
 
-  if (!has("🌱 Growth")) {
+  if (!has("🌱 Growth") && !has("🌱 Latent Growth")) {
     signals.push({ type: "🌱 Latent Growth", level: 2, weight: 1 });
-  }
-
-  if (!has("🌪 Volatile") && !has("⚖️ Balanced")) {
-    signals.push({ type: "⚖️ Stable Foundation", level: 0, weight: 1 });
   }
 
   return signals;
@@ -795,9 +793,9 @@ function renderEnergyStack(signals) {
 function analyzeRelationship(fire, peace, growth, stability) {
   let signals = [];
 
-  if (fire > 7 && peace < 4) signals.push({ type: "🔥 Intense", level: 1, weight: 3 });
-  if (fire > 6 && peace > 6) signals.push({ type: "⚡ Powerful", level: 1, weight: 3 });
-  if (peace > 7 && fire < 4) signals.push({ type: "🌿 Calm", level: 1, weight: 3 });
+  if (fire >= 6 && peace < 4) signals.push({ type: "🔥 Intense", level: 1, weight: 3 });
+  if (fire >= 5 && peace >= 6) signals.push({ type: "⚡ Powerful", level: 1, weight: 3 });
+  if (peace >= 7 && fire < 4) signals.push({ type: "🌿 Calm", level: 1, weight: 3 });
 
   if (growth > 7) signals.push({ type: "🌱 Growth", level: 2, weight: 2 });
   else signals.push({ type: "🌱 Latent Growth", level: 2, weight: 1 });
@@ -805,12 +803,19 @@ function analyzeRelationship(fire, peace, growth, stability) {
   if (stability < 5) signals.push({ type: "🌪 Volatile", level: 0, weight: 4 });
   else signals.push({ type: "⚖️ Stable Foundation", level: 0, weight: 2 });
 
+    // Updated Stability Logic
+  if (stability >= 7) {
+    signals.push({ type: "🏗 Structural Stability", level: 0, weight: 3 });
+  } else if (stability < 4) {
+    signals.push({ type: "🌪 Volatile", level: 0, weight: 4 });
+  } else {
+    signals.push({ type: "⚖️ Balanced Foundation", level: 0, weight: 2 });
+  }
   signals = normalizeSignals(signals);
 
   const dominant = signals.reduce((max, s) =>
     s.weight > max.weight ? s : max
   );
-
   return {
     signals,
     dominant,
